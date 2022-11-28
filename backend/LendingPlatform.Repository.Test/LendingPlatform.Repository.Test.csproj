@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>    
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EntityInfo\**" />
+    <Compile Remove="LoanApplicationinfo\**" />
+    <EmbeddedResource Remove="EntityInfo\**" />
+    <EmbeddedResource Remove="LoanApplicationinfo\**" />
+    <None Remove="EntityInfo\**" />
+    <None Remove="LoanApplicationinfo\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.5.3.10" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="MockQueryable.Moq" Version="3.1.3" />
+    <PackageReference Include="Moq" Version="4.14.7" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LendingPlatform.DomainModel\LendingPlatform.DomainModel.csproj" />
+    <ProjectReference Include="..\LendingPlatform.Repository\LendingPlatform.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "SmartyStreets",
+    "IsServiceEnabled": true
+  },
+  {
+    "Name": "Quickbooks",
+    "IsServiceEnabled": true
+  },
+  {
+    "Name": "Xero",
+    "IsServiceEnabled": true
+  },
+  {
+    "Name": "Experian",
+    "IsServiceEnabled": true
+  },
+  {
+    "Name": "Equifax",
+    "IsServiceEnabled": false
+  },
+  {
+    "Name": "Transunion",
+    "IsServiceEnabled": false
+  }
+]

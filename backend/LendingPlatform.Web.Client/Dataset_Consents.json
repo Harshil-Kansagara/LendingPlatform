@@ -1,0 +1,15 @@
+[
+  {
+    "ConsentText": "Credit Agency and References",
+    "IsEnabled": true
+  },
+  {
+    "ConsentText": "Electronic Communications and Digital Signatures",
+    "IsEnabled": true
+  },
+  {
+    "ConsentText": "Information provided is true and correct",
+    "IsEnabled": true
+  }
+]
+

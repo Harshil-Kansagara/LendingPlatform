@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.Repository", "LendingPlatform.Repository\LendingPlatform.Repository.csproj", "{DB00AAA3-F90D-405F-B799-2B2F06EE03DF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9} = {18DB4425-D8D4-4C72-860D-291EB5FA35C9}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.Core", "LendingPlatform.Core\LendingPlatform.Core.csproj", "{A6394073-F00E-4700-9102-ED84338AD32F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9} = {18DB4425-D8D4-4C72-860D-291EB5FA35C9}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.DomainModel", "LendingPlatform.DomainModel\LendingPlatform.DomainModel.csproj", "{18DB4425-D8D4-4C72-860D-291EB5FA35C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.Web.Client", "LendingPlatform.Web.Client\LendingPlatform.Web.Client.csproj", "{77BDE8F5-95BB-47A6-AA30-119AFD9DDDBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.Repository.Test", "LendingPlatform.Repository.Test\LendingPlatform.Repository.Test.csproj", "{E8267BBD-0CBA-4BB9-B55C-3E274A8FAAEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LendingPlatform.Utils", "LendingPlatform.Utils\LendingPlatform.Utils.csproj", "{7D8A4E2D-6AAE-46CD-A7E3-5D2AECE755B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB00AAA3-F90D-405F-B799-2B2F06EE03DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB00AAA3-F90D-405F-B799-2B2F06EE03DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB00AAA3-F90D-405F-B799-2B2F06EE03DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB00AAA3-F90D-405F-B799-2B2F06EE03DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6394073-F00E-4700-9102-ED84338AD32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6394073-F00E-4700-9102-ED84338AD32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6394073-F00E-4700-9102-ED84338AD32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6394073-F00E-4700-9102-ED84338AD32F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DB4425-D8D4-4C72-860D-291EB5FA35C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77BDE8F5-95BB-47A6-AA30-119AFD9DDDBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77BDE8F5-95BB-47A6-AA30-119AFD9DDDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77BDE8F5-95BB-47A6-AA30-119AFD9DDDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77BDE8F5-95BB-47A6-AA30-119AFD9DDDBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8267BBD-0CBA-4BB9-B55C-3E274A8FAAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8267BBD-0CBA-4BB9-B55C-3E274A8FAAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8267BBD-0CBA-4BB9-B55C-3E274A8FAAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8267BBD-0CBA-4BB9-B55C-3E274A8FAAEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8A4E2D-6AAE-46CD-A7E3-5D2AECE755B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8A4E2D-6AAE-46CD-A7E3-5D2AECE755B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8A4E2D-6AAE-46CD-A7E3-5D2AECE755B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8A4E2D-6AAE-46CD-A7E3-5D2AECE755B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A7A34C8-05EB-48FC-B06C-2B27986DE4CB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,2005 @@
+{
+  "PersonalFinanceAccounts": [
+    {
+      "Id": 1,
+      "Name": "Assets",
+      "Order": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 2,
+      "Name": "Obligations",
+      "Order": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 3,
+      "Name": "Income Section",
+      "Order": 3,
+      "IsEnabled": true
+    }
+  ],
+  "PersonalFinanceCategories": [
+    {
+      "Id": 1,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Checking",
+      "Order": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 2,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Savings",
+      "Order": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 3,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Brokerage",
+      "Order": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 4,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Retirement",
+      "Order": 4,
+      "IsEnabled": true
+    },
+    {
+      "Id": 5,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Life Insurance",
+      "Order": 5,
+      "IsEnabled": true
+    },
+    {
+      "Id": 6,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Receivables",
+      "Order": 6,
+      "IsEnabled": true
+    },
+    {
+      "Id": 7,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Real Estate",
+      "Order": 7,
+      "IsEnabled": true
+    },
+    {
+      "Id": 8,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Automobiles",
+      "Order": 8,
+      "IsEnabled": true
+    },
+    {
+      "Id": 9,
+      "PersonalFinanceAccountId": 1,
+      "Name": "Personal Property",
+      "Order": 9,
+      "IsEnabled": true
+    },
+    {
+      "Id": 10,
+      "PersonalFinanceAccountId": 2,
+      "Name": "Credit Cards",
+      "Order": 10,
+      "IsEnabled": true
+    },
+    {
+      "Id": 11,
+      "PersonalFinanceAccountId": 2,
+      "Name": "Installment Loans",
+      "Order": 11,
+      "IsEnabled": true
+    },
+    {
+      "Id": 12,
+      "PersonalFinanceAccountId": 2,
+      "Name": "Mortgage Loans",
+      "Order": 12,
+      "IsEnabled": true
+    },
+    {
+      "Id": 13,
+      "PersonalFinanceAccountId": 2,
+      "Name": "Other Loans",
+      "Order": 13,
+      "IsEnabled": true
+    },
+    {
+      "Id": 14,
+      "PersonalFinanceAccountId": 2,
+      "Name": "Unpaid Taxes and Other Obligations",
+      "Order": 14,
+      "IsEnabled": true
+    },
+    {
+      "Id": 15,
+      "PersonalFinanceAccountId": 3,
+      "Name": "Income Information",
+      "Order": 15,
+      "IsEnabled": true
+    }
+  ],
+  "PersonalFinanceAttributes": [
+    {
+      "Id": 1,
+      "Text": "I do not have a checking account",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 2,
+      "Text": "What is the balance according to your latest bank statement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 3,
+      "Text": "I do not have a savings account",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 4,
+      "Text": "I do not have a brokerage account",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 5,
+      "Text": "What is the current value of your portfolio according to your latest brokerage statement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 6,
+      "Text": "I do not have a retirement account",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 7,
+      "Text": "What is the current value of your portfolio according to your latest retirement statement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 8,
+      "Text": "I do not have life insurance",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 10,
+      "Text": "Which insurance company is covering you?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 11,
+      "Text": "What is the address of your insurance company?",
+      "FieldType": "Address",
+      "IsEnabled": true
+    },
+    {
+      "Id": 12,
+      "Text": "What is the cash surrender value of your policy?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 13,
+      "Text": "Who is the beneficiary?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 14,
+      "Text": "What is your relationship to the beneficiary?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 15,
+      "Text": "Have you personally loaned money to someone?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 16,
+      "Text": "What is the debtor's name?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 17,
+      "Text": "What is the debtor's address?",
+      "FieldType": "Address",
+      "IsEnabled": true
+    },
+    {
+      "Id": 18,
+      "Text": "Is the debtor related to you?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 19,
+      "Text": "What is your relationship with the debtor?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 20,
+      "Text": "How much did the debtor borrow from you?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 21,
+      "Text": "What is the current balance of this loan?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 22,
+      "Text": "What is the payment frequency?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 23,
+      "Text": "What is the payment as per the stated frequency?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 24,
+      "Text": "Is the loan secured?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 25,
+      "Text": "What security has the debtor provided for this loan?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 26,
+      "Text": "Do you own real estate?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 28,
+      "Text": "Type of property:",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 29,
+      "Text": "What is the address?",
+      "FieldType": "Address",
+      "IsEnabled": true
+    },
+    {
+      "Id": 30,
+      "Text": "When did you purchase this property?",
+      "FieldType": "Date",
+      "IsEnabled": true
+    },
+    {
+      "Id": 31,
+      "Text": "What was the purchase price?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 32,
+      "Text": "What is your estimate of its current market value?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 33,
+      "Text": "Do you have a mortgage on the property?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 34,
+      "Text": "What is the name of your mortgage company?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 35,
+      "Text": "What is the address of your mortgage company?",
+      "FieldType": "Address",
+      "IsEnabled": true
+    },
+    {
+      "Id": 36,
+      "Text": "What is the balance of your mortgage according to your last statement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 37,
+      "Text": "I do not own any automobiles",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 38,
+      "Text": "What is its current value?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 39,
+      "Text": "What is the type of property?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 40,
+      "Text": "What is the current value?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 41,
+      "Text": "Have you pledged this property to borrow money?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 42,
+      "Text": "What is the name of the lien holder?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 43,
+      "Text": "What is the address of the lien holder?",
+      "FieldType": "Address",
+      "IsEnabled": true
+    },
+    {
+      "Id": 44,
+      "Text": "How much money did you borrow?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 45,
+      "Text": "What is the current balance of the loan?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 46,
+      "Text": "What is the current status of the loan?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 47,
+      "Text": "Do you have any active credit cards?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 48,
+      "Text": "What is the total line of credit?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 49,
+      "Text": "What is the current balance?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 50,
+      "Text": "Do you have any installment loans?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 51,
+      "Text": "What is the total amount borrowed?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 52,
+      "Text": "What is the balance of this loan according the latest statement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 54,
+      "Text": "Do you have any other loan?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 55,
+      "Text": "Do you owe money to any other creditors?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 56,
+      "Text": "Who is the creditor?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 57,
+      "Text": "Which asset have you pledged as collateral?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 58,
+      "Text": "Do you have any unpaid taxes?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 59,
+      "Text": "What kind of unpaid taxes do you owe?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 60,
+      "Text": "To whom do you owe these taxes?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 61,
+      "Text": "How much do you owe?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 62,
+      "Text": "When is this tax payable?",
+      "FieldType": "Date",
+      "IsEnabled": true
+    },
+    {
+      "Id": 63,
+      "Text": "Do you have any other liens or judgements against you?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 64,
+      "Text": "What is the current amount of this lien or judgement?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 65,
+      "Text": "Do you have any other special debts we may have missed?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 66,
+      "Text": "What is the current amount of this debt?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 67,
+      "Text": "On which property do you owe the taxes?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 68,
+      "Text": "Is there a tax lien on this property?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 69,
+      "Text": "Do you have any other obligations we may have missed?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 70,
+      "Text": "Is this loan secured?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 71,
+      "Text": "Have you endorsed or guaranteed any other loans?",
+      "FieldType": "Boolean",
+      "IsEnabled": true
+    },
+    {
+      "Id": 72,
+      "Text": "What is the current amount of this loan?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 73,
+      "Text": "I do not have any personal income, other than the income from my business",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 74,
+      "Text": "What is the type of income?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 75,
+      "Text": "What is the frequency?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 76,
+      "Text": "What is the income as per the stated frequency?",
+      "FieldType": "Currency",
+      "IsEnabled": true
+    },
+    {
+      "Id": 77,
+      "Text": "If other, please describe type of income:",
+      "FieldType": "OptionalText",
+      "IsEnabled": true
+    },
+    {
+      "Id": 78,
+      "Text": "Which bank do you have your checking account with?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 79,
+      "Text": "Which bank do you have your savings account with?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 80,
+      "Text": "Which bank and/or brokerage do you have your brokerage account with?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 81,
+      "Text": "Which bank and/or brokerage do you have your retirement account with?",
+      "FieldType": "Dropdown",
+      "IsEnabled": true
+    },
+    {
+      "Id": 82,
+      "Text": "What is your bank account number?",
+      "FieldType": "BankAccountNumber",
+      "IsEnabled": true
+    },
+    {
+      "Id": 83,
+      "Text": "I do not own any personal property (Art work, Rugs, Furniture, Collectibles, Boats etc.)",
+      "FieldType": "SingleCheckbox",
+      "IsEnabled": true
+    },
+    {
+      "Id": 84,
+      "Text": "What is the Model, Make and Year?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 85,
+      "Text": "Which Credit Card Company do you have your card with?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    },
+    {
+      "Id": 86,
+      "Text": "What is the name of the Lending Partner?",
+      "FieldType": "Text",
+      "IsEnabled": true
+    }
+  ],
+  "PersonalFinanceConstants": [
+    {
+      "Id": 1,
+      "Name": "BeneficiaryRelation",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Spouse",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Child",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Sibling",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Parent",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Other",
+          "Order": 5,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "DebtorRelation",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Child",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Sibling",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Parent",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Other",
+          "Order": 4,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "PaymentFrequency",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Weekly",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Bi-Weekly",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Monthly",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Quarterly",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Semi-Annually",
+          "Order": 5,
+          "IsEnabled": true
+        },
+        {
+          "Id": 6,
+          "Value": "Annually",
+          "Order": 6,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "PersonalPropertyType",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Furniture",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Rugs",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Art work",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Collectibles",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Boats",
+          "Order": 5,
+          "IsEnabled": true
+        },
+        {
+          "Id": 6,
+          "Value": "Other",
+          "Order": 6,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "UnpaidTaxType",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Federal Income",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "State & Local Income",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Social Security",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Real Estate",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Other",
+          "Order": 5,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "LoanStatus",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Current",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Delinquent",
+          "Order": 2,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "TaxOwedEntity",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "IRS",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "State",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Local",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "SSA",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Other",
+          "Order": 5,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Name": "IncomeType",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Salary",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Investment",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Real Estate",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Other",
+          "Order": 4,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 9,
+      "Name": "PropertyType",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "Primary home",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Second home",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Rental home",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "Commercial",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Land",
+          "Order": 5,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "Id": 10,
+      "Name": "BankList",
+      "Options": [
+        {
+          "Id": 1,
+          "Value": "JPMorgan Chase & Co.",
+          "Order": 1,
+          "IsEnabled": true
+        },
+        {
+          "Id": 2,
+          "Value": "Wells Fargo & Co.",
+          "Order": 2,
+          "IsEnabled": true
+        },
+        {
+          "Id": 3,
+          "Value": "Citigroup Inc.",
+          "Order": 3,
+          "IsEnabled": true
+        },
+        {
+          "Id": 4,
+          "Value": "U.S. Bancorp",
+          "Order": 4,
+          "IsEnabled": true
+        },
+        {
+          "Id": 5,
+          "Value": "Truist Bank",
+          "Order": 5,
+          "IsEnabled": true
+        },
+        {
+          "Id": 6,
+          "Value": "PNC Financial Services Group Inc.",
+          "Order": 6,
+          "IsEnabled": true
+        },
+        {
+          "Id": 7,
+          "Value": "TD Group US Holdings LLC",
+          "Order": 7,
+          "IsEnabled": true
+        },
+        {
+          "Id": 8,
+          "Value": "Bank of New York Mellon Corp.",
+          "Order": 8,
+          "IsEnabled": true
+        },
+        {
+          "Id": 9,
+          "Value": "Capital One Financial Corp.",
+          "Order": 9,
+          "IsEnabled": true
+        },
+        {
+          "Id": 10,
+          "Value": "State Street Corp.",
+          "Order": 10,
+          "IsEnabled": true
+        },
+        {
+          "Id": 11,
+          "Value": "Bank of America Corp.",
+          "Order": 11,
+          "IsEnabled": true
+        },
+        {
+          "Id": 12,
+          "Value": "Goldman Sachs Group Inc.",
+          "Order": 12,
+          "IsEnabled": true
+        },
+        {
+          "Id": 13,
+          "Value": "Fifth Third Bank",
+          "Order": 13,
+          "IsEnabled": true
+        },
+        {
+          "Id": 14,
+          "Value": "HSBC",
+          "Order": 14,
+          "IsEnabled": true
+        },
+        {
+          "Id": 15,
+          "Value": "Citizens Financial Group",
+          "Order": 15,
+          "IsEnabled": true
+        }
+      ]
+    }
+  ],
+  "PersonalFinanceAttributeCategoryMappings": [
+    {
+      "Id": 1,
+      "CategoryId": 1,
+      "AttributeId": 1,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 2,
+      "CategoryId": 1,
+      "AttributeId": 2,
+      "ParentAttributeCategoryMappingId": 1,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 3,
+      "CategoryId": 2,
+      "AttributeId": 3,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 4,
+      "CategoryId": 2,
+      "AttributeId": 2,
+      "ParentAttributeCategoryMappingId": 3,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 5,
+      "CategoryId": 3,
+      "AttributeId": 4,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 6,
+      "CategoryId": 3,
+      "AttributeId": 5,
+      "ParentAttributeCategoryMappingId": 5,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 7,
+      "CategoryId": 4,
+      "AttributeId": 6,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 8,
+      "CategoryId": 4,
+      "AttributeId": 7,
+      "ParentAttributeCategoryMappingId": 7,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 9,
+      "CategoryId": 5,
+      "AttributeId": 8,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 11,
+      "CategoryId": 5,
+      "AttributeId": 10,
+      "ParentAttributeCategoryMappingId": 9,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 12,
+      "CategoryId": 5,
+      "AttributeId": 11,
+      "ParentAttributeCategoryMappingId": 9,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 13,
+      "CategoryId": 5,
+      "AttributeId": 12,
+      "ParentAttributeCategoryMappingId": 9,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 14,
+      "CategoryId": 5,
+      "AttributeId": 13,
+      "ParentAttributeCategoryMappingId": 9,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 15,
+      "CategoryId": 5,
+      "AttributeId": 14,
+      "ParentAttributeCategoryMappingId": 9,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 1
+    },
+    {
+      "Id": 16,
+      "CategoryId": 6,
+      "AttributeId": 15,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 17,
+      "CategoryId": 6,
+      "AttributeId": 16,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 18,
+      "CategoryId": 6,
+      "AttributeId": 17,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 19,
+      "CategoryId": 6,
+      "AttributeId": 18,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 20,
+      "CategoryId": 6,
+      "AttributeId": 19,
+      "ParentAttributeCategoryMappingId": 19,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 2
+    },
+    {
+      "Id": 21,
+      "CategoryId": 6,
+      "AttributeId": 20,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 22,
+      "CategoryId": 6,
+      "AttributeId": 21,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 23,
+      "CategoryId": 6,
+      "AttributeId": 22,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 6,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 24,
+      "CategoryId": 6,
+      "AttributeId": 23,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 7,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 25,
+      "CategoryId": 6,
+      "AttributeId": 24,
+      "ParentAttributeCategoryMappingId": 16,
+      "Order": 8,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 26,
+      "CategoryId": 6,
+      "AttributeId": 25,
+      "ParentAttributeCategoryMappingId": 25,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 27,
+      "CategoryId": 7,
+      "AttributeId": 26,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 29,
+      "CategoryId": 7,
+      "AttributeId": 28,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 9
+    },
+    {
+      "Id": 30,
+      "CategoryId": 7,
+      "AttributeId": 29,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 31,
+      "CategoryId": 7,
+      "AttributeId": 30,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 32,
+      "CategoryId": 7,
+      "AttributeId": 31,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 4,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 33,
+      "CategoryId": 7,
+      "AttributeId": 32,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 34,
+      "CategoryId": 7,
+      "AttributeId": 33,
+      "ParentAttributeCategoryMappingId": 27,
+      "Order": 6,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 35,
+      "CategoryId": 7,
+      "AttributeId": 34,
+      "ParentAttributeCategoryMappingId": 34,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 36,
+      "CategoryId": 7,
+      "AttributeId": 35,
+      "ParentAttributeCategoryMappingId": 34,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 37,
+      "CategoryId": 7,
+      "AttributeId": 36,
+      "ParentAttributeCategoryMappingId": 34,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 38,
+      "CategoryId": 7,
+      "AttributeId": 22,
+      "ParentAttributeCategoryMappingId": 34,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 39,
+      "CategoryId": 7,
+      "AttributeId": 23,
+      "ParentAttributeCategoryMappingId": 34,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 40,
+      "CategoryId": 8,
+      "AttributeId": 37,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 41,
+      "CategoryId": 8,
+      "AttributeId": 31,
+      "ParentAttributeCategoryMappingId": 40,
+      "Order": 1,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 42,
+      "CategoryId": 8,
+      "AttributeId": 38,
+      "ParentAttributeCategoryMappingId": 40,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 43,
+      "CategoryId": 9,
+      "AttributeId": 39,
+      "ParentAttributeCategoryMappingId": 117,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 4
+    },
+    {
+      "Id": 44,
+      "CategoryId": 9,
+      "AttributeId": 40,
+      "ParentAttributeCategoryMappingId": 117,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 45,
+      "CategoryId": 9,
+      "AttributeId": 41,
+      "ParentAttributeCategoryMappingId": 117,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 46,
+      "CategoryId": 9,
+      "AttributeId": 42,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 47,
+      "CategoryId": 9,
+      "AttributeId": 43,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 48,
+      "CategoryId": 9,
+      "AttributeId": 44,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 49,
+      "CategoryId": 9,
+      "AttributeId": 45,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 50,
+      "CategoryId": 9,
+      "AttributeId": 46,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 6
+    },
+    {
+      "Id": 51,
+      "CategoryId": 9,
+      "AttributeId": 22,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 6,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 52,
+      "CategoryId": 9,
+      "AttributeId": 23,
+      "ParentAttributeCategoryMappingId": 45,
+      "Order": 7,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 53,
+      "CategoryId": 10,
+      "AttributeId": 47,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 54,
+      "CategoryId": 10,
+      "AttributeId": 48,
+      "ParentAttributeCategoryMappingId": 53,
+      "Order": 1,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 55,
+      "CategoryId": 10,
+      "AttributeId": 49,
+      "ParentAttributeCategoryMappingId": 53,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 56,
+      "CategoryId": 11,
+      "AttributeId": 50,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 57,
+      "CategoryId": 11,
+      "AttributeId": 51,
+      "ParentAttributeCategoryMappingId": 56,
+      "Order": 1,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 58,
+      "CategoryId": 11,
+      "AttributeId": 52,
+      "ParentAttributeCategoryMappingId": 56,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 59,
+      "CategoryId": 11,
+      "AttributeId": 22,
+      "ParentAttributeCategoryMappingId": 56,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 60,
+      "CategoryId": 11,
+      "AttributeId": 23,
+      "ParentAttributeCategoryMappingId": 56,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 83,
+      "CategoryId": 14,
+      "AttributeId": 58,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 84,
+      "CategoryId": 14,
+      "AttributeId": 59,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 5
+    },
+    {
+      "Id": 85,
+      "CategoryId": 14,
+      "AttributeId": 60,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 7
+    },
+    {
+      "Id": 86,
+      "CategoryId": 14,
+      "AttributeId": 61,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 3,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 87,
+      "CategoryId": 14,
+      "AttributeId": 62,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 88,
+      "CategoryId": 14,
+      "AttributeId": 63,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 89,
+      "CategoryId": 14,
+      "AttributeId": 64,
+      "ParentAttributeCategoryMappingId": 88,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 90,
+      "CategoryId": 14,
+      "AttributeId": 65,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 6,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 91,
+      "CategoryId": 14,
+      "AttributeId": 66,
+      "ParentAttributeCategoryMappingId": 90,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 92,
+      "CategoryId": 14,
+      "AttributeId": 67,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 7,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 93,
+      "CategoryId": 14,
+      "AttributeId": 68,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 8,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 94,
+      "CategoryId": 14,
+      "AttributeId": 69,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 9,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 95,
+      "CategoryId": 14,
+      "AttributeId": 56,
+      "ParentAttributeCategoryMappingId": 94,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 96,
+      "CategoryId": 14,
+      "AttributeId": 44,
+      "ParentAttributeCategoryMappingId": 94,
+      "Order": 2,
+      "IsOriginal": true,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 97,
+      "CategoryId": 14,
+      "AttributeId": 45,
+      "ParentAttributeCategoryMappingId": 94,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 98,
+      "CategoryId": 14,
+      "AttributeId": 22,
+      "ParentAttributeCategoryMappingId": 94,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 99,
+      "CategoryId": 14,
+      "AttributeId": 23,
+      "ParentAttributeCategoryMappingId": 94,
+      "Order": 5,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 100,
+      "CategoryId": 14,
+      "AttributeId": 70,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 10,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 101,
+      "CategoryId": 14,
+      "AttributeId": 57,
+      "ParentAttributeCategoryMappingId": 100,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 102,
+      "CategoryId": 14,
+      "AttributeId": 71,
+      "ParentAttributeCategoryMappingId": 83,
+      "Order": 11,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 103,
+      "CategoryId": 14,
+      "AttributeId": 72,
+      "ParentAttributeCategoryMappingId": 102,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 104,
+      "CategoryId": 15,
+      "AttributeId": 73,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 105,
+      "CategoryId": 15,
+      "AttributeId": 74,
+      "ParentAttributeCategoryMappingId": 104,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 8
+    },
+    {
+      "Id": 106,
+      "CategoryId": 15,
+      "AttributeId": 75,
+      "ParentAttributeCategoryMappingId": 104,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 3
+    },
+    {
+      "Id": 107,
+      "CategoryId": 15,
+      "AttributeId": 76,
+      "ParentAttributeCategoryMappingId": 104,
+      "Order": 3,
+      "IsOriginal": false,
+      "IsCurrent": true,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 108,
+      "CategoryId": 15,
+      "AttributeId": 77,
+      "ParentAttributeCategoryMappingId": 104,
+      "Order": 4,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 109,
+      "CategoryId": 1,
+      "AttributeId": 78,
+      "ParentAttributeCategoryMappingId": 1,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 10
+    },
+    {
+      "Id": 110,
+      "CategoryId": 2,
+      "AttributeId": 79,
+      "ParentAttributeCategoryMappingId": 3,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 10
+    },
+    {
+      "Id": 111,
+      "CategoryId": 3,
+      "AttributeId": 80,
+      "ParentAttributeCategoryMappingId": 5,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 10
+    },
+    {
+      "Id": 112,
+      "CategoryId": 4,
+      "AttributeId": 81,
+      "ParentAttributeCategoryMappingId": 7,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": 10
+    },
+    {
+      "Id": 113,
+      "CategoryId": 1,
+      "AttributeId": 82,
+      "ParentAttributeCategoryMappingId": 1,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 114,
+      "CategoryId": 2,
+      "AttributeId": 82,
+      "ParentAttributeCategoryMappingId": 3,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 115,
+      "CategoryId": 3,
+      "AttributeId": 82,
+      "ParentAttributeCategoryMappingId": 5,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 116,
+      "CategoryId": 4,
+      "AttributeId": 82,
+      "ParentAttributeCategoryMappingId": 7,
+      "Order": 2,
+      "IsOriginal": false,
+      "IsCurrent": false,
+      "PersonalFinanceConstantId": null
+    },
+    {
+      "Id": 117,
+      "CategoryId": 9,
+      "AttributeId": 83,
+      "ParentAttributeCategoryMappingId": null,
+      "Order": 1,
+      "IsOriginal": false,
+      "IsCurrent": false
+    },
+    {
+      "Id": 118,
+      "CategoryId": 8,
+      "AttributeId": 84,
+      "ParentAttributeCategoryMappingId": 40,
+      "Order": 0,
+      "IsOriginal": false,
+      "IsCurrent": false
+    },
+    {
+      "Id": 119,
+      "CategoryId": 10,
+      "AttributeId": 85,
+      "ParentAttributeCategoryMappingId": 53,
+      "Order": 0,
+      "IsOriginal": false,
+      "IsCurrent": false
+    },
+    {
+      "Id": 120,
+      "CategoryId": 11,
+      "AttributeId": 86,
+      "ParentAttributeCategoryMappingId": 56,
+      "Order": 0,
+      "IsOriginal": false,
+      "IsCurrent": false
+    }
+  ],
+  "PersonalFinanceParentChildCategoryMappings": [
+    {
+      "Id": 1,
+      "ParentCategoryId": 7,
+      "ChildCategoryId": 12,
+      "ParentAttributeCategoryMappingId": 34
+    },
+    {
+      "Id": 2,
+      "ParentCategoryId": 9,
+      "ChildCategoryId": 13,
+      "ParentAttributeCategoryMappingId": 45
+    }
+  ]
+}

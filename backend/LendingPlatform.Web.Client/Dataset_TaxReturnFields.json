@@ -1,0 +1,589 @@
+{
+  "fields": [
+    {
+      "fieldKey": "1_Feeling Status - Single",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "2_Filing Status - Married Filling Jointly",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "3_Filing Status - Married Filling Separately",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "4_Filing Status - Head of Household",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "5_Filing Status - Qualifying Widow",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "6_Child Or Spouse Name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "7_First Name, Middle initial and Last name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "8_Social Security Number",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "9_Spouse First name, Middle initial and Last name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "10_Spouse SSN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "11_Home Address",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "12_Apt. no.",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "13_City, town or post office, state and ZIP code",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "14_Foreign country name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "15_Foreign province/state/country",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "16_Foreign postal code",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "17_Presidential Election Campaign - You",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "18_Presidential Election Campaign - Spouse",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "19_More than four dependents",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "20_Standard Deduction - You as a dependent",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "21_Standard Deduction - Spouse as a dependent",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "22_Standard Deduction - Spouse itemizes on a separate return or you were a dual-status alien",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "27_First Dependents - Name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "28_First Dependents - SSN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "29_First Dependents - Relationship",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "30_First Dependents - Child tax credit",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "31_First Dependents Credits to other dependents",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "32_Second Dependents - Name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "33_Second Dependents - SSN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "34_Second Dependents - Relationship",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "35_Second Dependents - Child tax credit",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "36_Second Dependents - Credit to other dependents",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "37_Third Dependents - Name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "38_Third Dependents - SSN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "39_Third Dependents - Relationship",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "40_Third Dependents - Child tax credit",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "41_Third Dependents - Credit to other dependents",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "42_Fourth Dependents - Name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "43_Fourth Dependents - SSN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "44_Fourth Dependents - Relationship",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "45_Fourth Dependents - Child tax credit",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "46_Fourth Dependents - Credit to other dependents",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "47_Wages, salaries, tips etc",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "48_Tax-exempt interest",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "49_Taxable interest",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "50_Qualified dividends",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "51_Ordinary dividends",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "52_IRA distributions",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "53_IRA taxable amount",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "54_Pensions and annuities",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "55_Pensions and annuities - Taxable amount",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "56_Social security benefits",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "57_Social security benefits - Taxable amount",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "58_Capital gain or loss",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "59_Is attached Schedule D required",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "60_Other income from Schedule 1",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "61_Total income",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "62_Adjustments to income from Schedule 1",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "63_Adjusted gross income",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "64_Standard deduction or itemized deductions",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "65_Qualified business income deduction",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "66_Add lines 9 and 10",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "67_Taxable income",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "68_Tax - Form 8814",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "69_Tax - Form 4972",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "70_Tax",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "71_Schedule 2 - Add line 3 and line 12a",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "72_Child tax credit or credit for other dependents",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "73_Schedule 3 - Add line 7 and line 13a",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "74_Subtract line 13b from line 12b",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "75_Schedule 2 - Other taxes, including self-employment tax",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "76_Total tax",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "77_Federal income tax",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "78_Earned income credit",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "79_Additional child tax credit",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "80_American opportunity credit",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "81_Schedule 3 line 14",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "82_Total other payments and refundable credits",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "83_Total payments",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "84_Overpaid",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "85_Is form 8888 attached",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "86_Amount refunded to you",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "87_Routing number",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "88_Account number",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "89_Type - Checking",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "90_Type - Savings",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "91_Applied to your 2020 estimated tax",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "92_Amount you owe",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "93_Estimated tax penalty",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "94_Do you want to allow another person - Yes",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "95_Do you want to allow another person - No",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "96_Designee's name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "97_Designee's Phone no.",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "98_Designee's PIN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "99_Your signature",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "100_Date",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "101_Your occupation",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "102_Your PIN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "103_Spouse signature",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "104_Spouse's occupation",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "105_Spouse PIN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "106_Phone no.",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "107_Email Address",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "108_Preparer's name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "109_Preparer's signature",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "110_Preparer's date",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "111_Preparer's PTIN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "112_Firm's name",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "113_Firm's phone number",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "114_Firm's address",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "115_Firm's EIN",
+      "fieldType": "string",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "116_Is 3rd party designee",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "117_Is self-employed",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "23_Age Blindness - You - Born before January 2, 1995",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "24_Age Blindness - You - Are blind",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "25_Age Blindness - Spouse - Born before January 2, 1995",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    },
+    {
+      "fieldKey": "26_Age Blindness - Spouse - Is blind",
+      "fieldType": "selectionMark",
+      "fieldFormat": "not-specified"
+    }
+  ]
+}

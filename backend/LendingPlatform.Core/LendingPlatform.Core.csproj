@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BankControllers\**" />
+    <Compile Remove="ClientControllers\**" />
+    <EmbeddedResource Remove="BankControllers\**" />
+    <EmbeddedResource Remove="ClientControllers\**" />
+    <None Remove="BankControllers\**" />
+    <None Remove="ClientControllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSwag.Annotations" Version="13.8.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LendingPlatform.DomainModel\LendingPlatform.DomainModel.csproj" />
+    <ProjectReference Include="..\LendingPlatform.Repository\LendingPlatform.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

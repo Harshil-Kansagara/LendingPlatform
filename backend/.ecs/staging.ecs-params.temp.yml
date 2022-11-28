@@ -1,0 +1,300 @@
+version: 1
+task_definition:
+  task_execution_role: arn:aws:iam::AWS_ACCOUNT_ID:role/ecsTaskExecutionRole
+  ecs_network_mode: bridge
+  services:
+    container_name: 
+      mem_reservation: 0.5GB
+      secrets:
+        - value_from: /staging/Aws__AwsBucketName
+          name: Aws__AwsBucketName
+        - value_from: /staging/Aws__AwsRegion
+          name: Aws__AwsRegion
+        - value_from: /staging/Aws__AwsSecretAccessKey
+          name: Aws__AwsSecretAccessKey
+        - value_from: /staging/Aws__AwsSecretKey
+          name: Aws__AwsSecretKey
+        - value_from: /staging/Aws__AwsUserName
+          name: Aws__AwsUserName
+        - value_from: /staging/BankPreference__Transaction
+          name: BankPreference__Transaction
+        - value_from: /staging/Aws__AwsPrepareFinanceQueueNameAccountId
+          name: Aws__AwsPrepareFinanceQueueNameAccountId
+        - value_from: /staging/Aws__AwsPrepareFinanceQueueName
+          name: Aws__AwsPrepareFinanceQueueName
+        - value_from: /staging/Aws__AwsPrepareFinanceRegion
+          name: Aws__AwsPrepareFinanceRegion
+        - value_from: /staging/Aws__AwsFinanceLambdaSecretKey
+          name: Aws__AwsFinanceLambdaSecretKey
+        - value_from: /staging/Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+        - value_from: /staging/Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+        - value_from: /staging/BankPreference__ConsumerAPIBureau
+          name: BankPreference__ConsumerAPIBureau
+        - value_from: /staging/BankPreference__CommercialAPIBureau
+          name: BankPreference__CommercialAPIBureau
+        - value_from: /staging/Codes__BankCode
+          name: Codes__BankCode
+        - value_from: /staging/ConnectionStrings__LendingPlatformConnection
+          name: ConnectionStrings__LendingPlatformConnection
+        - value_from: /staging/Currency__Name
+          name: Currency__Name
+        - value_from: /staging/Currency__Symbol
+          name: Currency__Symbol
+        - value_from: /staging/Currency__AmountDivisonFactor
+          name: Currency__AmountDivisonFactor
+        - value_from: /staging/Equifax__ClientId
+          name: Equifax__ClientId
+        - value_from: /staging/Equifax__ClientSecret
+          name: Equifax__ClientSecret
+        - value_from: /staging/Equifax__ConsumerCreditReportAPI
+          name: Equifax__ConsumerCreditReportAPI
+        - value_from: /staging/Equifax__ScopeConsumerCreditReportAPI
+          name: Equifax__ScopeConsumerCreditReportAPI
+        - value_from: /staging/Equifax__TokenAPI
+          name: Equifax__TokenAPI
+        - value_from: /staging/Experian__AutomotiveCreditProfileAPI
+          name: Experian__AutomotiveCreditProfileAPI
+        - value_from: /staging/Experian__ClientId
+          name: Experian__ClientId
+        - value_from: /staging/Experian__ClientSecret
+          name: Experian__ClientSecret
+        - value_from: /staging/Experian__ModelCode
+          name: Experian__ModelCode
+        - value_from: /staging/Experian__OauthTokenAPI
+          name: Experian__OauthTokenAPI
+        - value_from: /staging/Experian__PremierProfileAPI
+          name: Experian__PremierProfileAPI
+        - value_from: /staging/Experian__Password
+          name: Experian__Password
+        - value_from: /staging/Experian__Subcode
+          name: Experian__Subcode
+        - value_from: /staging/Experian__SubscriberCode
+          name: Experian__SubscriberCode
+        - value_from: /staging/Experian__Username
+          name: Experian__Username
+        - value_from: /staging/FinancialYear__Country
+          name: FinancialYear__Country
+        - value_from: /staging/FinancialYear__EndMonth
+          name: FinancialYear__EndMonth
+        - value_from: /staging/FinancialYear__StartMonth
+          name: FinancialYear__StartMonth
+        - value_from: /staging/FinancialYear__Years
+          name: FinancialYear__Years
+        - value_from: /staging/FinancialYear__IncludeYTD
+          name: FinancialYear__IncludeYTD
+        - value_from: /staging/IdentityServer__Authority
+          name: IdentityServer__Authority
+        - value_from: /staging/IdentityServer__Audiences__0
+          name: IdentityServer__Audiences__0
+        - value_from: /staging/IdentityServer__Audiences__1
+          name: IdentityServer__Audiences__1
+        - value_from: /staging/IdentityServer__BankClientId
+          name: IdentityServer__BankClientId
+        - value_from: /staging/IdentityServer__ClientId
+          name: IdentityServer__ClientId
+        - value_from: /staging/IdentityServer__SwaggerClientId
+          name: IdentityServer__SwaggerClientId
+        - value_from: /staging/Origins__Frontend__0
+          name: Origins__Frontend__0
+        - value_from: /staging/Origins__Frontend__1
+          name: Origins__Frontend__1
+        - value_from: /staging/Quickbooks__AppEnvironment
+          name: Quickbooks__AppEnvironment
+        - value_from: /staging/Quickbooks__BaseUrl
+          name: Quickbooks__BaseUrl
+        - value_from: /staging/Quickbooks__ClientId
+          name: Quickbooks__ClientId
+        - value_from: /staging/Quickbooks__ClientSecret
+          name: Quickbooks__ClientSecret
+        - value_from: /staging/Quickbooks__ConfigurationVersion
+          name: Quickbooks__ConfigurationVersion
+        - value_from: /staging/Quickbooks__RedirectUri
+          name: Quickbooks__RedirectUri
+        - value_from: /staging/ReDoc__DocumentPath
+          name: ReDoc__DocumentPath
+        - value_from: /staging/ReDoc__Path
+          name: ReDoc__Path
+        - value_from: /staging/Serilog__MinimumLevel
+          name: Serilog__MinimumLevel
+        - value_from: /staging/Serilog__Using__0
+          name: Serilog__Using__0
+        - value_from: /staging/Serilog__Using__1
+          name: Serilog__Using__1
+        - value_from: /staging/Serilog__WriteTo__0__Name
+          name: Serilog__WriteTo__0__Name
+        - value_from: /staging/Serilog__WriteTo__1__Args__title
+          name: Serilog__WriteTo__1__Args__title
+        - value_from: /staging/Serilog__WriteTo__1__Args__webHookUri
+          name: Serilog__WriteTo__1__Args__webHookUri
+        - value_from: /staging/Serilog__WriteTo__1__Name
+          name: Serilog__WriteTo__1__Name
+        - value_from: /staging/SmartyStreets__AuthId
+          name: SmartyStreets__AuthId
+        - value_from: /staging/SmartyStreets__AuthToken
+          name: SmartyStreets__AuthToken
+        - value_from: /staging/SwaggerDocument__Description
+          name: SwaggerDocument__Description
+        - value_from: /staging/SwaggerDocument__Title
+          name: SwaggerDocument__Title
+        - value_from: /staging/SwaggerDocument__Version
+          name: SwaggerDocument__Version
+        - value_from: /staging/Xero__CallBackUri
+          name: Xero__CallBackUri
+        - value_from: /staging/Xero__ClientId
+          name: Xero__ClientId
+        - value_from: /staging/Xero__ClientSecret
+          name: Xero__ClientSecret
+        - value_from: /staging/Yodlee__ApiVersion
+          name: Yodlee__ApiVersion
+        - value_from: /staging/Yodlee__BaseUrl
+          name: Yodlee__BaseUrl
+        - value_from: /staging/Yodlee__ClientId
+          name: Yodlee__ClientId
+        - value_from: /staging/Yodlee__FastLinkUrl
+          name: Yodlee__FastLinkUrl
+        - value_from: /staging/Yodlee__LoginAdminName
+          name: Yodlee__LoginAdminName
+        - value_from: /staging/Yodlee__Secret
+          name: Yodlee__Secret
+        - value_from: /staging/PayPal__AuthorizationUrl
+          name: PayPal__AuthorizationUrl
+        - value_from: /staging/PayPal__ClientId
+          name: PayPal__ClientId
+        - value_from: /staging/PayPal__OauthTokenApi
+          name: PayPal__OauthTokenApi
+        - value_from: /staging/PayPal__RedirectUri
+          name: PayPal__RedirectUri
+        - value_from: /staging/PayPal__Scopes
+          name: PayPal__Scopes
+        - value_from: /staging/PayPal__SearchInvoicesApi
+          name: PayPal__SearchInvoicesApi
+        - value_from: /staging/PayPal__Secret
+          name: PayPal__Secret
+        - value_from: /staging/Drools__ContainerUrl
+          name: Drools__ContainerUrl
+        - value_from: /staging/Drools__Username 
+          name: Drools__Username
+        - value_from: /staging/Drools__Password 
+          name: Drools__Password
+        - value_from: /staging/Drools__LoanEvaluationModelName 
+          name: Drools__LoanEvaluationModelName
+        - value_from: /staging/Drools__LoanEvaluationModelNamespace 
+          name: Drools__LoanEvaluationModelNamespace
+        - value_from: /staging/Drools__FinancialStatemetsModelNamespace
+          name: Drools__FinancialStatemetsModelNamespace
+        - value_from: /staging/Drools__FinancialStatemetsModelName
+          name: Drools__FinancialStatemetsModelName
+        - value_from: /staging/Drools__ProductRulesModelNamespace
+          name: Drools__ProductRulesModelNamespace
+        - value_from: /staging/Drools__ProductRulesModelName
+          name: Drools__ProductRulesModelName
+        - value_from: /staging/Square__AuthUrl 
+          name: Square__AuthUrl
+        - value_from: /staging/Square__AccessToken
+          name: Square__AccessToken
+        - value_from: /staging/Square__ClientId
+          name: Square__ClientId 
+        - value_from: /staging/Square__ClientSecret
+          name: Square__ClientSecret
+        - value_from: /staging/Square__Scopes__0
+          name: Square__Scopes__0
+        - value_from: /staging/Square__Scopes__1
+          name: Square__Scopes__1
+        - value_from: /staging/Square__Environment
+          name: Square__Environment
+        - value_from: /staging/Stripe__SecretAPIKey
+          name: Stripe__SecretAPIKey
+        - value_from: /staging/Stripe__ClientId
+          name: Stripe__ClientId
+        - value_from: /staging/Stripe__Scopes
+          name: Stripe__Scopes
+        - value_from: /staging/Stripe__AuthorizationUrl
+          name: Stripe__AuthorizationUrl
+        - value_from: /staging/Stripe__RedirectUri
+          name: Stripe__RedirectUri
+        - value_from: /staging/PlaidService__ClientId
+          name: PlaidService__ClientId
+        - value_from: /staging/PlaidService__ClientSecret
+          name: PlaidService__ClientSecret
+        - value_from: /staging/PlaidService__ClientName
+          name: PlaidService__ClientName
+        - value_from: /staging/PlaidService__Environment
+          name: PlaidService__Environment
+        - value_from: /staging/PlaidService__Version
+          name: PlaidService__Version
+        - value_from: /staging/Transunion__CertificateAwsBucketKey
+          name: Transunion__CertificateAwsBucketKey
+        - value_from: /staging/Transunion__CertificatePassword
+          name: Transunion__CertificatePassword
+        - value_from: /staging/Transunion__BaseAPIUrl
+          name: Transunion__BaseAPIUrl
+        - value_from: /staging/Transunion__Version
+          name: Transunion__Version
+        - value_from: /staging/Transunion__UserRefNumber
+          name: Transunion__UserRefNumber
+        - value_from: /staging/Transunion__SubscriberIndustryCode
+          name: Transunion__SubscriberIndustryCode
+        - value_from: /staging/Transunion__SubscriberMemberCode
+          name: Transunion__SubscriberMemberCode
+        - value_from: /staging/Transunion__SubscriberInquirySubscriberPrefixCode
+          name: Transunion__SubscriberInquirySubscriberPrefixCode
+        - value_from: /staging/Transunion__SubscriberPassword
+          name: Transunion__SubscriberPassword
+        - value_from: /staging/Transunion__OptionsProcessingEnvironment
+          name: Transunion__OptionsProcessingEnvironment
+        - value_from: /staging/Transunion__OptionsCountry
+          name: Transunion__OptionsCountry
+        - value_from: /staging/Transunion__OptionsLanguage
+          name: Transunion__OptionsLanguage
+        - value_from: /staging/Transunion__OptionsContractualRelationship
+          name: Transunion__OptionsContractualRelationship
+        - value_from: /staging/Transunion__OptionsPointOfSaleIndicator
+          name: Transunion__OptionsPointOfSaleIndicator
+        - value_from: /staging/Transunion__AddOnProductCode
+          name: Transunion__AddOnProductCode
+        - value_from: /staging/UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+          name: UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+        - value_from: /staging/UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+          name: UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+        - value_from: /staging/UserSelfDeclarationExpectedResponse__MinCreditScore
+          name: UserSelfDeclarationExpectedResponse__MinCreditScore
+        - value_from: /staging/LoanNeeds__LoanDurationUnit
+          name: LoanNeeds__LoanDurationUnit
+        - value_from: /staging/LoanNeeds__InterestRateForPoorCreditScore
+          name: LoanNeeds__InterestRateForPoorCreditScore
+        - value_from: /staging/LoanNeeds__InterestRateForAverageCreditScore
+          name: LoanNeeds__InterestRateForAverageCreditScore
+        - value_from: /staging/LoanNeeds__InterestRateForFairCreditScore
+          name: LoanNeeds__InterestRateForFairCreditScore
+        - value_from: /staging/LoanNeeds__InterestRateForGoodCreditScore
+          name: LoanNeeds__InterestRateForGoodCreditScore
+        - value_from: /staging/LoanNeeds__InterestRateForExcellentCreditScore
+          name: LoanNeeds__InterestRateForExcellentCreditScore
+        - value_from: /staging/Entity__MajoritySharePercentage
+          name: Entity__MajoritySharePercentage
+        - value_from: /staging/Entity__Relatives
+          name: Entity__Relatives
+        - value_from: /staging/TaxConfig__Years
+          name: TaxConfig__Years
+        - value_from: /staging/TaxConfig__MinimumNumberOfYearlyTaxForm
+          name: TaxConfig__MinimumNumberOfYearlyTaxForm
+        - value_from: /staging/TaxConfig__IsTaxFormJourneyAllowed
+          name: TaxConfig__IsTaxFormJourneyAllowed
+        - value_from: /staging/EmailService__IsEmailServiceEnabled
+          name: EmailService__IsEmailServiceEnabled
+        - value_from: /staging/Product__NAICSIndustryCodeExcluded
+          name: Product__NAICSIndustryCodeExcluded
+        - value_from: /staging/User__MinimumAgeRequiredInYears
+          name: User__MinimumAgeRequiredInYears
+        - value_from: /staging/MiniProfiler__IsEnabled
+          name: MiniProfiler__IsEnabled
+        - value_from: /staging/Cognitive__Endpoint
+          name: Cognitive__Endpoint
+        - value_from: /staging/Cognitive__Apikey
+          name: Cognitive__Apikey
+        - value_from: /staging/BankPreference__DbResetAuthorizedEmails__0
+          name: BankPreference__DbResetAuthorizedEmails__0
+        - value_from: /staging/BankPreference__DbResetAuthorizedEmails__1
+          name: BankPreference__DbResetAuthorizedEmails__1

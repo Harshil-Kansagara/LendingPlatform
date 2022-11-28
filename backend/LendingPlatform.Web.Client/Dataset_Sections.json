@@ -1,0 +1,119 @@
+[
+  {
+    "Name": "Your Needs",
+    "Order": 1,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 1,
+    "ParentId": null
+  },
+  {
+    "Name": "Product Selection",
+    "Order": 2,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 2,
+    "ParentId": null
+  },
+  {
+    "Name": "Company Information",
+    "Order": 3,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 3,
+    "ParentId": null
+  },
+  {
+    "Name": "Financial Information",
+    "Order": 4,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 4,
+    "ParentId": null
+  },
+  {
+    "Name": "Company",
+    "Order": 4.1,
+    "IsEnabled": true,
+    "IsUpdated": false,
+    "IsAdded": true,
+    "SectionId": 5,
+    "ParentId": 4
+  },
+  {
+    "Name": "Personal",
+    "Order": 4.2,
+    "IsEnabled": true,
+    "IsUpdated": false,
+    "IsAdded": true,
+    "SectionId": 6,
+    "ParentId": 4
+  },
+  {
+    "Name": "Invoices",
+    "Order": 5,
+    "IsEnabled": false,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 7,
+    "ParentId": null
+  },
+  {
+    "Name": "Transactions",
+    "Order": 6,
+    "IsEnabled": false,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 8,
+    "ParentId": null
+  },
+  {
+    "Name": "Tax Returns",
+    "Order": 7,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 9,
+    "ParentId": null
+  },
+  {
+    "Name": "Additional Documents",
+    "Order": 8,
+    "IsEnabled": true,
+    "IsUpdated": false,
+    "IsAdded": true,
+    "SectionId": 10,
+    "ParentId": null
+  },
+  {
+    "Name": "Review and Consent",
+    "Order": 9,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 11,
+    "ParentId": null
+  },
+  {
+    "Name": "Application Status",
+    "Order": 10,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 12,
+    "ParentId": null
+  },
+  {
+    "Name": "Bank Details",
+    "Order": 11,
+    "IsEnabled": true,
+    "IsUpdated": true,
+    "IsAdded": false,
+    "SectionId": 13,
+    "ParentId": null
+  }
+]

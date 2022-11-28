@@ -1,0 +1,1344 @@
+{
+    "IndustryTypes": [
+        {
+            "IndustryCode": "11",
+            "IndustryType": "Agriculture, Forestry, Fishing & Hunting"
+        },
+        {
+            "IndustryCode": "21",
+            "IndustryType": "Mining, Quarrying, and Oil and Gas Extraction"
+        },
+        {
+            "IndustryCode": "22",
+            "IndustryType": "Utilities"
+        },
+        {
+            "IndustryCode": "23",
+            "IndustryType": "Construction"
+        },
+        {
+            "IndustryCode": "31",
+            "IndustryType": "Manufacturing"
+        },
+        {
+            "IndustryCode": "32",
+            "IndustryType": "Manufacturing"
+        },
+        {
+            "IndustryCode": "33",
+            "IndustryType": "Manufacturing"
+        },
+        {
+            "IndustryCode": "42",
+            "IndustryType": "Wholesale Trade"
+        },
+        {
+            "IndustryCode": "44",
+            "IndustryType": "Retail Trade"
+        },
+        {
+            "IndustryCode": "45",
+            "IndustryType": "Retail Trade"
+        },
+        {
+            "IndustryCode": "48",
+            "IndustryType": "Transportation and Warehousing"
+        },
+        {
+            "IndustryCode": "49",
+            "IndustryType": "Transportation and Warehousing"
+        },
+        {
+            "IndustryCode": "51",
+            "IndustryType": "Information"
+        },
+        {
+            "IndustryCode": "52",
+            "IndustryType": "Finance and Insurance"
+        },
+        {
+            "IndustryCode": "53",
+            "IndustryType": "Real Estate, and Rental and Leasing"
+        },
+        {
+            "IndustryCode": "54",
+            "IndustryType": "Professional, Scientific and Technical Services"
+        },
+        {
+            "IndustryCode": "55",
+            "IndustryType": "Management of Companies and Enterprises"
+        },
+        {
+            "IndustryCode": "56",
+            "IndustryType": "Administrative and Support and Waste Management and Remediation Services"
+        },
+        {
+            "IndustryCode": "61",
+            "IndustryType": "Educational Services"
+        },
+        {
+            "IndustryCode": "62",
+            "IndustryType": "Healthcare and Social Assistance"
+        },
+        {
+            "IndustryCode": "71",
+            "IndustryType": "Arts, Entertainment and Recreation"
+        },
+        {
+            "IndustryCode": "72",
+            "IndustryType": "Accomodation and Food Services"
+        },
+        {
+            "IndustryCode": "81",
+            "IndustryType": "Other Services (Except Public Administration)"
+        },
+        {
+            "IndustryCode": "92",
+            "IndustryType": "Public Administration"
+        },
+        {
+            "IndustryCode": "1111",
+            "IndustryType": "Oilseed and Grain Farming"
+        },
+        {
+            "IndustryCode": "1112",
+            "IndustryType": "Vegetable and Melon Farming"
+        },
+        {
+            "IndustryCode": "1113",
+            "IndustryType": "Fruit and Tree Nut Farming"
+        },
+        {
+            "IndustryCode": "1114",
+            "IndustryType": "Greenhouse, Nursery, and Floriculture Production"
+        },
+        {
+            "IndustryCode": "1115",
+            "IndustryType": "Other Crop Farming"
+        },
+        {
+            "IndustryCode": "1121",
+            "IndustryType": "Cattle Ranching and Farming"
+        },
+        {
+            "IndustryCode": "1122",
+            "IndustryType": "Hog and Pig Farming"
+        },
+        {
+            "IndustryCode": "1123",
+            "IndustryType": "Poultry and Egg Production"
+        },
+        {
+            "IndustryCode": "1124",
+            "IndustryType": "Sheep and Goat Farming"
+        },
+        {
+            "IndustryCode": "1125",
+            "IndustryType": "Aquaculture"
+        },
+        {
+            "IndustryCode": "1129",
+            "IndustryType": "Other Animal Production"
+        },
+        {
+            "IndustryCode": "1131",
+            "IndustryType": "Timber Tract Operations"
+        },
+        {
+            "IndustryCode": "1132",
+            "IndustryType": "Forest Nurseries and Gathering of Forest Products"
+        },
+        {
+            "IndustryCode": "1133",
+            "IndustryType": "Logging"
+        },
+        {
+            "IndustryCode": "1141",
+            "IndustryType": "Fishing"
+        },
+        {
+            "IndustryCode": "1142",
+            "IndustryType": "Hunting and Trapping"
+        },
+        {
+            "IndustryCode": "1151",
+            "IndustryType": "Support Activities for Crop Production"
+        },
+        {
+            "IndustryCode": "1152",
+            "IndustryType": "Support Activities for Animal Production"
+        },
+        {
+            "IndustryCode": "1153",
+            "IndustryType": "Support Activities for Forestry"
+        },
+        {
+            "IndustryCode": "2111",
+            "IndustryType": "Oil and Gas Extraction"
+        },
+        {
+            "IndustryCode": "2121",
+            "IndustryType": "Coal Mining"
+        },
+        {
+            "IndustryCode": "2122",
+            "IndustryType": "Metal Ore Mining"
+        },
+        {
+            "IndustryCode": "2123",
+            "IndustryType": "Nonmetallic Mineral Mining and Quarrying"
+        },
+        {
+            "IndustryCode": "2131",
+            "IndustryType": "Support Activities for Mining"
+        },
+        {
+            "IndustryCode": "2211",
+            "IndustryType": "Electric Power Generation, Transmission and Distribution"
+        },
+        {
+            "IndustryCode": "2212",
+            "IndustryType": "Natural Gas Distribution"
+        },
+        {
+            "IndustryCode": "2213",
+            "IndustryType": "Water, Sewage and Other Systems"
+        },
+        {
+            "IndustryCode": "2361",
+            "IndustryType": "Residential Building Construction"
+        },
+        {
+            "IndustryCode": "2362",
+            "IndustryType": "Nonresidential Building Construction"
+        },
+        {
+            "IndustryCode": "2371",
+            "IndustryType": "Utility System Construction"
+        },
+        {
+            "IndustryCode": "2372",
+            "IndustryType": "Land Subdivision"
+        },
+        {
+            "IndustryCode": "2373",
+            "IndustryType": "Highway, Street, and Bridge Construction"
+        },
+        {
+            "IndustryCode": "2379",
+            "IndustryType": "Other Heavy and Civil Engineering Construction"
+        },
+        {
+            "IndustryCode": "2381",
+            "IndustryType": "Foundation, Structure, and Building Exterior Contractors"
+        },
+        {
+            "IndustryCode": "2382",
+            "IndustryType": "Building Equipment Contractors"
+        },
+        {
+            "IndustryCode": "2383",
+            "IndustryType": "Building Finishing Contractor"
+        },
+        {
+            "IndustryCode": "2389",
+            "IndustryType": "Other Specialty Trade Contractors"
+        },
+        {
+            "IndustryCode": "3111",
+            "IndustryType": "Animal Food Manufacturing"
+        },
+        {
+            "IndustryCode": "3112",
+            "IndustryType": "Grain and Oilseed Milling"
+        },
+        {
+            "IndustryCode": "3113",
+            "IndustryType": "Sugar and Confectionery Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3114",
+            "IndustryType": "Fruit and Vegetable Preserving and Specialty Food Manufacturing"
+        },
+        {
+            "IndustryCode": "3115",
+            "IndustryType": "Dairy Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3116",
+            "IndustryType": "Animal Slaughtering and Processing"
+        },
+        {
+            "IndustryCode": "3117",
+            "IndustryType": "Seafood Product Preparation and Packaging"
+        },
+        {
+            "IndustryCode": "3118",
+            "IndustryType": "Bakeries and Tortilla Manufacturing"
+        },
+        {
+            "IndustryCode": "3119",
+            "IndustryType": "Other Food Manufacturing"
+        },
+        {
+            "IndustryCode": "3121",
+            "IndustryType": "Beverage Manufacturing"
+        },
+        {
+            "IndustryCode": "3122",
+            "IndustryType": "Tobacco Manufacturing"
+        },
+        {
+            "IndustryCode": "3131",
+            "IndustryType": "Fiber, Yarn, and Thread Mills"
+        },
+        {
+            "IndustryCode": "3132",
+            "IndustryType": "Fabric Mills"
+        },
+        {
+            "IndustryCode": "3133",
+            "IndustryType": "Textile and Fabric Finishing and Fabric Coating Mills"
+        },
+        {
+            "IndustryCode": "3141",
+            "IndustryType": "Textile Furnishings Mills"
+        },
+        {
+            "IndustryCode": "3149",
+            "IndustryType": "Other Textile Product Mills"
+        },
+        {
+            "IndustryCode": "3151",
+            "IndustryType": "Apparel Knitting Mills"
+        },
+        {
+            "IndustryCode": "3152",
+            "IndustryType": "Cut and Sew Apparel Manufacturing"
+        },
+        {
+            "IndustryCode": "3159",
+            "IndustryType": "Apparel Accessories and Other Apparel Manufacturing"
+        },
+        {
+            "IndustryCode": "3161",
+            "IndustryType": "Leather and Hide Tanning and Finishing"
+        },
+        {
+            "IndustryCode": "3162",
+            "IndustryType": "Footwear Manufacturing"
+        },
+        {
+            "IndustryCode": "3169",
+            "IndustryType": "Other Leather and Allied Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3211",
+            "IndustryType": "Sawmills and Wood Preservation"
+        },
+        {
+            "IndustryCode": "3212",
+            "IndustryType": "Veneer, Plywood, and Engineered Wood Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3219",
+            "IndustryType": "Other Wood Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3221",
+            "IndustryType": "Pulp, Paper, and Paperboard Mills"
+        },
+        {
+            "IndustryCode": "3222",
+            "IndustryType": "Converted Paper Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3231",
+            "IndustryType": "Printing and Related Support Activities"
+        },
+        {
+            "IndustryCode": "3241",
+            "IndustryType": "Petroleum and Coal Products Manufacturing"
+        },
+        {
+            "IndustryCode": "3251",
+            "IndustryType": "Basic Chemical Manufacturing"
+        },
+        {
+            "IndustryCode": "3252",
+            "IndustryType": "Resin, Synthetic Rubber, and Artificial and Synthetic Fibers and Filaments Manufacturing"
+        },
+        {
+            "IndustryCode": "3253",
+            "IndustryType": "Pesticide, Fertilizer, and Other Agricultural Chemical Manufacturing"
+        },
+        {
+            "IndustryCode": "3254",
+            "IndustryType": "Pharmaceutical and Medicine Manufacturing"
+        },
+        {
+            "IndustryCode": "3255",
+            "IndustryType": "Paint, Coating, and Adhesive Manufacturing"
+        },
+        {
+            "IndustryCode": "3256",
+            "IndustryType": "Soap, Cleaning Compound, and Toilet Preparation Manufacturing"
+        },
+        {
+            "IndustryCode": "3259",
+            "IndustryType": "Other Chemical Product and Preparation Manufacturing"
+        },
+        {
+            "IndustryCode": "3261",
+            "IndustryType": "Plastics Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3262",
+            "IndustryType": "Rubber Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3271",
+            "IndustryType": "Clay Product and Refractory Manufacturing"
+        },
+        {
+            "IndustryCode": "3272",
+            "IndustryType": "Glass and Glass Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3273",
+            "IndustryType": "Cement and Concrete Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3274",
+            "IndustryType": "Lime and Gypsum Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3279",
+            "IndustryType": "Other Nonmetallic Mineral Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3311",
+            "IndustryType": "Iron and Steel Mills and Ferroalloy Manufacturing"
+        },
+        {
+            "IndustryCode": "3312",
+            "IndustryType": "Steel Product Manufacturing from Purchased Steel"
+        },
+        {
+            "IndustryCode": "3313",
+            "IndustryType": "Alumina and Aluminum Production and Processing"
+        },
+        {
+            "IndustryCode": "3314",
+            "IndustryType": "Nonferrous Metal (except Aluminum) Production and Processing"
+        },
+        {
+            "IndustryCode": "3315",
+            "IndustryType": "Foundries"
+        },
+        {
+            "IndustryCode": "3321",
+            "IndustryType": "Forging and Stamping"
+        },
+        {
+            "IndustryCode": "3322",
+            "IndustryType": "Cutlery and Handtool Manufacturing"
+        },
+        {
+            "IndustryCode": "3323",
+            "IndustryType": "Architectural and Structural Metals Manufacturing"
+        },
+        {
+            "IndustryCode": "3324",
+            "IndustryType": "Boiler, Tank, and Shipping Container Manufacturing"
+        },
+        {
+            "IndustryCode": "3325",
+            "IndustryType": "Hardware Manufacturing"
+        },
+        {
+            "IndustryCode": "3326",
+            "IndustryType": "Spring and Wire Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3327",
+            "IndustryType": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+            "IndustryCode": "3328",
+            "IndustryType": "Coating, Engraving, Heat Treating, and Allied Activities"
+        },
+        {
+            "IndustryCode": "3329",
+            "IndustryType": "Other Fabricated Metal Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3331",
+            "IndustryType": "Agriculture, Construction, and Mining Machinery Manufacturing"
+        },
+        {
+            "IndustryCode": "3332",
+            "IndustryType": "Industrial Machinery Manufacturing"
+        },
+        {
+            "IndustryCode": "3333",
+            "IndustryType": "Commercial and Service Industry Machinery Manufacturing"
+        },
+        {
+            "IndustryCode": "3334",
+            "IndustryType": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3335",
+            "IndustryType": "Metalworking Machinery Manufacturing"
+        },
+        {
+            "IndustryCode": "3336",
+            "IndustryType": "Engine, Turbine, and Power Transmission Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3339",
+            "IndustryType": "Other General Purpose Machinery Manufacturing"
+        },
+        {
+            "IndustryCode": "3341",
+            "IndustryType": "Computer and Peripheral Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3342",
+            "IndustryType": "Communications Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3343",
+            "IndustryType": "Audio and Video Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3344",
+            "IndustryType": "Semiconductor and Other Electronic Component Manufacturing"
+        },
+        {
+            "IndustryCode": "3345",
+            "IndustryType": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing"
+        },
+        {
+            "IndustryCode": "3346",
+            "IndustryType": "Manufacturing and Reproducing Magnetic and Optical Media"
+        },
+        {
+            "IndustryCode": "3351",
+            "IndustryType": "Electric Lighting Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3352",
+            "IndustryType": "Household Appliance Manufacturing"
+        },
+        {
+            "IndustryCode": "3353",
+            "IndustryType": "Electrical Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3359",
+            "IndustryType": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+            "IndustryCode": "3361",
+            "IndustryType": "Motor Vehicle Manufacturing"
+        },
+        {
+            "IndustryCode": "3362",
+            "IndustryType": "Motor Vehicle Body and Trailer Manufacturing"
+        },
+        {
+            "IndustryCode": "3363",
+            "IndustryType": "Motor Vehicle Parts Manufacturing"
+        },
+        {
+            "IndustryCode": "3364",
+            "IndustryType": "Aerospace Product and Parts Manufacturing"
+        },
+        {
+            "IndustryCode": "3365",
+            "IndustryType": "Railroad Rolling Stock Manufacturing"
+        },
+        {
+            "IndustryCode": "3366",
+            "IndustryType": "Ship and Boat Building"
+        },
+        {
+            "IndustryCode": "3369",
+            "IndustryType": "Other Transportation Equipment Manufacturing"
+        },
+        {
+            "IndustryCode": "3371",
+            "IndustryType": "Household and Institutional Furniture and Kitchen Cabinet Manufacturing"
+        },
+        {
+            "IndustryCode": "3372",
+            "IndustryType": "Office Furniture (including Fixtures) Manufacturing"
+        },
+        {
+            "IndustryCode": "3379",
+            "IndustryType": "Other Furniture Related Product Manufacturing"
+        },
+        {
+            "IndustryCode": "3391",
+            "IndustryType": "Medical Equipment and Supplies Manufacturing"
+        },
+        {
+            "IndustryCode": "3399",
+            "IndustryType": "Other Miscellaneous Manufacturing"
+        },
+        {
+            "IndustryCode": "4231",
+            "IndustryType": "Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4232",
+            "IndustryType": "Furniture and Home Furnishing Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4233",
+            "IndustryType": "Lumber and Other Construction Materials Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4234",
+            "IndustryType": "Professional and Commercial Equipment and Supplies Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4235",
+            "IndustryType": "Metal and Mineral (except Petroleum) Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4236",
+            "IndustryType": "Household Appliances and Electrical and Electronic Goods Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4237",
+            "IndustryType": "Hardware, and Plumbing and Heating Equipment and Supplies Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4238",
+            "IndustryType": "Machinery, Equipment, and Supplies Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4239",
+            "IndustryType": "Miscellaneous Durable Goods Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4241",
+            "IndustryType": "Paper and Paper Product Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4242",
+            "IndustryType": "Drugs and Druggists' Sundries Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4243",
+            "IndustryType": "Apparel, Piece Goods, and Notions Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4244",
+            "IndustryType": "Grocery and Related Product Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4245",
+            "IndustryType": "Farm Product Raw Material Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4246",
+            "IndustryType": "Chemical and Allied Products Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4247",
+            "IndustryType": "Petroleum and Petroleum Products Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4248",
+            "IndustryType": "Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4249",
+            "IndustryType": "Miscellaneous Nondurable Goods Merchant Wholesalers"
+        },
+        {
+            "IndustryCode": "4251",
+            "IndustryType": "Wholesale Electronic Markets and Agents and Brokers"
+        },
+        {
+            "IndustryCode": "4411",
+            "IndustryType": "Automobile Dealers"
+        },
+        {
+            "IndustryCode": "4412",
+            "IndustryType": "Other Motor Vehicle Dealers"
+        },
+        {
+            "IndustryCode": "4413",
+            "IndustryType": "Automotive Parts, Accessories, and Tire Stores"
+        },
+        {
+            "IndustryCode": "4421",
+            "IndustryType": "Furniture Stores"
+        },
+        {
+            "IndustryCode": "4422",
+            "IndustryType": "Home Furnishings Stores"
+        },
+        {
+            "IndustryCode": "4431",
+            "IndustryType": "Electronics and Appliance Stores"
+        },
+        {
+            "IndustryCode": "4441",
+            "IndustryType": "Building Material and Supplies Dealers"
+        },
+        {
+            "IndustryCode": "4442",
+            "IndustryType": "Lawn and Garden Equipment and Supplies Stores"
+        },
+        {
+            "IndustryCode": "4451",
+            "IndustryType": "Grocery Stores"
+        },
+        {
+            "IndustryCode": "4452",
+            "IndustryType": "Specialty Food Stores"
+        },
+        {
+            "IndustryCode": "4453",
+            "IndustryType": "Beer, Wine, and Liquor Stores"
+        },
+        {
+            "IndustryCode": "4461",
+            "IndustryType": "Health and Personal Care Stores"
+        },
+        {
+            "IndustryCode": "4471",
+            "IndustryType": "Gasoline Stations"
+        },
+        {
+            "IndustryCode": "4481",
+            "IndustryType": "Clothing Stores"
+        },
+        {
+            "IndustryCode": "4482",
+            "IndustryType": "Shoe Stores"
+        },
+        {
+            "IndustryCode": "4483",
+            "IndustryType": "Jewelry, Luggage, and Leather Goods Stores"
+        },
+        {
+            "IndustryCode": "4511",
+            "IndustryType": "Sporting Goods, Hobby, and Musical Instrument Stores"
+        },
+        {
+            "IndustryCode": "4512",
+            "IndustryType": "Book Stores and News Dealers"
+        },
+        {
+            "IndustryCode": "4522",
+            "IndustryType": "Department Stores"
+        },
+        {
+            "IndustryCode": "4523",
+            "IndustryType": "General Merchandise Stores, including Warehouse Clubs and Supercenters"
+        },
+        {
+            "IndustryCode": "4531",
+            "IndustryType": "Florists"
+        },
+        {
+            "IndustryCode": "4532",
+            "IndustryType": "Office Supplies, Stationery, and Gift Stores"
+        },
+        {
+            "IndustryCode": "4533",
+            "IndustryType": "Used Merchandise Stores"
+        },
+        {
+            "IndustryCode": "4539",
+            "IndustryType": "Other Miscellaneous Store Retailers"
+        },
+        {
+            "IndustryCode": "4541",
+            "IndustryType": "Electronic Shopping and Mail-Order Houses"
+        },
+        {
+            "IndustryCode": "4542",
+            "IndustryType": "Vending Machine Operators"
+        },
+        {
+            "IndustryCode": "4543",
+            "IndustryType": "Direct Selling Establishments"
+        },
+        {
+            "IndustryCode": "4811",
+            "IndustryType": "Scheduled Air Transportation"
+        },
+        {
+            "IndustryCode": "4812",
+            "IndustryType": "Nonscheduled Air Transportation"
+        },
+        {
+            "IndustryCode": "4821",
+            "IndustryType": "Rail Transportation"
+        },
+        {
+            "IndustryCode": "4831",
+            "IndustryType": "Deep Sea, Coastal, and Great Lakes Water Transportation"
+        },
+        {
+            "IndustryCode": "4832",
+            "IndustryType": "Inland Water Transportation"
+        },
+        {
+            "IndustryCode": "4841",
+            "IndustryType": "General Freight Trucking"
+        },
+        {
+            "IndustryCode": "4842",
+            "IndustryType": "Specialized Freight Trucking"
+        },
+        {
+            "IndustryCode": "4851",
+            "IndustryType": "Urban Transit Systems"
+        },
+        {
+            "IndustryCode": "4852",
+            "IndustryType": "Interurban and Rural Bus Transportation"
+        },
+        {
+            "IndustryCode": "4853",
+            "IndustryType": "Taxi and Limousine Service"
+        },
+        {
+            "IndustryCode": "4854",
+            "IndustryType": "School and Employee Bus Transportation"
+        },
+        {
+            "IndustryCode": "4855",
+            "IndustryType": "Charter Bus Industry"
+        },
+        {
+            "IndustryCode": "4859",
+            "IndustryType": "Other Transit and Ground Passenger Transportation"
+        },
+        {
+            "IndustryCode": "4861",
+            "IndustryType": "Pipeline Transportation of Crude Oil"
+        },
+        {
+            "IndustryCode": "4862",
+            "IndustryType": "Pipeline Transportation of Natural Gas"
+        },
+        {
+            "IndustryCode": "4869",
+            "IndustryType": "Other Pipeline Transportation"
+        },
+        {
+            "IndustryCode": "4871",
+            "IndustryType": "Scenic and Sightseeing Transportation, Land"
+        },
+        {
+            "IndustryCode": "4872",
+            "IndustryType": "Scenic and Sightseeing Transportation, Water"
+        },
+        {
+            "IndustryCode": "4879",
+            "IndustryType": "Scenic and Sightseeing Transportation, Other"
+        },
+        {
+            "IndustryCode": "4881",
+            "IndustryType": "Support Activities for Air Transportation"
+        },
+        {
+            "IndustryCode": "4882",
+            "IndustryType": "Support Activities for Rail Transportation"
+        },
+        {
+            "IndustryCode": "4883",
+            "IndustryType": "Support Activities for Water Transportation"
+        },
+        {
+            "IndustryCode": "4884",
+            "IndustryType": "Support Activities for Road Transportation"
+        },
+        {
+            "IndustryCode": "4885",
+            "IndustryType": "Freight Transportation Arrangement"
+        },
+        {
+            "IndustryCode": "4889",
+            "IndustryType": "Other Support Activities for Transportation"
+        },
+        {
+            "IndustryCode": "4911",
+            "IndustryType": "Postal Service"
+        },
+        {
+            "IndustryCode": "4921",
+            "IndustryType": "Couriers and Express Delivery Services"
+        },
+        {
+            "IndustryCode": "4922",
+            "IndustryType": "Local Messengers and Local Delivery"
+        },
+        {
+            "IndustryCode": "4931",
+            "IndustryType": "Warehousing and Storage"
+        },
+        {
+            "IndustryCode": "5111",
+            "IndustryType": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+            "IndustryCode": "5112",
+            "IndustryType": "Software Publishers"
+        },
+        {
+            "IndustryCode": "5121",
+            "IndustryType": "Motion Picture and Video Industries"
+        },
+        {
+            "IndustryCode": "5122",
+            "IndustryType": "Sound Recording Industries"
+        },
+        {
+            "IndustryCode": "5151",
+            "IndustryType": "Radio and Television Broadcasting"
+        },
+        {
+            "IndustryCode": "5152",
+            "IndustryType": "Cable and Other Subscription Programming"
+        },
+        {
+            "IndustryCode": "5173",
+            "IndustryType": "Wired and Wireless Telecommunications Carriers"
+        },
+        {
+            "IndustryCode": "5174",
+            "IndustryType": "Satellite Telecommunications"
+        },
+        {
+            "IndustryCode": "5179",
+            "IndustryType": "Other Telecommunications"
+        },
+        {
+            "IndustryCode": "5182",
+            "IndustryType": "Data Processing, Hosting, and Related Services"
+        },
+        {
+            "IndustryCode": "5191",
+            "IndustryType": "Other Information Services"
+        },
+        {
+            "IndustryCode": "5211",
+            "IndustryType": "Monetary Authorities -- Central Bank"
+        },
+        {
+            "IndustryCode": "5221",
+            "IndustryType": "Depository Credit Intermediation"
+        },
+        {
+            "IndustryCode": "5222",
+            "IndustryType": "Nondepository Credit Intermediation"
+        },
+        {
+            "IndustryCode": "5223",
+            "IndustryType": "Activities Related to Credit Intermediation"
+        },
+        {
+            "IndustryCode": "5231",
+            "IndustryType": "Securities and Commodity Contracts Intermediation and Brokerage"
+        },
+        {
+            "IndustryCode": "5232",
+            "IndustryType": "Securities and Commodity Exchanges"
+        },
+        {
+            "IndustryCode": "5239",
+            "IndustryType": "Other Financial Investment Activities"
+        },
+        {
+            "IndustryCode": "5241",
+            "IndustryType": "Insurance Carriers"
+        },
+        {
+            "IndustryCode": "5242",
+            "IndustryType": "Agencies, Brokerages, and Other Insurance Related Activities"
+        },
+        {
+            "IndustryCode": "5251",
+            "IndustryType": "Insurance and Employee Benefit Funds"
+        },
+        {
+            "IndustryCode": "5259",
+            "IndustryType": "Other Investment Pools and Funds"
+        },
+        {
+            "IndustryCode": "5311",
+            "IndustryType": "Lessors of Real Estate"
+        },
+        {
+            "IndustryCode": "5312",
+            "IndustryType": "Offices of Real Estate Agents and Brokers"
+        },
+        {
+            "IndustryCode": "5313",
+            "IndustryType": "Activities Related to Real Estate"
+        },
+        {
+            "IndustryCode": "5321",
+            "IndustryType": "Automotive Equipment Rental and Leasing"
+        },
+        {
+            "IndustryCode": "5322",
+            "IndustryType": "Consumer Goods Rental"
+        },
+        {
+            "IndustryCode": "5323",
+            "IndustryType": "General Rental Centers"
+        },
+        {
+            "IndustryCode": "5324",
+            "IndustryType": "Commercial and Industrial Machinery and Equipment Rental and Leasing"
+        },
+        {
+            "IndustryCode": "5331",
+            "IndustryType": "Lessors of Nonfinancial Intangible Assets (except Copyrighted Works)"
+        },
+        {
+            "IndustryCode": "5411",
+            "IndustryType": "Legal Services"
+        },
+        {
+            "IndustryCode": "5412",
+            "IndustryType": "Accounting, Tax Preparation, Bookkeeping, and Payroll Services"
+        },
+        {
+            "IndustryCode": "5413",
+            "IndustryType": "Architectural, Engineering, and Related Services"
+        },
+        {
+            "IndustryCode": "5414",
+            "IndustryType": "Specialized Design Services"
+        },
+        {
+            "IndustryCode": "5415",
+            "IndustryType": "Computer Systems Design and Related Services"
+        },
+        {
+            "IndustryCode": "5416",
+            "IndustryType": "Management, Scientific, and Technical Consulting Services"
+        },
+        {
+            "IndustryCode": "5417",
+            "IndustryType": "Scientific Research and Development Services"
+        },
+        {
+            "IndustryCode": "5418",
+            "IndustryType": "Advertising, Public Relations, and Related Services"
+        },
+        {
+            "IndustryCode": "5419",
+            "IndustryType": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+            "IndustryCode": "5511",
+            "IndustryType": "Management of Companies and Enterprises"
+        },
+        {
+            "IndustryCode": "5611",
+            "IndustryType": "Office Administrative Services"
+        },
+        {
+            "IndustryCode": "5612",
+            "IndustryType": "Facilities Support Services"
+        },
+        {
+            "IndustryCode": "5613",
+            "IndustryType": "Employment Services"
+        },
+        {
+            "IndustryCode": "5614",
+            "IndustryType": "Business Support Services"
+        },
+        {
+            "IndustryCode": "5615",
+            "IndustryType": "Travel Arrangement and Reservation Services"
+        },
+        {
+            "IndustryCode": "5616",
+            "IndustryType": "Investigation and Security Services"
+        },
+        {
+            "IndustryCode": "5617",
+            "IndustryType": "Services to Buildings and Dwellings"
+        },
+        {
+            "IndustryCode": "5619",
+            "IndustryType": "Other Support Services"
+        },
+        {
+            "IndustryCode": "5621",
+            "IndustryType": "Waste Collection"
+        },
+        {
+            "IndustryCode": "5622",
+            "IndustryType": "Waste Treatment and Disposal"
+        },
+        {
+            "IndustryCode": "5629",
+            "IndustryType": "Remediation and Other Waste Management Services"
+        },
+        {
+            "IndustryCode": "6111",
+            "IndustryType": "Elementary and Secondary Schools"
+        },
+        {
+            "IndustryCode": "6112",
+            "IndustryType": "Junior Colleges"
+        },
+        {
+            "IndustryCode": "6113",
+            "IndustryType": "Colleges, Universities, and Professional Schools"
+        },
+        {
+            "IndustryCode": "6114",
+            "IndustryType": "Business Schools and Computer and Management Training"
+        },
+        {
+            "IndustryCode": "6115",
+            "IndustryType": "Technical and Trade Schools"
+        },
+        {
+            "IndustryCode": "6116",
+            "IndustryType": "Other Schools and Instruction"
+        },
+        {
+            "IndustryCode": "6117",
+            "IndustryType": "Educational Support Services"
+        },
+        {
+            "IndustryCode": "6211",
+            "IndustryType": "Offices of Physicians"
+        },
+        {
+            "IndustryCode": "6212",
+            "IndustryType": "Offices of Dentists"
+        },
+        {
+            "IndustryCode": "6213",
+            "IndustryType": "Offices of Other Health Practitioners"
+        },
+        {
+            "IndustryCode": "6214",
+            "IndustryType": "Outpatient Care Centers"
+        },
+        {
+            "IndustryCode": "6215",
+            "IndustryType": "Medical and Diagnostic Laboratories"
+        },
+        {
+            "IndustryCode": "6216",
+            "IndustryType": "Home Health Care Services"
+        },
+        {
+            "IndustryCode": "6219",
+            "IndustryType": "Other Ambulatory Health Care Services"
+        },
+        {
+            "IndustryCode": "6221",
+            "IndustryType": "General Medical and Surgical Hospitals"
+        },
+        {
+            "IndustryCode": "6222",
+            "IndustryType": "Psychiatric and Substance Abuse Hospitals"
+        },
+        {
+            "IndustryCode": "6223",
+            "IndustryType": "Specialty (except Psychiatric and Substance Abuse) Hospitals"
+        },
+        {
+            "IndustryCode": "6231",
+            "IndustryType": "Nursing Care Facilities (Skilled Nursing Facilities)"
+        },
+        {
+            "IndustryCode": "6232",
+            "IndustryType": "Residential Intellectual and Developmental Disability, Mental Health, and Substance Abuse Facilities"
+        },
+        {
+            "IndustryCode": "6233",
+            "IndustryType": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly"
+        },
+        {
+            "IndustryCode": "6239",
+            "IndustryType": "Other Residential Care Facilities"
+        },
+        {
+            "IndustryCode": "6241",
+            "IndustryType": "Individual and Family Services"
+        },
+        {
+            "IndustryCode": "6242",
+            "IndustryType": "Community Food and Housing, and Emergency and Other Relief Services"
+        },
+        {
+            "IndustryCode": "6243",
+            "IndustryType": "Vocational Rehabilitation Services"
+        },
+        {
+            "IndustryCode": "6244",
+            "IndustryType": "Child Day Care Services"
+        },
+        {
+            "IndustryCode": "7111",
+            "IndustryType": "Performing Arts Companies"
+        },
+        {
+            "IndustryCode": "7112",
+            "IndustryType": "Spectator Sports"
+        },
+        {
+            "IndustryCode": "7113",
+            "IndustryType": "Promoters of Performing Arts, Sports, and Similar Events"
+        },
+        {
+            "IndustryCode": "7114",
+            "IndustryType": "Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures"
+        },
+        {
+            "IndustryCode": "7115",
+            "IndustryType": "Independent Artists, Writers, and Performers"
+        },
+        {
+            "IndustryCode": "7121",
+            "IndustryType": "Museums, Historical Sites, and Similar Institutions"
+        },
+        {
+            "IndustryCode": "7131",
+            "IndustryType": "Amusement Parks and Arcade"
+        },
+        {
+            "IndustryCode": "7132",
+            "IndustryType": "Gambling Industries"
+        },
+        {
+            "IndustryCode": "7139",
+            "IndustryType": "Other Amusement and Recreation Industries"
+        },
+        {
+            "IndustryCode": "7211",
+            "IndustryType": "Traveler Accommodation"
+        },
+        {
+            "IndustryCode": "7212",
+            "IndustryType": "RV (Recreational Vehicle) Parks and Recreational Camps"
+        },
+        {
+            "IndustryCode": "7213",
+            "IndustryType": "Rooming and Boarding Houses, Dormitories, and Workers’ Camps"
+        },
+        {
+            "IndustryCode": "7223",
+            "IndustryType": "Special Food Services"
+        },
+        {
+            "IndustryCode": "7224",
+            "IndustryType": "Drinking Places (Alcoholic Beverages)"
+        },
+        {
+            "IndustryCode": "7225",
+            "IndustryType": "Restaurants and Other Eating Places"
+        },
+        {
+            "IndustryCode": "8111",
+            "IndustryType": "Automotive Repair and Maintenance"
+        },
+        {
+            "IndustryCode": "8112",
+            "IndustryType": "Electronic and Precision Equipment Repair and Maintenance"
+        },
+        {
+            "IndustryCode": "8113",
+            "IndustryType": "Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance"
+        },
+        {
+            "IndustryCode": "8114",
+            "IndustryType": "Personal and Household Goods Repair and Maintenance"
+        },
+        {
+            "IndustryCode": "8121",
+            "IndustryType": "Personal Care Services"
+        },
+        {
+            "IndustryCode": "8122",
+            "IndustryType": "Death Care Services"
+        },
+        {
+            "IndustryCode": "8123",
+            "IndustryType": "Drycleaning and Laundry Services"
+        },
+        {
+            "IndustryCode": "8129",
+            "IndustryType": "Other Personal Services"
+        },
+        {
+            "IndustryCode": "8131",
+            "IndustryType": "Religious Organizations"
+        },
+        {
+            "IndustryCode": "8132",
+            "IndustryType": "Grantmaking and Giving Services"
+        },
+        {
+            "IndustryCode": "8133",
+            "IndustryType": "Social Advocacy Organizations"
+        },
+        {
+            "IndustryCode": "8134",
+            "IndustryType": "Civic and Social Organizations"
+        },
+        {
+            "IndustryCode": "8139",
+            "IndustryType": "Business, Professional, Labor, Political, and Similar Organizations"
+        },
+        {
+            "IndustryCode": "8141",
+            "IndustryType": "Private Households"
+        },
+        {
+            "IndustryCode": "9211",
+            "IndustryType": "Executive, Legislative, and Other General Government Support"
+        },
+        {
+            "IndustryCode": "9221",
+            "IndustryType": "Justice, Public Order, and Safety Activities"
+        },
+        {
+            "IndustryCode": "9231",
+            "IndustryType": "Administrative of Human Resource Programs"
+        },
+        {
+            "IndustryCode": "9241",
+            "IndustryType": "Administration of Environmental Quality Programs"
+        },
+        {
+            "IndustryCode": "9251",
+            "IndustryType": "Administration of Housing Programs, Urban Planning, and Community Development"
+        },
+        {
+            "IndustryCode": "9261",
+            "IndustryType": "Administrative of Economic Programs"
+        },
+        {
+            "IndustryCode": "9271",
+            "IndustryType": "Space Research and Technology"
+        },
+        {
+            "IndustryCode": "9281",
+            "IndustryType": "National Security and International Affairs"
+        }
+    ]
+}

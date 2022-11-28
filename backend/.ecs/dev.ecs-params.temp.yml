@@ -1,0 +1,300 @@
+version: 1
+task_definition:
+  task_execution_role: arn:aws:iam::AWS_ACCOUNT_ID:role/ecsTaskExecutionRole
+  ecs_network_mode: bridge
+  services:
+    container_name: 
+      mem_reservation: 0.5GB
+      secrets:
+        - value_from: /dev/Aws__AwsBucketName
+          name: Aws__AwsBucketName
+        - value_from: /dev/Aws__AwsRegion
+          name: Aws__AwsRegion
+        - value_from: /dev/Aws__AwsSecretAccessKey
+          name: Aws__AwsSecretAccessKey
+        - value_from: /dev/Aws__AwsSecretKey
+          name: Aws__AwsSecretKey
+        - value_from: /dev/Aws__AwsUserName
+          name: Aws__AwsUserName
+        - value_from: /dev/Aws__AwsPrepareFinanceQueueNameAccountId
+          name: Aws__AwsPrepareFinanceQueueNameAccountId
+        - value_from: /dev/Aws__AwsPrepareFinanceQueueName
+          name: Aws__AwsPrepareFinanceQueueName
+        - value_from: /dev/Aws__AwsPrepareFinanceRegion
+          name: Aws__AwsPrepareFinanceRegion
+        - value_from: /dev/Aws__AwsFinanceLambdaSecretKey
+          name: Aws__AwsFinanceLambdaSecretKey
+        - value_from: /dev/Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+        - value_from: /dev/Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+        - value_from: /dev/BankPreference__Transaction
+          name: BankPreference__Transaction
+        - value_from: /dev/BankPreference__ConsumerAPIBureau
+          name: BankPreference__ConsumerAPIBureau
+        - value_from: /dev/BankPreference__CommercialAPIBureau
+          name: BankPreference__CommercialAPIBureau
+        - value_from: /dev/Codes__BankCode
+          name: Codes__BankCode
+        - value_from: /dev/ConnectionStrings__LendingPlatformConnection
+          name: ConnectionStrings__LendingPlatformConnection
+        - value_from: /dev/Currency__Name
+          name: Currency__Name
+        - value_from: /dev/Currency__Symbol
+          name: Currency__Symbol
+        - value_from: /dev/Currency__AmountDivisonFactor
+          name: Currency__AmountDivisonFactor
+        - value_from: /dev/Equifax__ClientId
+          name: Equifax__ClientId
+        - value_from: /dev/Equifax__ClientSecret
+          name: Equifax__ClientSecret
+        - value_from: /dev/Equifax__ConsumerCreditReportAPI
+          name: Equifax__ConsumerCreditReportAPI
+        - value_from: /dev/Equifax__ScopeConsumerCreditReportAPI
+          name: Equifax__ScopeConsumerCreditReportAPI
+        - value_from: /dev/Equifax__TokenAPI
+          name: Equifax__TokenAPI
+        - value_from: /dev/Experian__AutomotiveCreditProfileAPI
+          name: Experian__AutomotiveCreditProfileAPI
+        - value_from: /dev/Experian__ClientId
+          name: Experian__ClientId
+        - value_from: /dev/Experian__ClientSecret
+          name: Experian__ClientSecret
+        - value_from: /dev/Experian__ModelCode
+          name: Experian__ModelCode
+        - value_from: /dev/Experian__OauthTokenAPI
+          name: Experian__OauthTokenAPI
+        - value_from: /dev/Experian__PremierProfileAPI
+          name: Experian__PremierProfileAPI
+        - value_from: /dev/Experian__Password
+          name: Experian__Password
+        - value_from: /dev/Experian__Subcode
+          name: Experian__Subcode
+        - value_from: /dev/Experian__SubscriberCode
+          name: Experian__SubscriberCode
+        - value_from: /dev/Experian__Username
+          name: Experian__Username
+        - value_from: /dev/FinancialYear__Country
+          name: FinancialYear__Country
+        - value_from: /dev/FinancialYear__EndMonth
+          name: FinancialYear__EndMonth
+        - value_from: /dev/FinancialYear__StartMonth
+          name: FinancialYear__StartMonth
+        - value_from: /dev/FinancialYear__Years
+          name: FinancialYear__Years
+        - value_from: /dev/FinancialYear__IncludeYTD
+          name: FinancialYear__IncludeYTD
+        - value_from: /dev/IdentityServer__Authority
+          name: IdentityServer__Authority
+        - value_from: /dev/IdentityServer__Audiences__0
+          name: IdentityServer__Audiences__0
+        - value_from: /dev/IdentityServer__Audiences__1
+          name: IdentityServer__Audiences__1
+        - value_from: /dev/IdentityServer__BankClientId
+          name: IdentityServer__BankClientId
+        - value_from: /dev/IdentityServer__ClientId
+          name: IdentityServer__ClientId
+        - value_from: /dev/IdentityServer__SwaggerClientId
+          name: IdentityServer__SwaggerClientId
+        - value_from: /dev/Origins__Frontend__0
+          name: Origins__Frontend__0
+        - value_from: /dev/Origins__Frontend__1
+          name: Origins__Frontend__1
+        - value_from: /dev/Quickbooks__AppEnvironment
+          name: Quickbooks__AppEnvironment
+        - value_from: /dev/Quickbooks__BaseUrl
+          name: Quickbooks__BaseUrl
+        - value_from: /dev/Quickbooks__ClientId
+          name: Quickbooks__ClientId
+        - value_from: /dev/Quickbooks__ClientSecret
+          name: Quickbooks__ClientSecret
+        - value_from: /dev/Quickbooks__ConfigurationVersion
+          name: Quickbooks__ConfigurationVersion
+        - value_from: /dev/Quickbooks__RedirectUri
+          name: Quickbooks__RedirectUri
+        - value_from: /dev/ReDoc__DocumentPath
+          name: ReDoc__DocumentPath
+        - value_from: /dev/ReDoc__Path
+          name: ReDoc__Path
+        - value_from: /dev/Serilog__MinimumLevel
+          name: Serilog__MinimumLevel
+        - value_from: /dev/Serilog__Using__0
+          name: Serilog__Using__0
+        - value_from: /dev/Serilog__Using__1
+          name: Serilog__Using__1
+        - value_from: /dev/Serilog__WriteTo__0__Name
+          name: Serilog__WriteTo__0__Name
+        - value_from: /dev/Serilog__WriteTo__1__Args__title
+          name: Serilog__WriteTo__1__Args__title
+        - value_from: /dev/Serilog__WriteTo__1__Args__webHookUri
+          name: Serilog__WriteTo__1__Args__webHookUri
+        - value_from: /dev/Serilog__WriteTo__1__Name
+          name: Serilog__WriteTo__1__Name
+        - value_from: /dev/SmartyStreets__AuthId
+          name: SmartyStreets__AuthId
+        - value_from: /dev/SmartyStreets__AuthToken
+          name: SmartyStreets__AuthToken
+        - value_from: /dev/SwaggerDocument__Description
+          name: SwaggerDocument__Description
+        - value_from: /dev/SwaggerDocument__Title
+          name: SwaggerDocument__Title
+        - value_from: /dev/SwaggerDocument__Version
+          name: SwaggerDocument__Version
+        - value_from: /dev/Xero__CallBackUri
+          name: Xero__CallBackUri
+        - value_from: /dev/Xero__ClientId
+          name: Xero__ClientId
+        - value_from: /dev/Xero__ClientSecret
+          name: Xero__ClientSecret
+        - value_from: /dev/Yodlee__ApiVersion
+          name: Yodlee__ApiVersion
+        - value_from: /dev/Yodlee__BaseUrl
+          name: Yodlee__BaseUrl
+        - value_from: /dev/Yodlee__ClientId
+          name: Yodlee__ClientId
+        - value_from: /dev/Yodlee__FastLinkUrl
+          name: Yodlee__FastLinkUrl
+        - value_from: /dev/Yodlee__LoginAdminName
+          name: Yodlee__LoginAdminName
+        - value_from: /dev/Yodlee__Secret
+          name: Yodlee__Secret
+        - value_from: /dev/PayPal__AuthorizationUrl
+          name: PayPal__AuthorizationUrl
+        - value_from: /dev/PayPal__ClientId 
+          name: PayPal__ClientId 
+        - value_from: /dev/PayPal__OauthTokenApi
+          name: PayPal__OauthTokenApi
+        - value_from: /dev/PayPal__RedirectUri
+          name: PayPal__RedirectUri
+        - value_from: /dev/PayPal__Scopes
+          name: PayPal__Scopes
+        - value_from: /dev/PayPal__SearchInvoicesApi
+          name: PayPal__SearchInvoicesApi
+        - value_from: /dev/PayPal__Secret 
+          name: PayPal__Secret
+        - value_from: /dev/Drools__ContainerUrl
+          name: Drools__ContainerUrl
+        - value_from: /dev/Drools__Username 
+          name: Drools__Username
+        - value_from: /dev/Drools__Password 
+          name: Drools__Password
+        - value_from: /dev/Drools__LoanEvaluationModelName 
+          name: Drools__LoanEvaluationModelName
+        - value_from: /dev/Drools__LoanEvaluationModelNamespace 
+          name: Drools__LoanEvaluationModelNamespace
+        - value_from: /dev/Drools__FinancialStatemetsModelNamespace
+          name: Drools__FinancialStatemetsModelNamespace
+        - value_from: /dev/Drools__FinancialStatemetsModelName
+          name: Drools__FinancialStatemetsModelName
+        - value_from: /dev/Drools__ProductRulesModelNamespace
+          name: Drools__ProductRulesModelNamespace
+        - value_from: /dev/Drools__ProductRulesModelName
+          name: Drools__ProductRulesModelName
+        - value_from: /dev/Square__AuthUrl 
+          name: Square__AuthUrl
+        - value_from: /dev/Square__AccessToken
+          name: Square__AccessToken
+        - value_from: /dev/Square__ClientId
+          name: Square__ClientId
+        - value_from: /dev/Square__ClientSecret
+          name: Square__ClientSecret
+        - value_from: /dev/Square__Scopes__0
+          name: Square__Scopes__0
+        - value_from: /dev/Square__Scopes__1
+          name: Square__Scopes__1
+        - value_from: /dev/Square__Environment
+          name: Square__Environment
+        - value_from: /dev/Stripe__SecretAPIKey
+          name: Stripe__SecretAPIKey
+        - value_from: /dev/Stripe__ClientId
+          name: Stripe__ClientId
+        - value_from: /dev/Stripe__Scopes
+          name: Stripe__Scopes        
+        - value_from: /dev/Stripe__AuthorizationUrl
+          name: Stripe__AuthorizationUrl
+        - value_from: /dev/Stripe__RedirectUri
+          name: Stripe__RedirectUri
+        - value_from: /dev/PlaidService__ClientId
+          name: PlaidService__ClientId
+        - value_from: /dev/PlaidService__ClientSecret
+          name: PlaidService__ClientSecret
+        - value_from: /dev/PlaidService__ClientName
+          name: PlaidService__ClientName
+        - value_from: /dev/PlaidService__Environment
+          name: PlaidService__Environment
+        - value_from: /dev/PlaidService__Version
+          name: PlaidService__Version
+        - value_from: /dev/Transunion__CertificateAwsBucketKey
+          name: Transunion__CertificateAwsBucketKey
+        - value_from: /dev/Transunion__CertificatePassword
+          name: Transunion__CertificatePassword
+        - value_from: /dev/Transunion__BaseAPIUrl
+          name: Transunion__BaseAPIUrl
+        - value_from: /dev/Transunion__Version
+          name: Transunion__Version
+        - value_from: /dev/Transunion__UserRefNumber
+          name: Transunion__UserRefNumber
+        - value_from: /dev/Transunion__SubscriberIndustryCode
+          name: Transunion__SubscriberIndustryCode
+        - value_from: /dev/Transunion__SubscriberMemberCode
+          name: Transunion__SubscriberMemberCode
+        - value_from: /dev/Transunion__SubscriberInquirySubscriberPrefixCode
+          name: Transunion__SubscriberInquirySubscriberPrefixCode
+        - value_from: /dev/Transunion__SubscriberPassword
+          name: Transunion__SubscriberPassword
+        - value_from: /dev/Transunion__OptionsProcessingEnvironment
+          name: Transunion__OptionsProcessingEnvironment
+        - value_from: /dev/Transunion__OptionsCountry
+          name: Transunion__OptionsCountry
+        - value_from: /dev/Transunion__OptionsLanguage
+          name: Transunion__OptionsLanguage
+        - value_from: /dev/Transunion__OptionsContractualRelationship
+          name: Transunion__OptionsContractualRelationship
+        - value_from: /dev/Transunion__OptionsPointOfSaleIndicator
+          name: Transunion__OptionsPointOfSaleIndicator
+        - value_from: /dev/Transunion__AddOnProductCode
+          name: Transunion__AddOnProductCode
+        - value_from: /dev/UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+          name: UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+        - value_from: /dev/UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+          name: UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+        - value_from: /dev/UserSelfDeclarationExpectedResponse__MinCreditScore
+          name: UserSelfDeclarationExpectedResponse__MinCreditScore
+        - value_from: /dev/LoanNeeds__LoanDurationUnit
+          name: LoanNeeds__LoanDurationUnit
+        - value_from: /dev/LoanNeeds__InterestRateForPoorCreditScore
+          name: LoanNeeds__InterestRateForPoorCreditScore
+        - value_from: /dev/LoanNeeds__InterestRateForAverageCreditScore
+          name: LoanNeeds__InterestRateForAverageCreditScore
+        - value_from: /dev/LoanNeeds__InterestRateForFairCreditScore
+          name: LoanNeeds__InterestRateForFairCreditScore
+        - value_from: /dev/LoanNeeds__InterestRateForGoodCreditScore
+          name: LoanNeeds__InterestRateForGoodCreditScore
+        - value_from: /dev/LoanNeeds__InterestRateForExcellentCreditScore
+          name: LoanNeeds__InterestRateForExcellentCreditScore
+        - value_from: /dev/Entity__MajoritySharePercentage
+          name: Entity__MajoritySharePercentage
+        - value_from: /dev/Entity__Relatives
+          name: Entity__Relatives
+        - value_from: /dev/TaxConfig__Years
+          name: TaxConfig__Years
+        - value_from: /dev/TaxConfig__MinimumNumberOfYearlyTaxForm
+          name: TaxConfig__MinimumNumberOfYearlyTaxForm
+        - value_from: /dev/TaxConfig__IsTaxFormJourneyAllowed
+          name: TaxConfig__IsTaxFormJourneyAllowed
+        - value_from: /dev/EmailService__IsEmailServiceEnabled
+          name: EmailService__IsEmailServiceEnabled
+        - value_from: /dev/Product__NAICSIndustryCodeExcluded
+          name: Product__NAICSIndustryCodeExcluded
+        - value_from: /dev/User__MinimumAgeRequiredInYears
+          name: User__MinimumAgeRequiredInYears
+        - value_from: /dev/MiniProfiler__IsEnabled
+          name: MiniProfiler__IsEnabled
+        - value_from: /dev/Cognitive__Endpoint
+          name: Cognitive__Endpoint
+        - value_from: /dev/Cognitive__Apikey
+          name: Cognitive__Apikey
+        - value_from: /dev/BankPreference__DbResetAuthorizedEmails__0
+          name: BankPreference__DbResetAuthorizedEmails__0
+        - value_from: /dev/BankPreference__DbResetAuthorizedEmails__1
+          name: BankPreference__DbResetAuthorizedEmails__1

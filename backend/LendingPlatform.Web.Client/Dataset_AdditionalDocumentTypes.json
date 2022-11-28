@@ -1,0 +1,57 @@
+[
+  {
+    "Id": 1,
+    "Type": "Licenses",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  },
+  {
+    "Id": 2,
+    "Type": "Certificates",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  },
+  {
+    "Id": 3,
+    "Type": "Leases",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  },
+  {
+    "Id": 4,
+    "Type": "Overview",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  },
+  {
+    "Id": 5,
+    "Type": "History",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  },
+  {
+    "Id": 6,
+    "Type": "References",
+    "DocumentTypeFor": "User",
+    "IsEnabled": true
+  },
+  {
+    "Id": 7,
+    "Type": "Resumes",
+    "DocumentTypeFor": "User",
+    "IsEnabled": true
+  },
+  {
+    "Id": 8,
+    "Type": "Personal Background",
+    "DocumentTypeFor": "User",
+    "IsEnabled": true
+  },
+  {
+    "Id": 9,
+    "Type": "Business Plan",
+    "DocumentTypeFor": "Company",
+    "IsEnabled": true
+  }
+]
+

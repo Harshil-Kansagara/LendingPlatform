@@ -1,0 +1,195 @@
+﻿{
+  "TaxForms": [
+    {
+      "Id": 1,
+      "Name": "1040"
+    },
+    {
+      "Id": 2,
+      "Name": "1040 Schedule C"
+    },
+    {
+      "Id": 3,
+      "Name": "1040 Schedule E"
+    },
+    {
+      "Id": 4,
+      "Name": "1065"
+    },
+    {
+      "Id": 5,
+      "Name": "1065 Schedule K-1"
+    },
+    {
+      "Id": 6,
+      "Name": "1120"
+    },
+    {
+      "Id": 7,
+      "Name": "1120-S"
+    },
+    {
+      "Id": 8,
+      "Name": "1120-S Schedule K-1"
+    },
+    {
+      "Id": 9,
+      "Name": "Tax Returns"
+    }
+  ],
+  "CompanyStructures": [
+    {
+      "Id": 1,
+      "Structure": "Proprietorship",
+      "Order": 1
+    },
+    {
+      "Id": 2,
+      "Structure": "Partnership",
+      "Order": 2
+    },
+    {
+      "Id": 3,
+      "Structure": "Limited Liability Company (LLC)",
+      "Order": 3
+    },
+    {
+      "Id": 4,
+      "Structure": "S Corporation",
+      "Order": 4
+    },
+    {
+      "Id": 5,
+      "Structure": "C Corporation",
+      "Order": 5
+    }
+  ],
+  "TaxFormCompanyStructureMappings": [
+    {
+      "Id": 1,
+      "TaxFormId": 1,
+      "CompanyStructureId": 1,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 2,
+      "CompanyStructureId": 1,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 3,
+      "CompanyStructureId": 1,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 1,
+      "CompanyStructureId": 2,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 2,
+      "CompanyStructureId": 2,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 3,
+      "CompanyStructureId": 2,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 4,
+      "CompanyStructureId": 2,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 5,
+      "CompanyStructureId": 2,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 1,
+      "CompanyStructureId": 3,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 2,
+      "CompanyStructureId": 3,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 3,
+      "CompanyStructureId": 3,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 4,
+      "CompanyStructureId": 3,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 5,
+      "CompanyStructureId": 3,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 1,
+      "CompanyStructureId": 4,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 2,
+      "CompanyStructureId": 4,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 3,
+      "CompanyStructureId": 4,
+      "IsSoleProprietors": true
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 4,
+      "CompanyStructureId": 4,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 1,
+      "TaxFormId": 5,
+      "CompanyStructureId": 4,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 6,
+      "TaxFormId": 6,
+      "CompanyStructureId": 5,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 6,
+      "TaxFormId": 7,
+      "CompanyStructureId": 5,
+      "IsSoleProprietors": false
+    },
+    {
+      "Id": 6,
+      "TaxFormId": 8,
+      "CompanyStructureId": 5,
+      "IsSoleProprietors": false
+    }
+  ]
+}

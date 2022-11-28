@@ -1,0 +1,757 @@
+﻿{
+  "Products": [
+    {
+      "Id": 1,
+      "Name": "Commercial Mortgage",
+      "Description": "Loan option for acquisition financing for owner-occupied and investment properties. Re-financing of currently owned properties, expansion or renovation of currently owned properties and purchase of land.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "Loan amounts upto $ 5million",
+          "Order": 1
+        },
+        {
+          "Text": "Rates as low as Prime plus 1.00%",
+          "Order": 2
+        },
+        {
+          "Text": "2 to 25 years term",
+          "Order": 3
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Equipment Finance Loan",
+      "Description": "Loan option for purchase business-related equipment. Provides upto 100% equipment financing. No application fees.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "Collateral required",
+          "Order": 1
+        },
+        {
+          "Text": "Loan amounts upto $ 5million",
+          "Order": 2
+        },
+        {
+          "Text": "Fixed rates starting at 6.99% for vehicle loans",
+          "Order": 3
+        },
+        {
+          "Text": "Fixed rates starting at 4.99% for equipment loans",
+          "Order": 4
+        },
+        {
+          "Text": "2 to 7 years term",
+          "Order": 5
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Unsecured Business Loan",
+      "Description": "Loan options to help improve your business cash flow with no collateral required. Our unsecured business loans feature low interest rates and convenient repayment terms. No application fees.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "No specific collateral required",
+          "Order": 1
+        },
+        {
+          "Text": "Loan amounts upto $100,000",
+          "Order": 2
+        },
+        {
+          "Text": "Fixed Rates as low as 6.99%",
+          "Order": 3
+        },
+        {
+          "Text": "1 to 10 years term",
+          "Order": 4
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Working Capital Loan",
+      "Description": "A flexible loan option for small businesses that need cash quickly to cover immediate expenses or to finance a company’s everyday operations. No application fees.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "Collateral may be required",
+          "Order": 1
+        },
+        {
+          "Text": "Revolving credit line upto $250,000",
+          "Order": 2
+        },
+        {
+          "Text": "$0 annual fees for the first year; $125 starting in the second year",
+          "Order": 3
+        },
+        {
+          "Text": "Rates as low as Prime plus 1.75%",
+          "Order": 4
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Secured Business Loan",
+      "Description": "A Secured Business Loan is the best way to finance or grow your existing organization or acquire a new company.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "Collateral required",
+          "Order": 1
+        },
+        {
+          "Text": "Loan amounts upto $ 2million",
+          "Order": 2
+        },
+        {
+          "Text": "Fixed Rates starting at 4.99%",
+          "Order": 3
+        },
+        {
+          "Text": "1 to 10 years term",
+          "Order": 4
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "Unsecured Business Loan",
+      "Description": "Loan options to help improve your business cash flow with no collateral required. Our unsecured business loans feature low interest rates and convenient repayment terms. No application fees.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "No specific collateral required",
+          "Order": 1
+        },
+        {
+          "Text": "Loan amounts upto $100,000",
+          "Order": 2
+        },
+        {
+          "Text": "Fixed Rates as low as 6.99%",
+          "Order": 3
+        },
+        {
+          "Text": "1 to 10 years term",
+          "Order": 4
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Secured Business Loan",
+      "Description": "A Secured Business Loan is the best way to finance or grow your existing organization or acquire a new company.",
+      "StartDateAvailability": "1/1/2021",
+      "EndDateAvailibility": "1/1/2023",
+      "IsEnabled": true,
+      "DescriptionPoints": [
+        {
+          "Text": "Collateral required",
+          "Order": 1
+        },
+        {
+          "Text": "Loan amounts upto $500,000",
+          "Order": 2
+        },
+        {
+          "Text": "Fixed Rates starting at 4.99%",
+          "Order": 3
+        },
+        {
+          "Text": "1 to 10 years term",
+          "Order": 4
+        }
+      ]
+    }
+  ],
+  "LoanRangeTypes": [
+    {
+      "Id": 1,
+      "Name": "Loan Amount"
+    },
+    {
+      "Id": 2,
+      "Name": "Lifecycle"
+    }
+  ],
+  "LoanTypes": [
+    {
+      "Id": 1,
+      "TypeName": "Business Loan"
+    }
+  ],
+  "LoanPurposes": [
+    {
+      "Id": 1,
+      "TypeId": 1,
+      "PurposeName": "Asset Purchase",
+      "Order": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 2,
+      "TypeId": 1,
+      "PurposeName": "Cash Flow",
+      "Order": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 3,
+      "TypeId": 1,
+      "PurposeName": "Property Purchase",
+      "Order": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 4,
+      "TypeId": 1,
+      "PurposeName": "Other Long Term Need",
+      "Order": 4,
+      "IsEnabled": true
+    }
+  ],
+  "SubLoanPurposes": [
+    {
+      "Id": 1,
+      "Name": "Commercial Real Estate",
+      "Order": 1,
+      "LoanPurposeId": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 2,
+      "Name": "Investor Property",
+      "Order": 2,
+      "LoanPurposeId": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 3,
+      "Name": "Business Premises",
+      "Order": 3,
+      "LoanPurposeId": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 4,
+      "Name": "Other Property",
+      "Order": 4,
+      "LoanPurposeId": 3,
+      "IsEnabled": true
+    },
+    {
+      "Id": 5,
+      "Name": "Construction Equipment",
+      "Order": 1,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 6,
+      "Name": "Transport Vehicles",
+      "Order": 2,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 7,
+      "Name": "Machinery",
+      "Order": 3,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 8,
+      "Name": "Medical Equipment",
+      "Order": 4,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 9,
+      "Name": "Agriculture Equipment",
+      "Order": 5,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 10,
+      "Name": "Other Asset Purchase",
+      "Order": 6,
+      "LoanPurposeId": 1,
+      "IsEnabled": true
+    },
+    {
+      "Id": 11,
+      "Name": "Equipment Repairs",
+      "Order": 1,
+      "LoanPurposeId": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 12,
+      "Name": "Bill or Tax Payment",
+      "Order": 2,
+      "LoanPurposeId": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 13,
+      "Name": "Seasonal Trading",
+      "Order": 3,
+      "LoanPurposeId": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 14,
+      "Name": "Working Capital",
+      "Order": 4,
+      "LoanPurposeId": 2,
+      "IsEnabled": true
+    },
+    {
+      "Id": 15,
+      "Name": "Expand existing business",
+      "Order": 1,
+      "LoanPurposeId": 4,
+      "IsEnabled": true
+    },
+    {
+      "Id": 16,
+      "Name": "Replace an Existing Lender",
+      "Order": 2,
+      "LoanPurposeId": 4,
+      "IsEnabled": true
+    },
+    {
+      "Id": 17,
+      "Name": "Fund a Merger or Acquisition",
+      "Order": 3,
+      "LoanPurposeId": 4,
+      "IsEnabled": true
+    },
+    {
+      "Id": 18,
+      "Name": "Research & Development",
+      "Order": 4,
+      "LoanPurposeId": 4,
+      "IsEnabled": true
+    },
+    {
+      "Id": 19,
+      "Name": "Other Long-Term Need",
+      "Order": 5,
+      "LoanPurposeId": 4,
+      "IsEnabled": true
+    }
+  ],
+  "LoanPurposeRangeTypeMappings": [
+    {
+      "Id": "1",
+      "LoanPurposeId": 4,
+      "Minimum": 5000,
+      "Maximum": 500000,
+      "RangeTypeId": 1,
+      "StepperAmount": 1000
+    },
+    {
+      "Id": "2",
+      "LoanPurposeId": 4,
+      "Minimum": 1,
+      "Maximum": 10,
+      "RangeTypeId": 2,
+      "StepperAmount": 0.5
+    },
+    {
+      "Id": "3",
+      "LoanPurposeId": 3,
+      "Minimum": 100000,
+      "Maximum": 5000000,
+      "RangeTypeId": 1,
+      "StepperAmount": 1000
+    },
+    {
+      "Id": "4",
+      "LoanPurposeId": 3,
+      "Minimum": 2,
+      "Maximum": 25,
+      "RangeTypeId": 2,
+      "StepperAmount": 0.5
+    },
+    {
+      "Id": "5",
+      "LoanPurposeId": 2,
+      "Minimum": 10000,
+      "Maximum": 2000000,
+      "RangeTypeId": 1,
+      "StepperAmount": 1000
+    },
+    {
+      "Id": "6",
+      "LoanPurposeId": 2,
+      "Minimum": 1,
+      "Maximum": 10,
+      "RangeTypeId": 2,
+      "StepperAmount": 0.5
+    },
+    {
+      "Id": "7",
+      "LoanPurposeId": 1,
+      "Minimum": 100000,
+      "Maximum": 5000000,
+      "RangeTypeId": 1,
+      "StepperAmount": 1000
+    },
+    {
+      "Id": "8",
+      "LoanPurposeId": 1,
+      "Minimum": 2,
+      "Maximum": 7,
+      "RangeTypeId": 2,
+      "StepperAmount": 0.5
+    }
+  ],
+  "ProductRangeTypeMappings": [
+    {
+      "Id": "1",
+      "ProductId": 1,
+      "RangeTypeId": 1,
+      "Minimum": 100000,
+      "Maximum": 5000000
+    },
+    {
+      "Id": "2",
+      "ProductId": 1,
+      "RangeTypeId": 2,
+      "Minimum": 24,
+      "Maximum": 300
+    },
+    {
+      "Id": "3",
+      "ProductId": 2,
+      "RangeTypeId": 1,
+      "Minimum": 100000,
+      "Maximum": 5000000
+    },
+    {
+      "Id": "4",
+      "ProductId": 2,
+      "RangeTypeId": 2,
+      "Minimum": 24,
+      "Maximum": 84
+    },
+    {
+      "Id": "5",
+      "ProductId": 3,
+      "RangeTypeId": 1,
+      "Minimum": 10000,
+      "Maximum": 100000
+    },
+    {
+      "Id": "6",
+      "ProductId": 3,
+      "RangeTypeId": 2,
+      "Minimum": 12,
+      "Maximum": 120
+    },
+    {
+      "Id": "7",
+      "ProductId": 4,
+      "RangeTypeId": 1,
+      "Minimum": 100001,
+      "Maximum": 250000
+    },
+    {
+      "Id": "8",
+      "ProductId": 4,
+      "RangeTypeId": 2,
+      "Minimum": 12,
+      "Maximum": 120
+    },
+    {
+      "Id": "7",
+      "ProductId": 5,
+      "RangeTypeId": 1,
+      "Minimum": 250001,
+      "Maximum": 2000000
+    },
+    {
+      "Id": "8",
+      "ProductId": 5,
+      "RangeTypeId": 2,
+      "Minimum": 12,
+      "Maximum": 120
+    },
+    {
+      "Id": "9",
+      "ProductId": 6,
+      "RangeTypeId": 1,
+      "Minimum": 5000,
+      "Maximum": 100000
+    },
+    {
+      "Id": "10",
+      "ProductId": 6,
+      "RangeTypeId": 2,
+      "Minimum": 12,
+      "Maximum": 120
+    },
+    {
+      "Id": "11",
+      "ProductId": 7,
+      "RangeTypeId": 1,
+      "Minimum": 250001,
+      "Maximum": 500000
+    },
+    {
+      "Id": "12",
+      "ProductId": 7,
+      "RangeTypeId": 2,
+      "Minimum": 12,
+      "Maximum": 120
+    }
+  ],
+  "ProductSubPurposeMappings": [
+    {
+      "Id": "1",
+      "ProductId": 1,
+      "SubPurposeId": 1
+    },
+    {
+      "Id": "2",
+      "ProductId": 1,
+      "SubPurposeId": 2
+    },
+    {
+      "Id": "3",
+      "ProductId": 1,
+      "SubPurposeId": 3
+    },
+    {
+      "Id": "4",
+      "ProductId": 1,
+      "SubPurposeId": 4
+    },
+    {
+      "Id": "5",
+      "ProductId": 2,
+      "SubPurposeId": 5
+    },
+    {
+      "Id": "6",
+      "ProductId": 2,
+      "SubPurposeId": 6
+    },
+    {
+      "Id": "7",
+      "ProductId": 2,
+      "SubPurposeId": 7
+    },
+    {
+      "Id": "8",
+      "ProductId": 2,
+      "SubPurposeId": 8
+    },
+    {
+      "Id": "9",
+      "ProductId": 2,
+      "SubPurposeId": 9
+    },
+    {
+      "Id": "10",
+      "ProductId": 2,
+      "SubPurposeId": 10
+    },
+    {
+      "Id": "11",
+      "ProductId": 3,
+      "SubPurposeId": 11
+    },
+    {
+      "Id": "12",
+      "ProductId": 3,
+      "SubPurposeId": 12
+    },
+    {
+      "Id": "13",
+      "ProductId": 3,
+      "SubPurposeId": 13
+    },
+    {
+      "Id": "14",
+      "ProductId": 3,
+      "SubPurposeId": 14
+    },
+    {
+      "Id": "15",
+      "ProductId": 4,
+      "SubPurposeId": 11
+    },
+    {
+      "Id": "16",
+      "ProductId": 4,
+      "SubPurposeId": 12
+    },
+    {
+      "Id": "17",
+      "ProductId": 4,
+      "SubPurposeId": 13
+    },
+    {
+      "Id": "18",
+      "ProductId": 4,
+      "SubPurposeId": 14
+    },
+    {
+      "Id": "19",
+      "ProductId": 5,
+      "SubPurposeId": 11
+    },
+    {
+      "Id": "20",
+      "ProductId": 5,
+      "SubPurposeId": 12
+    },
+    {
+      "Id": "21",
+      "ProductId": 5,
+      "SubPurposeId": 13
+    },
+    {
+      "Id": "22",
+      "ProductId": 5,
+      "SubPurposeId": 14
+    },
+    {
+      "Id": "23",
+      "ProductId": 6,
+      "SubPurposeId": 15
+    },
+    {
+      "Id": "24",
+      "ProductId": 6,
+      "SubPurposeId": 16
+    },
+    {
+      "Id": "25",
+      "ProductId": 6,
+      "SubPurposeId": 17
+    },
+    {
+      "Id": "26",
+      "ProductId": 6,
+      "SubPurposeId": 18
+    },
+    {
+      "Id": "27",
+      "ProductId": 6,
+      "SubPurposeId": 19
+    },
+    {
+      "Id": "28",
+      "ProductId": 7,
+      "SubPurposeId": 15
+    },
+    {
+      "Id": "29",
+      "ProductId": 7,
+      "SubPurposeId": 16
+    },
+    {
+      "Id": "30",
+      "ProductId": 7,
+      "SubPurposeId": 17
+    },
+    {
+      "Id": "31",
+      "ProductId": 7,
+      "SubPurposeId": 18
+    },
+    {
+      "Id": "32",
+      "ProductId": 7,
+      "SubPurposeId": 19
+    },
+    {
+      "Id": "33",
+      "ProductId": 4,
+      "SubPurposeId": 15
+    },
+    {
+      "Id": "34",
+      "ProductId": 4,
+      "SubPurposeId": 16
+    },
+    {
+      "Id": "35",
+      "ProductId": 4,
+      "SubPurposeId": 17
+    },
+    {
+      "Id": "36",
+      "ProductId": 4,
+      "SubPurposeId": 18
+    },
+    {
+      "Id": "37",
+      "ProductId": 4,
+      "SubPurposeId": 19
+    }
+  ],
+  "ProductTypeMappings": [
+    {
+      "Id": "1",
+      "ProductId": 1,
+      "TypeId": 1
+    },
+    {
+      "Id": "2",
+      "ProductId": 2,
+      "TypeId": 1
+    },
+    {
+      "Id": "3",
+      "ProductId": 3,
+      "TypeId": 1
+    },
+    {
+      "Id": "4",
+      "ProductId": 4,
+      "TypeId": 1
+    },
+    {
+      "Id": "5",
+      "ProductId": 5,
+      "TypeId": 1
+    },
+    {
+      "Id": "6",
+      "ProductId": 6,
+      "TypeId": 1
+    },
+    {
+      "Id": "7",
+      "ProductId": 7,
+      "TypeId": 1
+    }
+  ]
+}

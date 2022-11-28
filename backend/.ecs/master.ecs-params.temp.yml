@@ -1,0 +1,300 @@
+version: 1
+task_definition:
+  task_execution_role: arn:aws:iam::AWS_ACCOUNT_ID:role/ecsTaskExecutionRole
+  ecs_network_mode: bridge
+  services:
+    container_name: 
+      mem_reservation: 0.5GB
+      secrets:
+        - value_from: /master/Aws__AwsBucketName
+          name: Aws__AwsBucketName
+        - value_from: /master/Aws__AwsRegion
+          name: Aws__AwsRegion
+        - value_from: /master/Aws__AwsSecretAccessKey
+          name: Aws__AwsSecretAccessKey
+        - value_from: /master/Aws__AwsSecretKey
+          name: Aws__AwsSecretKey
+        - value_from: /master/Aws__AwsUserName
+          name: Aws__AwsUserName
+        - value_from: /master/Aws__AwsPrepareFinanceQueueNameAccountId
+          name: Aws__AwsPrepareFinanceQueueNameAccountId
+        - value_from: /master/Aws__AwsPrepareFinanceQueueName
+          name: Aws__AwsPrepareFinanceQueueName
+        - value_from: /master/Aws__AwsPrepareFinanceRegion
+          name: Aws__AwsPrepareFinanceRegion
+        - value_from: /master/Aws__AwsFinanceLambdaSecretKey
+          name: Aws__AwsFinanceLambdaSecretKey
+        - value_from: /master/Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsUploadPreSignedUrlExpireTimeInMinutes
+        - value_from: /master/Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+          name: Aws__AwsGetPreSignedUrlExpireTimeInMinutes
+        - value_from: /master/BankPreference__Transaction
+          name: BankPreference__Transaction
+        - value_from: /master/BankPreference__ConsumerAPIBureau
+          name: BankPreference__ConsumerAPIBureau
+        - value_from: /master/BankPreference__CommercialAPIBureau
+          name: BankPreference__CommercialAPIBureau
+        - value_from: /master/Codes__BankCode
+          name: Codes__BankCode
+        - value_from: /master/ConnectionStrings__LendingPlatformConnection
+          name: ConnectionStrings__LendingPlatformConnection
+        - value_from: /master/Currency__Name
+          name: Currency__Name
+        - value_from: /master/Currency__Symbol
+          name: Currency__Symbol
+        - value_from: /master/Currency__AmountDivisonFactor
+          name: Currency__AmountDivisonFactor
+        - value_from: /master/Equifax__ClientId
+          name: Equifax__ClientId
+        - value_from: /master/Equifax__ClientSecret
+          name: Equifax__ClientSecret
+        - value_from: /master/Equifax__ConsumerCreditReportAPI
+          name: Equifax__ConsumerCreditReportAPI
+        - value_from: /master/Equifax__ScopeConsumerCreditReportAPI
+          name: Equifax__ScopeConsumerCreditReportAPI
+        - value_from: /master/Equifax__TokenAPI
+          name: Equifax__TokenAPI
+        - value_from: /master/Experian__AutomotiveCreditProfileAPI
+          name: Experian__AutomotiveCreditProfileAPI
+        - value_from: /master/Experian__ClientId
+          name: Experian__ClientId
+        - value_from: /master/Experian__ClientSecret
+          name: Experian__ClientSecret
+        - value_from: /master/Experian__ModelCode
+          name: Experian__ModelCode
+        - value_from: /master/Experian__OauthTokenAPI
+          name: Experian__OauthTokenAPI
+        - value_from: /master/Experian__PremierProfileAPI
+          name: Experian__PremierProfileAPI
+        - value_from: /master/Experian__Password
+          name: Experian__Password
+        - value_from: /master/Experian__Subcode
+          name: Experian__Subcode
+        - value_from: /master/Experian__SubscriberCode
+          name: Experian__SubscriberCode
+        - value_from: /master/Experian__Username
+          name: Experian__Username
+        - value_from: /master/FinancialYear__Country
+          name: FinancialYear__Country
+        - value_from: /master/FinancialYear__EndMonth
+          name: FinancialYear__EndMonth
+        - value_from: /master/FinancialYear__StartMonth
+          name: FinancialYear__StartMonth
+        - value_from: /master/FinancialYear__Years
+          name: FinancialYear__Years
+        - value_from: /master/FinancialYear__IncludeYTD
+          name: FinancialYear__IncludeYTD
+        - value_from: /master/IdentityServer__Authority
+          name: IdentityServer__Authority
+        - value_from: /master/IdentityServer__Audiences__0
+          name: IdentityServer__Audiences__0
+        - value_from: /master/IdentityServer__Audiences__1
+          name: IdentityServer__Audiences__1
+        - value_from: /master/IdentityServer__BankClientId
+          name: IdentityServer__BankClientId
+        - value_from: /master/IdentityServer__ClientId
+          name: IdentityServer__ClientId
+        - value_from: /master/IdentityServer__SwaggerClientId
+          name: IdentityServer__SwaggerClientId
+        - value_from: /master/Origins__Frontend__0
+          name: Origins__Frontend__0
+        - value_from: /master/Origins__Frontend__1
+          name: Origins__Frontend__1
+        - value_from: /master/Quickbooks__AppEnvironment
+          name: Quickbooks__AppEnvironment
+        - value_from: /master/Quickbooks__BaseUrl
+          name: Quickbooks__BaseUrl
+        - value_from: /master/Quickbooks__ClientId
+          name: Quickbooks__ClientId
+        - value_from: /master/Quickbooks__ClientSecret
+          name: Quickbooks__ClientSecret
+        - value_from: /master/Quickbooks__ConfigurationVersion
+          name: Quickbooks__ConfigurationVersion
+        - value_from: /master/Quickbooks__RedirectUri
+          name: Quickbooks__RedirectUri
+        - value_from: /master/ReDoc__DocumentPath
+          name: ReDoc__DocumentPath
+        - value_from: /master/ReDoc__Path
+          name: ReDoc__Path
+        - value_from: /master/Serilog__MinimumLevel
+          name: Serilog__MinimumLevel
+        - value_from: /master/Serilog__Using__0
+          name: Serilog__Using__0
+        - value_from: /master/Serilog__Using__1
+          name: Serilog__Using__1
+        - value_from: /master/Serilog__WriteTo__0__Name
+          name: Serilog__WriteTo__0__Name
+        - value_from: /master/Serilog__WriteTo__1__Args__title
+          name: Serilog__WriteTo__1__Args__title
+        - value_from: /master/Serilog__WriteTo__1__Args__webHookUri
+          name: Serilog__WriteTo__1__Args__webHookUri
+        - value_from: /master/Serilog__WriteTo__1__Name
+          name: Serilog__WriteTo__1__Name
+        - value_from: /master/SmartyStreets__AuthId
+          name: SmartyStreets__AuthId
+        - value_from: /master/SmartyStreets__AuthToken
+          name: SmartyStreets__AuthToken
+        - value_from: /master/SwaggerDocument__Description
+          name: SwaggerDocument__Description
+        - value_from: /master/SwaggerDocument__Title
+          name: SwaggerDocument__Title
+        - value_from: /master/SwaggerDocument__Version
+          name: SwaggerDocument__Version
+        - value_from: /master/Xero__CallBackUri
+          name: Xero__CallBackUri
+        - value_from: /master/Xero__ClientId
+          name: Xero__ClientId
+        - value_from: /master/Xero__ClientSecret
+          name: Xero__ClientSecret
+        - value_from: /master/Yodlee__ApiVersion
+          name: Yodlee__ApiVersion
+        - value_from: /master/Yodlee__BaseUrl
+          name: Yodlee__BaseUrl
+        - value_from: /master/Yodlee__ClientId
+          name: Yodlee__ClientId
+        - value_from: /master/Yodlee__FastLinkUrl
+          name: Yodlee__FastLinkUrl
+        - value_from: /master/Yodlee__LoginAdminName
+          name: Yodlee__LoginAdminName
+        - value_from: /master/Yodlee__Secret
+          name: Yodlee__Secret
+        - value_from: /master/PayPal__AuthorizationUrl
+          name: PayPal__AuthorizationUrl
+        - value_from: /master/PayPal__ClientId 
+          name: PayPal__ClientId 
+        - value_from: /master/PayPal__OauthTokenApi
+          name: PayPal__OauthTokenApi
+        - value_from: /master/PayPal__RedirectUri
+          name: PayPal__RedirectUri
+        - value_from: /master/PayPal__Scopes
+          name: PayPal__Scopes
+        - value_from: /master/PayPal__SearchInvoicesApi
+          name: PayPal__SearchInvoicesApi
+        - value_from: /master/PayPal__Secret 
+          name: PayPal__Secret
+        - value_from: /master/Drools__ContainerUrl
+          name: Drools__ContainerUrl
+        - value_from: /master/Drools__Username 
+          name: Drools__Username
+        - value_from: /master/Drools__Password 
+          name: Drools__Password
+        - value_from: /master/Drools__LoanEvaluationModelName 
+          name: Drools__LoanEvaluationModelName
+        - value_from: /master/Drools__LoanEvaluationModelNamespace 
+          name: Drools__LoanEvaluationModelNamespace
+        - value_from: /master/Drools__FinancialStatemetsModelNamespace
+          name: Drools__FinancialStatemetsModelNamespace
+        - value_from: /master/Drools__FinancialStatemetsModelName
+          name: Drools__FinancialStatemetsModelName
+        - value_from: /master/Drools__ProductRulesModelNamespace
+          name: Drools__ProductRulesModelNamespace
+        - value_from: /master/Drools__ProductRulesModelName
+          name: Drools__ProductRulesModelName
+        - value_from: /master/Square__AuthUrl 
+          name: Square__AuthUrl
+        - value_from: /master/Square__AccessToken
+          name: Square__AccessToken
+        - value_from: /master/Square__ClientId
+          name: Square__ClientId
+        - value_from: /master/Square__ClientSecret
+          name: Square__ClientSecret
+        - value_from: /master/Square__Scopes__0
+          name: Square__Scopes__0
+        - value_from: /master/Square__Scopes__1
+          name: Square__Scopes__1
+        - value_from: /master/Square__Environment
+          name: Square__Environment
+        - value_from: /master/Stripe__SecretAPIKey
+          name: Stripe__SecretAPIKey
+        - value_from: /master/Stripe__ClientId
+          name: Stripe__ClientId
+        - value_from: /master/Stripe__Scopes
+          name: Stripe__Scopes
+        - value_from: /master/Stripe__AuthorizationUrl
+          name: Stripe__AuthorizationUrl
+        - value_from: /master/Stripe__RedirectUri
+          name: Stripe__RedirectUri
+        - value_from: /master/PlaidService__ClientId
+          name: PlaidService__ClientId
+        - value_from: /master/PlaidService__ClientSecret
+          name: PlaidService__ClientSecret
+        - value_from: /master/PlaidService__ClientName
+          name: PlaidService__ClientName
+        - value_from: /master/PlaidService__Environment
+          name: PlaidService__Environment
+        - value_from: /master/PlaidService__Version
+          name: PlaidService__Version
+        - value_from: /master/Transunion__CertificateAwsBucketKey
+          name: Transunion__CertificateAwsBucketKey
+        - value_from: /master/Transunion__CertificatePassword
+          name: Transunion__CertificatePassword
+        - value_from: /master/Transunion__BaseAPIUrl
+          name: Transunion__BaseAPIUrl
+        - value_from: /master/Transunion__Version
+          name: Transunion__Version
+        - value_from: /master/Transunion__UserRefNumber
+          name: Transunion__UserRefNumber
+        - value_from: /master/Transunion__SubscriberIndustryCode
+          name: Transunion__SubscriberIndustryCode
+        - value_from: /master/Transunion__SubscriberMemberCode
+          name: Transunion__SubscriberMemberCode
+        - value_from: /master/Transunion__SubscriberInquirySubscriberPrefixCode
+          name: Transunion__SubscriberInquirySubscriberPrefixCode
+        - value_from: /master/Transunion__SubscriberPassword
+          name: Transunion__SubscriberPassword
+        - value_from: /master/Transunion__OptionsProcessingEnvironment
+          name: Transunion__OptionsProcessingEnvironment
+        - value_from: /master/Transunion__OptionsCountry
+          name: Transunion__OptionsCountry
+        - value_from: /master/Transunion__OptionsLanguage
+          name: Transunion__OptionsLanguage
+        - value_from: /master/Transunion__OptionsContractualRelationship
+          name: Transunion__OptionsContractualRelationship
+        - value_from: /master/Transunion__OptionsPointOfSaleIndicator
+          name: Transunion__OptionsPointOfSaleIndicator
+        - value_from: /master/Transunion__AddOnProductCode
+          name: Transunion__AddOnProductCode
+        - value_from: /master/UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+          name: UserSelfDeclarationExpectedResponse__IsAllowAnyJudgements
+        - value_from: /master/UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+          name: UserSelfDeclarationExpectedResponse__IsAllowBankruptcy
+        - value_from: /master/UserSelfDeclarationExpectedResponse__MinCreditScore
+          name: UserSelfDeclarationExpectedResponse__MinCreditScore
+        - value_from: /master/LoanNeeds__LoanDurationUnit
+          name: LoanNeeds__LoanDurationUnit
+        - value_from: /master/LoanNeeds__InterestRateForPoorCreditScore
+          name: LoanNeeds__InterestRateForPoorCreditScore
+        - value_from: /master/LoanNeeds__InterestRateForAverageCreditScore
+          name: LoanNeeds__InterestRateForAverageCreditScore
+        - value_from: /master/LoanNeeds__InterestRateForFairCreditScore
+          name: LoanNeeds__InterestRateForFairCreditScore
+        - value_from: /master/LoanNeeds__InterestRateForGoodCreditScore
+          name: LoanNeeds__InterestRateForGoodCreditScore
+        - value_from: /master/LoanNeeds__InterestRateForExcellentCreditScore
+          name: LoanNeeds__InterestRateForExcellentCreditScore
+        - value_from: /master/Entity__MajoritySharePercentage
+          name: Entity__MajoritySharePercentage
+        - value_from: /master/Entity__Relatives
+          name: Entity__Relatives
+        - value_from: /master/TaxConfig__Years
+          name: TaxConfig__Years
+        - value_from: /master/TaxConfig__MinimumNumberOfYearlyTaxForm
+          name: TaxConfig__MinimumNumberOfYearlyTaxForm
+        - value_from: /master/TaxConfig__IsTaxFormJourneyAllowed
+          name: TaxConfig__IsTaxFormJourneyAllowed
+        - value_from: /master/EmailService__IsEmailServiceEnabled
+          name: EmailService__IsEmailServiceEnabled
+        - value_from: /master/Product__NAICSIndustryCodeExcluded
+          name: Product__NAICSIndustryCodeExcluded
+        - value_from: /master/User__MinimumAgeRequiredInYears
+          name: User__MinimumAgeRequiredInYears
+        - value_from: /master/MiniProfiler__IsEnabled
+          name: MiniProfiler__IsEnabled
+        - value_from: /master/Cognitive__Endpoint
+          name: Cognitive__Endpoint
+        - value_from: /master/Cognitive__Apikey
+          name: Cognitive__Apikey
+        - value_from: /master/BankPreference__DbResetAuthorizedEmails__0
+          name: BankPreference__DbResetAuthorizedEmails__0
+        - value_from: /master/BankPreference__DbResetAuthorizedEmails__1
+          name: BankPreference__DbResetAuthorizedEmails__1

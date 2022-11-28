@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Name": "Bank of America",
+    "SWIFTCode": "BOFAUS3NXXX"
+  },
+  {
+    "Name": "Chase Bank (JP Morgan Chase)",
+    "SWIFTCode": "CHASUSU3XXX"
+  },
+  {
+    "Name": "CitiBank",
+    "SWIFTCode": "CITIUS33XXX"
+  },
+  {
+    "Name": "Wells Fargo Bank",
+    "SWIFTCode": "WFBIUS6SXXX"
+  },
+  {
+    "Name": "Capital One",
+    "SWIFTCode": "NFBKUS33XXX"
+  },
+  {
+    "Name": "PNC Bank",
+    "SWIFTCode": "PNCCUS33XXX"
+  }
+]

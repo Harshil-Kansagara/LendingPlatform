@@ -1,0 +1,12 @@
+version: '3'
+services:
+ container_name:
+    image: docker_image 
+    ports:
+      - "80:80"
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: container_name
+        awslogs-region: REGION
+        awslogs-stream-prefix: ecs

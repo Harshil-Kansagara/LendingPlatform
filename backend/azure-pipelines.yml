@@ -1,0 +1,109 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  - master
+  - staging
+  - dev
+  - change-integrate-azure-pipeline
+
+pr:
+  - master
+  - staging
+  - dev
+
+pool:
+  vmImage: "ubuntu-18.04"
+
+variables:
+- group: 'AWS Credentials'
+- name: solution
+  value: "**/*.sln"
+- name: buildPlatform
+  value: "Any CPU"
+- name: buildConfiguration
+  value: "Release"
+
+steps:  
+  - task: DotNetCoreCLI@2
+    displayName: "Restore solution"
+    inputs:
+      command: "restore"
+      projects: "**/*.sln"
+      feedsToUse: "select"
+
+  - task: PowerShell@2
+    displayName: "Use JDK11 by default"
+    inputs:
+      targetType: 'inline'
+      script: |
+        echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_HOME_11_X64"
+
+  - task: SonarCloudPrepare@1
+    displayName: "Prepare analysis configuration"
+    inputs:
+      SonarCloud: "LendinPlatform_SonarCloud_Connection"
+      organization: "jamoonlendingplatform"
+      scannerMode: "MSBuild"
+      projectKey: "net.jamoon.lendingplatform"
+      projectName: "Lending Platform Backend"
+      projectVersion: ${BUILD_BUILDID}
+      extraProperties: |        
+        sonar.cs.opencover.reportsPaths=**/opencovercoverage.xml
+
+
+  - task: DotNetCoreCLI@2
+    displayName: "Build solution"
+    inputs:
+      command: "build"
+      projects: "**/*.sln"
+      arguments: "--no-restore"
+  
+  - task: Bash@3
+    displayName: "Minicover install"
+    inputs:
+      targetType: inline
+      script: |
+        dotnet tool install minicover
+        dotnet minicover instrument --sources "LendingPlatform.Repository/**/*.cs" --sources "LendingPlatform.DomainModel/**/*.cs" --tests "LendingPlatform.Repository.Test/**/*.cs"
+        dotnet minicover reset
+
+  - task: DotNetCoreCLI@2
+    displayName: "Execute Unit tests"
+    inputs:
+      command: "test"
+      projects: "**/*.csproj"
+      arguments: '--no-build'
+    
+
+  - task: PowerShell@2
+    displayName: "Minicover report"
+    inputs:
+      targetType: inline
+      script: |        
+        dotnet minicover uninstrument
+        dotnet minicover report --threshold 5
+        dotnet minicover opencoverreport
+        ls
+    
+
+      
+  - task: SonarCloudAnalyze@1
+    displayName: "Run SonarCloud analysis"
+    
+
+  - task: SonarCloudPublish@1
+    displayName: "Publish results on build summary"
+    inputs:
+      pollingTimeoutSec: "300"
+    
+
+  - bash: chmod +x deploy.sh && bash deploy.sh
+    env:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+    displayName: 'Deploy'
+    
+
