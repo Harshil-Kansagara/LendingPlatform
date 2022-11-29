@@ -1,0 +1,117 @@
+// Only component specific styles here
+
+// Import scss variables
+@import'variables';
+
+.connect-options{
+    padding: 80px;
+}
+.connect-btn {    
+    background-color: var(--white);
+    width: 100%;
+    padding: 19px;
+    border-radius: 10px;
+    color: var(--default-txt-clr);
+    height: 100%;
+    .image-container{
+        width:189px;
+    }
+}
+.data-loading{
+    padding: 20px;
+    min-height: 610px;
+    .btn-primary{
+        margin-top: 90px;
+    }
+}
+.btn-outline-primary{
+    width: 90px;
+}
+.statement-block{    
+    background: var(--white);
+    border-radius: 10px;
+    padding: 22px 30px;
+
+    &:not(:last-child){
+        margin-bottom: 10px;
+    }
+}
+.financial-summary{
+    padding: 40px 80px;
+}
+
+.coming-soon-title{
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-36;
+    color: var(--dark-text-clr);
+}
+
+// Existing financials
+.w-538{
+    max-width: 538px;
+}
+.existing-finaces{
+    min-height: 570px;
+    .btn{
+        width: 240px;
+        padding: 17px 10px;
+        background: var(--white);
+        &:hover{
+            background: var(--btn-hover);
+        }
+    }
+    .section-heading{
+        margin: 60px 0;
+    }
+}
+
+// Media Queries
+
+// For device upto Tablet:landscape mode
+@media(min-width:992px){
+  .modal-dialog {
+    max-width: 1000px;
+  }
+}
+
+// For Mobile devices
+@media(max-width:767px){  
+    .coming-soon-title{
+        min-height: 300px;
+        font-size: $font-xs-30;
+    }  
+    .data-loading{
+        min-height: auto;
+        .btn-primary{
+            margin-top: 20px;
+        }
+    }
+    .statement-block{
+        background: var(--white);
+        border-radius: 6px;
+        padding: 16px 15px;
+        h6{
+            font-size: $font-xs-14;
+        }
+    }
+    .connect-btn{
+        padding: 15px;
+    }
+    .existing-finaces{
+        min-height: unset;
+        img{width: 50px;}
+        .section-heading{
+            margin: 25px 0;
+        }
+    }
+}
+@media(max-width:570px){
+    .existing-finaces{
+        .btn{
+            width: 100%;
+        }
+    }
+}

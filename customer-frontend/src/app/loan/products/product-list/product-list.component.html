@@ -1,0 +1,107 @@
+<!-- Component header -->
+<app-component-header [backRoute]="loanNeedsRedirectUrl" [title]="productTitle"></app-component-header>
+<!-- Loan products Section -->
+<div class="custom-container">
+  <div class="row" *ngIf="!isProcessFailed">
+    <div class="col-md-12">
+      <ng-container *ngIf="!loader">
+        <div class="default-card product-block position-relative" *ngFor="let product of recommendedProducts;let i = index" [class.mt-20]="i>0">
+          <img src="assets/images/recommended.png" class="recommended-badge" *ngIf="product.isProductRecommended" alt="recommended badge">
+          <div class=" d-sm-flex align-items-start position-relative">
+            <img src="assets/images/secure.png" class="secure-icon d-sm-block d-none mr-2" alt="secure">
+            <div class="ml-sm-3">
+              <h6 class="text-dark font-weight-bold d-md-block d-flex align-items-center">
+                <img src="assets/images/secure.png" class="secure-icon d-sm-none mr-2" alt="secure">
+                {{product.name}}
+              </h6>
+              <p class="mb-30">{{product.description}}</p>
+              <ul class="product-checklist-ul">
+                <li class="product-checklist" *ngFor="let descriptionPoint of product.descriptionPoints">
+                  <em class="zmdi zmdi-check d-inline-block align-middle"></em>
+                  <p class="mb-0 word-break d-inline-block align-middle">
+                    {{descriptionPoint.text}}
+                  </p>
+                </li>
+              </ul>
+              <div class="row gutter-5">
+                <div class="col-md-4 summary d-md-flex">
+                  <div class="summary-header">
+                    <p class="mb-0">Amount</p>
+                  </div>
+                  <div class="summary-body">
+                    <em class="zmdi zmdi-money-box "></em>
+                    <p class="mb-0 text-dark font-weight-medium">
+                      {{product.productAmountRange | startingValue:"-"}} -<br>
+                      {{product.productAmountRange | endingValue:"-"}}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4 mt-2 mt-md-0 summary d-md-flex">
+                  <div class="summary-header">
+                    <p class="mb-0">Term</p>
+                  </div>
+                  <div class="summary-body">
+                    <em class="zmdi zmdi-timer"></em>
+                    <p class="mb-0 text-dark font-weight-medium">{{product.productPeriodRange}} Years</p>
+                  </div>
+                </div>
+                <div class="col-md-4 mt-2 mt-md-0 summary d-md-flex">
+                  <div class="summary-header">
+                    <p class="mb-0">Interest Rate</p>
+                  </div>
+                  <div class="summary-body">
+                    <em class="zmdi zmdi-flower-alt "></em>
+                    <p class="mb-0 text-dark font-weight-medium">
+                      As low as {{interestRateForBestCreditScore}}%
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-30 d-md-flex align-items-center justify-content-between">
+                <button class="btn btn-primary w-240 disable-content" (click)="sendProductDetail(i)" [routerLink]="productDetailsRedirectUrl">Select</button>
+                <div class="label d-flex align-items-center">
+                  <h2 class="mb-0">{{product.businessPercentageSuitability | number : '1.2-2' }}%</h2>
+                  <div class="ml-2">
+                    <p class="mb-0 font-italic text-capitalize">Suitable for your business</p>
+                    <small class="font-italic text-capitalize">Based on your information</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+        <!-- Loader -->
+        <ng-container *ngIf="loader">
+          <div class="default-card pad-30 mb-20" *ngFor="let item of [0,1,2]">
+            <div class="row gutter-8">
+              <div class="col-md-2">
+                <div class="shine radius-5 height-60"></div>
+              </div>
+              <div class="col-md-10">
+                <div class="shine radius-5 height-20"></div>
+                <div class="shine radius-5 height-100 mt-20"></div>
+
+                <div class="row gutter-8">
+                  <div class="col-md-4" *ngFor="let item of [0,1,2]">
+                    <div class="shine radius-5 height-100 mt-20"></div>
+                  </div>
+                </div>
+                <div class="row gutter-8">
+                  <div class="col-md-5">
+                    <div class="shine radius-5 height-60 mt-20"></div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="shine radius-5 height-60 mt-20"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- Loader -->
+    </div>
+  </div>
+  <app-item-not-found *ngIf="isProcessFailed" title="We're sorry. We're not able to process your request right now."></app-item-not-found>
+  <app-item-not-found *ngIf="ifNoProducts" title="We're sorry. Product not found"></app-item-not-found>
+</div>

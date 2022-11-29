@@ -1,0 +1,48 @@
+<!-- Component hedaer -->
+<app-component-header [backRoute]="loanConsentRedirectUrl" [heading]="false"></app-component-header>
+<section class="loan-status-section">
+  <div class="custom-container">
+    <div class="row">
+      <div class="col-md-12">
+          <!-- Loan Status -->
+        <div class="status-block " >
+          <div class="default-card height-580 d-flex align-items-center justify-content-center flex-column">
+            <!-- If Loan in Process -->
+            <ng-container *ngIf="loanStatus==='Draft' || loanStatus==='Locked' || loanStatus==='EvaluationFailure' || loanStatus==='Unlocked'">
+              <div class="status-icon bg-green mx-auto d-flex align-items-center justify-content-center mb-30">
+                <em class="zmdi zmdi-hourglass-alt zmdi-hc-3x"></em>
+              </div>
+              <p class="sub-title">{{ifloanProcess}}</p>
+            </ng-container>
+            <!-- If Loan Success -->
+            <ng-container *ngIf="loanStatus==='Approved'">
+              <div class="status-icon bg-success mx-auto d-flex align-items-center justify-content-center mb-30">
+                <em class="zmdi zmdi-check-all zmdi-hc-3x"></em>
+              </div>
+              <p class="sub-title">{{ifloanSuccess}}</p>
+            </ng-container>
+            <!-- If Loan Failed -->
+            <ng-container *ngIf="loanStatus==='Rejected'">
+              <div class="status-icon bg-red mx-auto d-flex align-items-center justify-content-center mb-30">
+                <em class="zmdi zmdi-alert-triangle zmdi-hc-3x"></em>
+              </div>
+              <p class="sub-title">{{ifloanFailed}}</p>
+            </ng-container>
+            <!-- If Not Eligible -->
+            <ng-container *ngIf="loanStatus==='Referral'">
+              <div class="status-icon bg-warn mx-auto d-flex align-items-center justify-content-center mb-30">
+                <em class="zmdi zmdi-notifications-paused zmdi-hc-3x"></em>
+              </div>
+              <h1 class="section-heading mb-3">{{ifloanEvaluation}}</h1>
+              <p class="sub-title">{{ifloanEvaluationSubline}}</p>
+            </ng-container>
+
+            <button class="btn btn-primary mt-auto mb-md-0 mb-3" *ngIf="loanStatus==='Approved'" routerLink="{{proceedToBankDetailsUrl}}">Proceed</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

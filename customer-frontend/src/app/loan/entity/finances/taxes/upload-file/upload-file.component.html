@@ -1,0 +1,48 @@
+<!-- Footer with Upload Buttons -->
+<div class="pl-3 cell ">{{title}}</div>
+<ng-container *ngFor="let col of taxArray[0].entityFinanceYearlyMappings;let k = index">
+  <ng-container>
+    <div class="upload-btn-cell cell justify-content-between">
+      <ng-container *ngIf="showUploadButton">
+        <input class="d-none position-absolute" #documentName id="{{statementId}}fileupload{{k}}" (change)="uploadFile($event,col,k)" type="file" accept=".pdf,.csv,.xls,.xlsx" />
+        <label *ngIf="!col.documentName && (!uploadFileLoaders || !uploadFileLoaders[k])" class="btn upload-file" for="{{statementId}}fileupload{{k}}">
+          <em class="zmdi zmdi-cloud-upload"></em>
+          Upload {{col.period | slice:-4}} File
+        </label>
+      </ng-container>
+      <ng-container *ngIf="noFileslabel">
+        <label *ngIf="!col.documentName && (!uploadFileLoaders || !uploadFileLoaders[k])" class="w-100 text-center mb-0" >No Files!</label>
+      </ng-container>
+      <div id="dotted-loader" class="mx-auto" *ngIf="uploadFileLoaders && uploadFileLoaders[k]">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="vertical-center flex-grow-1 justify-content-between  px-2" *ngIf="col.documentName && (!uploadFileLoaders || !uploadFileLoaders[k])">
+        <div class="vertical-center flex-grow-1">
+          <ng-container *ngIf="col.documentName?.split('.').pop() === 'pdf'">
+            <img src="{{pdfIcon}}" alt="file Type" />
+          </ng-container>
+          <ng-container *ngIf="col.documentName?.split('.').pop() !== 'pdf'">
+            <img src="{{forAllFormatIcon}}" width="12" alt="file Type" />
+          </ng-container>
+          <ng-container>
+            <span class="file-info ml-1 flex-grow-1 pr-2">{{ col.documentName }}</span>
+          </ng-container>
+        </div>
+
+        <div class="file-action-btn" *ngIf="col.documentName">
+          <button class="btn p-0" (click)="downloadFile(col)">
+            <em class="zmdi zmdi-download zmdi-hc-lg"></em>
+          </button>
+          <button *ngIf="showDeleteButton" (click)="clear(col)" class="btn p-0 ml-1">
+            <em class="zmdi zmdi-delete "></em>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<!-- Footer with Upload Buttons -->

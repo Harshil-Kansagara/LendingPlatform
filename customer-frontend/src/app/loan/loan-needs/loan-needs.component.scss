@@ -1,0 +1,40 @@
+@import 'variables';
+
+// Only component specific styles here
+.form-group{
+    text-align: center;
+    min-height: 100px;
+    &:not(:last-of-type){
+        margin-bottom: 83px;
+    }
+}
+
+.loan-needs-options{
+    .rect-radio:not(:last-child){
+        margin-bottom: 20px;
+    }
+    .rect-control-label {
+        height: 50px;
+        padding: 6px 15px;
+    }
+    .zmdi{margin-right: 10px;}    
+}
+.custom-control-input:checked {
+    & ~ .rect-control-label {
+        background-color: var(--select-bg-clr);
+    }
+}
+
+.pad-60-20{
+    padding: 60px 20px;
+}
+
+// Media Query
+
+// For laptop and above devices
+@media(min-width:1200px){
+    .rect-radio .zmdi{
+        font-size: $font-26;
+    }
+}
+

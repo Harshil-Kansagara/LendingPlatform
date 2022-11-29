@@ -1,0 +1,141 @@
+<!-- Component header -->
+<app-component-header [backRoute]="backRoute" title="Additional Documents"></app-component-header>
+
+<!-- Additional Documents -->
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+      <ng-container *ngIf="!loader">
+        <div class="default-card upload-options">
+          <h2 class="section-heading mx-auto">
+            {{uploadAdditionalDocument}}
+          </h2>
+          <!-- Business related documents -->
+          <div class="w-580 mx-auto">
+            <p *ngIf="(appService.businessRelatedDocumentsData && appService.businessRelatedDocumentsData.length>0) || !isViewOnlyMode" class="text-center document-option-box">{{businessRelatedDocument}}</p>
+            <!-- Uploaded file block -->
+            <div class="white-card pad-30 d-sm-flex align-items-center justify-content-between mb-20" *ngFor="let additionalDocument of appService.businessRelatedDocumentsData; let i=index">
+              <div class="uploaded-files">
+                <img src="{{pdfIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === pdf">
+                <img src="{{xlsIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === xls">
+                <img src="{{pngIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === png">
+                <img src="{{jpegIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === jpeg">
+                <img src="{{csvIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === csv">
+                <img src="{{docxIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === docx">
+                <p class="mb-0 file-name d-inline-block mlm-5 align-middle" [title]="additionalDocument.document.document.name">
+                  {{additionalDocument.document.document.name}}
+                </p>
+              </div>
+              <!-- File Options -->
+              <div class="d-flex align-items-center flex-wrap">
+                <!-- Document type selector -->
+                <ng-select class="small-select mt-md-0 additional-document-select" [items]="businessDocumentTypeList" [clearable]="false" [searchable]="false" [disabled]="additionalDocument.isDbData" [(ngModel)]="additionalDocument.document.documentType" placeholder="Type" bindLabel="type" (change)="selectDocumentType($event, additionalDocument.document, i)">
+                </ng-select>
+
+                <!-- Download and Delete options -->
+                <!-- class 'disable-content' is added to disable delete button when view only mode is enabled -->
+                <span *ngIf="!additionalDocument.isFileUploading">
+                  <button class="btn btn-outline-default ml-sm-2 btn-size-30 p-0" (click)="fileDownload(additionalDocument.document)"><em class="zmdi zmdi-download"></em></button>
+                  <button class="btn btn-outline-default ml-2 btn-size-30 p-0 disable-content" (click)="fileRemove(i, resourceType.Company)"><em class="zmdi zmdi-delete"></em></button>
+                </span>
+              </div>
+              <!-- Loader till file uploads -->
+              <div class="ml-auto" id="dotted-loader" *ngIf="additionalDocument.isFileUploading">
+                <span *ngFor="let n of [1,2,3,4]"></span>
+              </div>
+            </div>
+            <!-- Drag and drop file zone -->
+            <ngx-file-drop class="upload-file disable-content" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, resourceType.Company)" *ngIf="!isViewOnlyMode" accept="allowedCommaSeparatedFileExtensions">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                <div class="upload-content mx-auto">
+                  <div class="additional-document-left">
+                    <em class="zmdi zmdi-cloud-upload"></em>
+                    <p>
+                      Drag and drop here
+                      <span class="font-12 d-block">{{allowedExtensions}}</span>
+                    </p>
+                  </div>
+                  <div class="additional-document-right">
+                    <p>or</p>
+                    <div class="d-block upload-button">
+                      <button type="button" class="btn btn-outline-primary" (click)="openFileSelector()">Browse Files</button>
+                      <p class="mb-0 mt-1 font-12">[Max size of each file: 20MB]</p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-file-drop>
+
+            <!-- Shareholder related documents -->
+            <p *ngIf="(appService.shareholderRelatedDocumentsData && appService.shareholderRelatedDocumentsData.length >0) || !isViewOnlyMode" class="text-center document-option-box mt-60">{{shareHolderDocument}}</p>
+            <!-- Uploaded file block -->
+            <div class="white-card pad-30 d-sm-flex align-items-center justify-content-between mb-20" *ngFor="let additionalDocument of appService.shareholderRelatedDocumentsData; let j=index">
+              <div class="uploaded-files">
+                <img src="{{pdfIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === pdf">
+                <img src="{{xlsIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === xls">
+                <img src="{{pngIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === png">
+                <img src="{{jpegIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === jpeg">
+                <img src="{{csvIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === csv">
+                <img src="{{docxIcon}}" alt="file type" class="d-inline-block" *ngIf="additionalDocument.fileType === docx">
+                <p class="mb-0 file-name mlm-5 d-inline-block align-middle" [title]="additionalDocument.document.document.name">
+                  {{additionalDocument.document.document.name}}
+                </p>
+              </div>
+              <!-- File Options -->
+              <div class="d-flex align-items-center flex-wrap">
+                <!-- Document type selector -->
+                <ng-select class="small-select mt-md-0" [items]="shareholderDocumentTypeList" [clearable]="false" [searchable]="false" [disabled]="additionalDocument.isDbData" [(ngModel)]="additionalDocument.document.documentType" placeholder="Type" bindLabel="type"
+                           (change)="selectDocumentType($event, additionalDocument.document, j)">
+                </ng-select>
+
+                <!-- Download and Delete options -->
+                <!-- class 'disable-content' is added to disable delete button when view only mode is enabled -->
+                <span *ngIf="!additionalDocument.isFileUploading">
+                  <button class="btn btn-outline-default ml-sm-2 btn-size-30 p-0" (click)="fileDownload(additionalDocument.document)"><em class="zmdi zmdi-download"></em></button>
+                  <button class="btn btn-outline-default ml-2 btn-size-30 p-0 disable-content" (click)="fileRemove(j, resourceType.User)"><em class="zmdi zmdi-delete"></em></button>
+                </span>
+              </div>
+              <!-- Loader till file uploads -->
+              <div class="ml-auto" id="dotted-loader" *ngIf="additionalDocument.isFileUploading">
+                <span *ngFor="let n of [1,2,3,4]"></span>
+              </div>
+            </div>
+            <!-- Drag and drop file zone -->
+            <ngx-file-drop class="upload-file disable-content" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, resourceType.User)" *ngIf="!isViewOnlyMode" accept="allowedCommaSeparatedFileExtensions">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                <div class="upload-content mx-auto">
+                  <div class="additional-document-left">
+                    <em class="zmdi zmdi-cloud-upload"></em>
+                    <p>
+                      Drag and drop here
+                      <span class="font-12 d-block">{{allowedExtensions}}</span>
+                    </p>
+                  </div>
+                  <div class="additional-document-right">
+                    <p>or</p>
+                    <div class="d-block upload-button">
+                      <button type="button" class="btn btn-outline-primary" (click)="openFileSelector()">Browse Files</button>
+                      <p class="mb-0 mt-1 font-12">[Max size of each file: 20MB]</p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-file-drop>
+          </div>
+        </div>
+        <div class="default-card pad-40 mt-20 text-right">
+          <button class="btn btn-primary w-240" (click)="saveAdditionalDocuments()">
+            <span>Continue</span>
+          </button>
+        </div>
+      </ng-container>
+      <!-- Loader -->
+      <div class="default-card pad-30" *ngIf="loader">
+        <div class="shine radius-5 height-40"></div>
+        <div class="shine radius-5 height-20 mt-20"></div>
+        <div class="shine radius-5 height-300 full-height mt-20"></div>
+      </div>
+      <!-- Loader -->
+    </div>
+  </div>
+</div>

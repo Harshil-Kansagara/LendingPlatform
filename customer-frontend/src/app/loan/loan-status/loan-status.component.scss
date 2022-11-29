@@ -1,0 +1,50 @@
+// Only component specific styles
+
+
+// Import scss variables
+@import'variables';
+
+.loan-status-section{
+    .issue-list{
+        max-width: 372px;
+        color: var(--secondary-txt-clr);
+        font-size: var(--sm);
+    }
+}
+.btn-readmore{
+    padding: 0;
+    font-size: var(--md);
+}
+.sub-title{
+    max-width: 550px;
+}
+
+//Width Class
+.w-500{
+    width: 500px;
+}
+// Height Class
+.height-580{
+    min-height: 580px;
+}
+// Media Query
+
+// For Tablet devices
+@media(max-width:991px){
+    .height-580{
+        min-height: 480px;
+    }
+}
+// For Mobile devices
+@media(max-width:767px){    
+    .height-580{
+        min-height: 380px;
+    }
+    .w-500{
+        max-width: 500px;
+        width: 100%;
+    }
+    .issue-list li.font-16{
+        font-size: $font-xs-14;
+    }
+}

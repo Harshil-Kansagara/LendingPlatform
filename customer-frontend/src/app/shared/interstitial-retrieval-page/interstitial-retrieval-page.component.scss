@@ -1,0 +1,46 @@
+.financial-summary {
+  padding: 40px 80px;
+}
+
+.w-538 {
+  max-width: 538px;
+}
+.existing-finaces {
+  min-height: 570px;
+
+  .btn {
+    width: 240px;
+    padding: 17px 10px;
+    background: var(--white);
+
+    &:hover {
+      background: var(--btn-hover);
+    }
+  }
+
+  .section-heading {
+    margin: 60px 0;
+  }
+}
+
+@media(max-width:767px) {
+  .existing-finaces {
+    min-height: unset;
+
+    img {
+      width: 50px;
+    }
+
+    .section-heading {
+      margin: 25px 0;
+    }
+  }
+}
+
+@media(max-width:570px) {
+  .existing-finaces {
+    .btn {
+      width: 100%;
+    }
+  }
+}

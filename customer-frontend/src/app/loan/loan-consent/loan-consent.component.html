@@ -1,0 +1,554 @@
+<!-- Component header -->
+<app-component-header backRoute={{additionalDocumentsRedirectUrl}} [title]="loanConsentTitle"></app-component-header>
+<!-- Loan products Section -->
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Loader -->
+      <ng-container *ngIf="loader">
+        <!-- Product card -->
+        <div class="default-card pad-30 mb-20">
+          <div class="row gutter-8">
+            <div class="col-md-6">
+              <div class="shine radius-5 height-20"></div>
+            </div>
+          </div>
+          <div class="row gutter-8">
+            <div class="col-md-6" *ngFor="let item of [0,1,2,3]">
+              <div class="shine radius-5 height-100 mt-20"></div>
+            </div>
+          </div>
+          <div class="shine radius-5 height-100 mt-20"></div>
+          <div class="shine radius-5 height-160 full-height mt-20"></div>
+          <div class="shine radius-5 height-100 mt-20"></div>
+        </div>
+        <!-- Finances and Taxes inform card -->
+        <div class="default-card pad-30">
+          <div class="shine radius-5 w-240 height-60 full-height ml-auto"></div>
+        </div>
+      </ng-container>
+      <!-- Loader -->
+      <div class="default-card pad-40 position-relative" *ngIf="applicationDetails !== undefined && loanPurpose !== undefined && applicationDetails.selectedProduct !== undefined && !declarationPending">
+        <!-- Product list view button-->
+        <div class="product-list-view mb-2 d-md-flex align-items-center" *ngIf="applicationDetails.selectedProduct.isPreviousProductMatched !== null && !applicationDetails.selectedProduct.isPreviousProductMatched">
+          <p class="text-danger mb-md-0 pr-3 text-md-left text-center">
+            Your needs have changed. Now, this product is not eligible.
+          </p>
+          <div class="ml-auto text-right listview-button">
+            <span>Go to</span>
+            <button class="btn ml-2" (click)="redirectToProductList()"><em class="zmdi zmdi-format-list-bulleted"></em> Product List</button>
+          </div>
+        </div>
+        <h6 class="text-dark font-weight-bold d-md-block d-flex align-items-center">
+          {{applicationDetails.selectedProduct.name}}
+        </h6>
+        <p class="mb-30">{{applicationDetails.selectedProduct.description}}</p>
+        <div class="row gutter-5">
+          <div class="col-md-6 summary d-md-flex">
+            <div class="summary-header">
+              <p class="mb-0">Loan Amount</p>
+            </div>
+            <div class="summary-body">
+              <em class="zmdi zmdi-money-box "></em>
+              <p class="mb-0 text-dark font-weight-medium">{{currencySymbol}} {{applicationDetails.basicDetails.loanAmount | mask: 'separator':','}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-2 mt-md-0 summary d-md-flex">
+            <div class="summary-header">
+              <p class="mb-0">Term</p>
+            </div>
+            <div class="summary-body">
+              <em class="zmdi zmdi-timer "></em>
+              <p class="mb-0 text-dark font-weight-medium">{{applicationDetails.basicDetails.loanPeriod}} {{periodUnit}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-2 summary d-md-flex">
+            <div class="summary-header">
+              <p class="mb-0">Loan For</p>
+            </div>
+            <div class="summary-body">
+              <em class="zmdi zmdi-case "></em>
+              <div class="summary-desc">
+                <p class="mb-0 text-dark font-weight-medium">
+                  {{loanPurpose.name}}
+                </p>
+                <span class="font-12">{{subLoanPurposeName}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mt-2 summary d-md-flex">
+            <div class="summary-header">
+              <p class="mb-0">Interest Rate*</p>
+            </div>
+            <div class="summary-body">
+              <em class="zmdi zmdi-flower-alt "></em>
+              <p class="mb-0 text-dark font-weight-medium">
+                {{applicationDetails.selectedProduct.productDetails.interestRate}}%
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row gutter-5">
+          <div class="col-12 mt-2">
+            <div class="white-card p-4 radius-5 ">
+              <p class="payout-note text-dark m-0">You will need to pay <span>{{currencySymbol}} {{applicationDetails.selectedProduct.productDetails.monthlyPayment | number: '1.2-2' | mask: 'separator':','}}</span> every month for <span>{{applicationDetails.selectedProduct.productDetails.period}} years</span> to payoff the debt.</p>
+            </div>
+            <div class="white-card pad-30 radius-3 mt-2">
+              <p class="mb-20 text-dark">Monthly repayment (P&I) <span class="d-block float-sm-right">{{currencySymbol}} {{applicationDetails.selectedProduct.productDetails.monthlyPayment | number: '1.2-2' |  mask: 'separator':','}}</span></p>
+              <p class="mb-20 text-dark">Total of payments (based on {{applicationDetails.selectedProduct.productDetails.period * 12}} months term) <span class="d-block float-sm-right">{{currencySymbol}} {{applicationDetails.selectedProduct.productDetails.totalPayment | mask: 'separator':','}}</span></p>
+              <p class="mb-0 text-dark">Total interest paid over life of loan* <span class="d-block float-sm-right">{{currencySymbol}} {{applicationDetails.selectedProduct.productDetails.totalInterest | mask: 'separator':','}}</span></p>
+              <p class="disclaimer-text mt-4 text-sm text-justify font-italic">
+                * {{interestDisclaimer}}
+              </p>
+            </div>
+            <div class="white-card pad-30 radius-10 d-flex justify-content-between align-items-center mt-2">
+              <p class="mb-0 text-dark mr-2">View your <strong>Company financial</strong> information here</p>
+              <div id="dotted-loader" *ngIf="viewButtonLoader">
+                <span *ngFor="let n of [1,2,3,4]"></span>
+              </div>
+              <button type="button" *ngIf="!viewButtonLoader" class="btn btn-outline-primary w-90" (click)="openModal2(summaryModal)">view</button>
+            </div>
+          </div>
+          <div class="col-12 mt-2" *ngIf="personalFinances">
+            <div class="white-card pad-30 radius-10 d-flex justify-content-between align-items-center mt-2">
+              <p class="mb-0 text-dark mr-2">View your <strong>Personal financial</strong> information here</p>
+              <div id="dotted-loader" *ngIf="viewButtonLoader">
+                <span *ngFor="let n of [1,2,3,4]"></span>
+              </div>
+              <button type="button" *ngIf="!viewButtonLoader" class="btn btn-outline-primary w-90" (click)="openModalSummary(personalSummaryModal)">view</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--
+        #locked: Template refrence to add class 'lock-state' when loan goes in locked state.
+       -->
+      <div #locked>
+        <div class="default-card pad-40 mt-20" *ngIf="!declarationPending">
+          <h6 class="text-dark font-weight-bold mb-10">Please provide  your personal information</h6>
+          <form [formGroup]="currentUserDetailsForm" class="personal-information mx-auto" autocomplete="off">
+            <div class="row gutter-8">
+              <ng-template ngFor let-field [ngForOf]="userDetails" let-i="index">
+                <div class="col-md-6 mt-30" *ngIf="!field.addressFields && !field.residencyList">
+                  <label class="mb-0 question-tag">{{field.question}}</label>
+                  <ng-template [ngIf]="field.optionType === 'textbox'">
+                    <input type="text" placeholder="{{field.placeholder}}" formControlName="{{field.formControl}}" class="form-control mt-20"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((currentUserDetailsForm.get(field.formControl).touched ||
+                                currentUserDetailsForm.get(field.formControl).dirty) &&
+                                !currentUserDetailsForm.get(field.formControl).valid)
+                             }" />
+                    <span class="invalid-feedback">
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                    </span>
+                  </ng-template>
+                  <ng-template [ngIf]="field.optionType === 'email'">
+                    <input type="email" placeholder="Email" formControlName="{{field.formControl}}" class="form-control mt-20"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((currentUserDetailsForm.get(field.formControl).touched ||
+                                currentUserDetailsForm.get(field.formControl).dirty) &&
+                                !currentUserDetailsForm.get(field.formControl).valid)
+                             }" readonly />
+                    <span class="invalid-feedback">
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.email">
+                        {{invalidEmail}}
+                      </span>
+                    </span>
+                  </ng-template>
+                  <ng-template [ngIf]="field.optionType === 'ssn'">
+                    <input type="text" [hiddenInput]="maskSSN" (focus)="ssnFocusFunction()" (focusout)="ssnFocusFunction()" mask="XXX-XX-0000" [patterns]="ssnCustomPattern" formControlName="{{field.formControl}}" placeholder="Ex: LP123456789" class="form-control mt-20"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((currentUserDetailsForm.get(field.formControl).touched ||
+                                currentUserDetailsForm.get(field.formControl).dirty) &&
+                                !currentUserDetailsForm.get(field.formControl).valid)
+                             }" />
+                    <span class="invalid-feedback" *ngIf="field.optionType === 'ssn'">
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).invalid && !currentUserDetailsForm.get(field.formControl).errors?.required">
+                        {{invalidSSN}}
+                      </span>
+                    </span>
+                  </ng-template>
+                  <ng-template [ngIf]="field.optionType === 'number'">
+                    <input type="text" placeholder="Phone" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');" formControlName="{{field.formControl}}" name="{{field.formControl}}" class="form-control mt-20"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((currentUserDetailsForm.get(field.formControl).touched ||
+                                currentUserDetailsForm.get(field.formControl).dirty) &&
+                                !currentUserDetailsForm.get(field.formControl).valid)
+                             }" />
+                    <span class="invalid-feedback" *ngIf="field.optionType === 'number'">
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                      <span *ngIf="currentUserDetailsForm.get(field.formControl).invalid && !currentUserDetailsForm.get(field.formControl).errors?.required && field.formControl==='phone'">
+                        {{invalidPhone}}
+                      </span>
+                    </span>
+                  </ng-template>
+                  <ng-template [ngIf]="field.optionType === 'datepicker'">
+                    <div class="default-datepicker position-relative">
+                      <input type="text" readonly placeholder="mm-dd-yyyy" #datepickerYMD="bsDatepicker" [maxDate]="maxDate" class="form-control mt-20" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',containerClass:'theme-default' }"
+                             formControlName="{{field.formControl}}" bsDatepicker
+                             [ngClass]="{
+                                'is-invalid':
+                                      ((currentUserDetailsForm.get(field.formControl).touched ||
+                                      currentUserDetailsForm.get(field.formControl).dirty) &&
+                                      !currentUserDetailsForm.get(field.formControl).valid)
+                                   }">
+                      <span class="invalid-feedback" *ngIf="field.optionType === 'datepicker'">
+                        <span *ngIf="currentUserDetailsForm.get(field.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                      </span>
+                      <em class="zmdi zmdi-calendar-alt zmdi-hc-lg calendar-icon" (click)="datepickerYMD.toggle()"></em>
+                    </div>
+                  </ng-template>
+
+                </div>
+                <div class="col-md-12 mt-30" *ngIf="field.residencyList">
+                  <label class="mb-0 question-tag">{{field.question}}</label>
+                  <div class="d-md-flex align-items-center mt-20">
+                    <div class="custom-control custom-radio residency-radio" *ngFor="let option of field.residencyList;let i = index">
+                      <input type="radio" id="customRadio_{{i}}" value="{{option.name}}" name="residencyStatus" formControlName="residencyStatus" class="custom-control-input">
+                      <label class="custom-control-label" for="customRadio_{{i}}">{{option.name | residencyStatusEnum}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-30" *ngIf="field.addressFields">
+                  <label class="mb-0 question-tag">{{field.question}}</label>
+                  <div class="custom-control custom-checkbox mt-3" *ngIf="!isViewOnlyMode && !isBusinessTypeCCorp">
+                    <input type="checkbox" class="custom-control-input" id="sameAddress" [checked]="isAddressSameAsBusinessAddress" (click)="addressIsSameAsBusiness()">
+                    <label class="custom-control-label text-dark" for="sameAddress">{{addressSameAsBusinessText}}</label>
+                  </div>
+                  <div class="row gutter-8">
+                    <div class="col-md-6" *ngFor="let address of field.addressFields">
+                      <ng-template [ngIf]="address.optionType === 'typeahead'">
+                        <div class="position-relative typeahead  mt-20">
+                          <input [typeahead]="addressSuggestions" [typeaheadAsync]="true" typeaheadWaitMs="500" typeaheadOptionField="text" (typeaheadOnSelect)="onSelect($event)" [adaptivePosition]="true" type="text" formControlName="streetLine" name="streetLine" placeholder="Search Street Line Here..." class="form-control "
+                                 [ngClass]="{ 'is-invalid':
+                                ((currentUserDetailsForm.get(address.formControl).touched ||
+                                 currentUserDetailsForm.get(address.formControl).dirty) &&
+                                !currentUserDetailsForm.get(address.formControl).valid)
+                             }" [readonly]="isAddressSameAsBusinessAddress" />
+                          <em class="zmdi zmdi-search search-icon"></em>
+                        </div>
+                      </ng-template>
+                      <input type="text" *ngIf="address.optionType === 'textbox' && address.formControl !== 'zipCode'" placeholder="{{address.placeholder}}" class="form-control  mt-20" formControlName="{{address.formControl}}" name="{{address.formControl}}"
+                             [ngClass]="{ 'is-invalid':
+                                ((currentUserDetailsForm.get(address.formControl).touched ||
+                                 currentUserDetailsForm.get(address.formControl).dirty) &&
+                                !currentUserDetailsForm.get(address.formControl).valid)
+                             }" [readonly]="isAddressSameAsBusinessAddress" />
+                      <input type="text" *ngIf="address.optionType === 'textbox' && address.formControl === 'zipCode'" placeholder="{{address.placeholder}}" class="form-control  mt-20" formControlName="{{address.formControl}}" name="{{address.formControl}}" maxlength="11"
+                             [ngClass]="{ 'is-invalid':
+                                ((currentUserDetailsForm.get(address.formControl).touched ||
+                                 currentUserDetailsForm.get(address.formControl).dirty) &&
+                                !currentUserDetailsForm.get(address.formControl).valid)
+                             }" [readonly]="isAddressSameAsBusinessAddress" />
+                      <span class="invalid-feedback" *ngIf="address.optionType === 'textbox'">
+                        <span *ngIf="currentUserDetailsForm.get(address.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                        <span *ngIf="currentUserDetailsForm.get(address.formControl).invalid && !currentUserDetailsForm.get(address.formControl).errors?.required">
+                          {{invalidZipCode}}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div #locked>
+        <div class="default-card pad-40 mt-20" *ngIf="!declarationPending">
+          <h6 class="text-dark font-weight-bold mb-30" *ngIf="consentStatements.length > 0">Consents (This would be bank specific legal / compliance language):</h6>
+          <div class="custom-control custom-checkbox" *ngFor="let statement of consentStatements;let i = index" [class.mt-20]="i>0">
+            <input type="checkbox" checked *ngIf="applicationStatus && loanApplicationStatusEnum[applicationStatus] !== loanApplicationStatusEnum.Draft" class="custom-control-input" id="customCheck{{i}}">
+            <input type="checkbox" *ngIf="!applicationStatus || loanApplicationStatusEnum[applicationStatus] === loanApplicationStatusEnum.Draft" class="custom-control-input" id="customCheck{{i}}">
+            <label class="custom-control-label text-dark" (click)="selectConsent(statement.consentText)" for="customCheck{{i}}">
+              {{statement.consentText}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your Partners declaration is pending -->
+      <div class="status-block mt-20" *ngIf="loanApplicationStatusEnum[applicationStatus] === loanApplicationStatusEnum.Draft &&  declarationPending">
+        <div class="default-card pad-20 height-360 d-flex align-items-center justify-content-center flex-column">
+          <ng-container *ngIf="declarationPending">
+            <div class="status-icon bg-warn mx-auto d-flex align-items-center justify-content-center mb-30">
+              <em class="zmdi zmdi-hourglass-alt zmdi-hc-3x"></em>
+            </div>
+            <h1 class="section-heading mb-3">
+              <ng-container *ngIf="relatives && relatives.length < 3">We need your partner's consent to proceed with your application.</ng-container>
+              <ng-container *ngIf="relatives && relatives.length >= 3">We need your partners' consents to proceed with your application.</ng-container>
+            </h1>
+            <p class="sub-title mb-0">
+              <ng-container *ngIf="relatives && relatives.length < 3">We will process your request and inform you when we have received this consent.</ng-container>
+              <ng-container *ngIf="relatives && relatives.length >= 3">We will process your request and inform you when we have received these consents.</ng-container>
+            </p>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Shareholders' details card -->
+      <div class="default-card pad-40 mt-20" *ngIf="relatives !== undefined">
+        <h6 class="text-dark font-weight-bold mb-20" *ngIf="relatives.length > 1">Your partners shall be informed via mail and requested to provide there consent.</h6>
+        <div class="row gutter-8">
+          <div class="col-md-6 d-md-flex" *ngFor="let relative of relatives">
+            <div class="white-card user-details-card">
+              <ul class="list-unstyled">
+                <li><em class="zmdi zmdi-email"></em><span [title]="relative.user.email" class="text-ellipses">{{relative.user.email}}</span></li>
+                <li><img src="assets/images/PercentageShare.svg" class="share-icon" alt="share percentage icon" /> {{relative.relationMapping.sharePercentage}}</li>
+              </ul>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="mb-0 font-12 text-danger font-italic" *ngIf="relative.id === currentUserDetails.id">You</p>
+                <p class="mb-0 font-12 text-warning text-right font-italic w-100" *ngIf="relative.consents.length === 0">Pending</p>
+                <p class="mb-0 font-12 text-success text-right font-italic w-100" *ngIf="relative.consents.length > 0">Done</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="default-card pad-40 mt-20 text-right" *ngIf="applicationDetails !== undefined && applicationDetails.selectedProduct !== undefined && !allDeclarationDone && !declarationPending">
+        <button class="btn btn-primary w-240" [disabled]="loanSubmissionInProgress || (applicationDetails.selectedProduct.isPreviousProductMatched!==null && !applicationDetails.selectedProduct.isPreviousProductMatched)" (click)="saveConsent()">
+          <span *ngIf="!loanSubmissionInProgress">Confirm</span>
+          <span *ngIf="loanSubmissionInProgress">Please Wait ...</span>
+        </button>
+      </div>
+      <div class="default-card pad-40 mt-20 text-right" *ngIf="allDeclarationDone && isViewOnlyMode">
+        <button class="btn btn-primary w-240" [routerLink]="statusRedirectUrl">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Finances and tax info Modal -->
+<ng-template #summaryModal>
+  <div class="modal-header mb-30">
+    <h4 class="modal-title pull-left">Financial and Taxes Information</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <em class="zmdi zmdi-close"></em>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Company Info -->
+    <div class="company-info pad-30 mb-30 radius-5" *ngIf="applicationDetails.borrowingEntities.length !== 0">
+      <a routerLink="." (click)="redirectToSection(companyInfoRedirectUrl)" *ngIf="!isViewOnlyMode" class="edit-btn"><em class="zmdi zmdi-edit zmdi-hc-lg"></em></a>
+      <div class="table-responsive">
+        <table class="table table-borderless mb-0">
+          <tr>
+            <td>Company Type</td>
+            <td>{{applicationDetails.borrowingEntities[0].company.companyStructure.structure}}</td>
+          </tr>
+          <tr>
+            <td>
+              <span *ngIf="applicationDetails.borrowingEntities[0].company.companyStructure.structure === 'Proprietorship'">SSN</span>
+              <span *ngIf="applicationDetails.borrowingEntities[0].company.companyStructure.structure !== 'Proprietorship'">EIN</span>
+            </td>
+            <td>{{applicationDetails.borrowingEntities[0].company.cin | secureInput}}</td>
+          </tr>
+          <tr>
+            <td>Company's Name</td>
+            <td>{{applicationDetails.borrowingEntities[0].company.name}}</td>
+          </tr>
+          <tr>
+            <td>Located</td>
+            <td>
+              {{applicationDetails.borrowingEntities[0].address.primaryNumber}} {{applicationDetails.borrowingEntities[0].address.streetLine}}, {{applicationDetails.borrowingEntities[0].address.city}}
+              {{applicationDetails.borrowingEntities[0].address.stateAbbreviation}} {{applicationDetails.borrowingEntities[0].address.zipCode}}
+            </td>
+          </tr>
+          <tr>
+            <td>Industry</td>
+            <td>{{applicationDetails.borrowingEntities[0].company.industryType.industryType}}</td>
+          </tr>
+          <tr>
+            <td>In Business</td>
+            <td>{{applicationDetails.borrowingEntities[0].company.businessAge.age}}</td>
+          </tr>
+          <tr>
+            <td>People Work</td>
+            <td>{{applicationDetails.borrowingEntities[0].company.companySize.size}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- Company Info -->
+
+    <div class="white-card radius-10 pad-30 finances-tab" *ngIf="newData">
+      <div class="d-flex align-items-center">
+        <h6 id="dialog-events-name" class="mb-3 modal-title text-dark">{{statement}}  <span *ngIf="statement !=='Key Ratios'"> for the Fiscal Year Ended December 31 ($ in Thousands)</span></h6>
+        <a routerLink="." (click)="redirectToSection(financeRedirectUrl)" *ngIf="!isViewOnlyMode" class="edit-btn mb-md-0 mb-2"><em class="zmdi zmdi-edit zmdi-hc-lg"></em></a>
+      </div>
+      <tabset>
+        <tab heading="Balance Sheet" (selectTab)="selectedStatement('Balance Sheet')" customClass="w-168">
+          <app-statement-modal [data]="balanceSheetData" [periodList]="periodList"></app-statement-modal>
+        </tab>
+        <tab heading="Income Statement" (selectTab)="selectedStatement('Income Statement')" customClass="w-168">
+          <app-statement-modal [data]="incomeStatementData" [periodList]="periodList"></app-statement-modal>
+        </tab>
+        <tab heading="Cash flow" (selectTab)="selectedStatement('Cash Flow Statement')" customClass="w-168">
+          <app-statement-modal [data]="cashFlowData" [periodList]="periodList"></app-statement-modal>
+        </tab>
+        <tab heading="Key Ratios" (selectTab)="selectedStatement('Key Ratios')" customClass="w-168">
+          <app-statement-modal [data]="ratioData" [periodList]="periodList"></app-statement-modal>
+        </tab>
+      </tabset>
+    </div>
+
+    <div class="white-card data-loading radius-5" *ngIf="!newData">
+      <h2 class="section-heading">
+        {{retrieveHeading}}
+      </h2>
+      <p class="mb-0 text-dark note mt-30 text-center font-16 mx-auto">{{retrieveInfo}}</p>
+    </div>
+
+    <!-- Uploaded Docs -->
+    <div class="mt-60">
+      <div class="d-flex align-items-center">
+        <h6 id="dialog-events-name" class="mb-3 modal-title text-dark documents-title">Tax Returns</h6>
+        <a routerLink="." (click)="redirectToSection(taxesRedirectUrl)" *ngIf="!isViewOnlyMode" class="edit-btn"><em class="zmdi zmdi-edit zmdi-hc-lg"></em></a>
+      </div>
+      <ng-container *ngIf="isTaxUploading">
+        <div class="white-card file-uploading d-flex flex-column justify-content-center">
+          <h2 class="section-heading">
+            {{fileUploadingHeading}}
+          </h2>
+          <div class="text-center mt-30">
+            <p class="mb-0 text-dark note font-16 mx-auto">{{fileUploadingInfo}}</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isTaxUploading">
+        <div class="row gutter-5">
+          <div class="col-md-6 mt-2" *ngFor="let tax of taxes">
+            <div class="radius-10 pad-20 d-sm-flex align-items-start white-card">
+              <p class="mb-sm-0 file-year">{{tax.entityTaxAccount.period}}</p>
+              <div class="ml-sm-4 w-100">
+                <div class="uploaded-files">
+                  <img src="{{pdfIcon}}" alt="pdf" class="d-inline-block">
+                  <p class="mb-0  file-name mlm-5 d-inline-block align-top" [title]="tax.entityTaxAccount.document.name">
+                    {{tax.entityTaxAccount.document.name}}
+                  </p>
+                  <button class="btn btn-outline-default btn-size-30 p-0 ml-2 " (click)="downloadTaxFile(tax)"><em class="zmdi zmdi-download"></em></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="mt-60" *ngIf="(shareholderRelatedGroupedDocuments.length > 0 || businessRelatedGroupedDocuments.length > 0) || isAdditionalDocumentUploading">
+      <div class="d-flex align-items-center">
+        <h6 id="dialog-events-name" class="mb-3 modal-title text-dark documents-title">{{additionalDocumentsText}}</h6>
+        <a routerLink="." (click)="redirectToSection(additionalDocumentsRedirectUrl)" *ngIf="!isViewOnlyMode" class="edit-btn"><em class="zmdi zmdi-edit zmdi-hc-lg"></em></a>
+      </div>
+      <ng-container *ngIf="isAdditionalDocumentUploading">
+        <div class="white-card file-uploading d-flex flex-column justify-content-center">
+          <h2 class="section-heading">
+            {{fileUploadingHeading}}
+          </h2>
+          <div class="text-center mt-30">
+            <p class="mb-0 text-dark note font-16 mx-auto">{{fileUploadingInfo}}</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isAdditionalDocumentUploading">
+        <ng-container *ngIf="businessRelatedGroupedDocuments.length > 0">
+          <p class="documents-sub-title">{{businessRelatedDocument}}</p>
+          <div class="row gutter-5 mb-40">
+            <ng-container *ngFor="let groupedDocument of businessRelatedGroupedDocuments">
+              <div class="col-md-6 mt-2">
+                <div class="radius-10 pad-20 d-sm-flex align-items-start white-card">
+                  <p class="mb-sm-0 file-year d-inline-block align-top">{{groupedDocument.type.type}}</p>
+                  <div class="ml-sm-2 w-100">
+                    <ng-container *ngFor="let documentWithFileType of groupedDocument.documents">
+                      <div class="uploaded-files d-flex align-items-center justify-content-between mb-10">
+                        <div>
+                          <img src="{{pdfIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === pdf">
+                          <img src="{{xlsIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === xls">
+                          <img src="{{pngIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === png">
+                          <img src="{{jpegIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === jpeg">
+                          <img src="{{csvIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === csv">
+                          <img src="{{docxIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === docx">
+                          <p class="mb-0  file-name mlm-5 d-inline-block align-top ">
+                            {{documentWithFileType.additionalDocument.document.name}}
+                          </p>
+                        </div>
+                        <button class="btn btn-outline-default btn-size-30 p-0 ml-2" (click)="downloadAdditionalDocument(documentWithFileType.additionalDocument.document)"><em class="zmdi zmdi-download"></em></button>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="shareholderRelatedGroupedDocuments.length > 0">
+          <p class="documents-sub-title">{{shareHolderDocument}}</p>
+          <div class="row gutter-5 mb-40">
+            <ng-container *ngFor="let groupedDocument of shareholderRelatedGroupedDocuments">
+              <div class="col-md-6 mt-2">
+                <div class="radius-10 pad-20 d-sm-flex align-items-start white-card">
+                  <p class="mb-sm-0 file-year d-inline-block align-top">{{groupedDocument.type.type}}</p>
+                  <div class="ml-sm-2 w-100">
+                    <ng-container *ngFor="let documentWithFileType of groupedDocument.documents">
+                      <div class="uploaded-files d-flex align-items-center justify-content-between mb-10">
+                        <div>
+                          <img src="{{pdfIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === pdf">
+                          <img src="{{xlsIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === xls">
+                          <img src="{{pngIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === png">
+                          <img src="{{jpegIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === jpeg">
+                          <img src="{{csvIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === csv">
+                          <img src="{{docxIcon}}" alt="file type" class="d-inline-block" *ngIf="documentWithFileType.fileType === docx">
+                          <p class="mb-0  file-name mlm-5 d-inline-block align-top">
+                            {{documentWithFileType.additionalDocument.document.name}}
+                          </p>
+                        </div>
+                        <button class="btn btn-outline-default btn-size-30 p-0 ml-2" (click)="downloadAdditionalDocument(documentWithFileType.additionalDocument)"><em class="zmdi zmdi-download"></em></button>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #personalSummaryModal>
+  <div class="modal-header mb-30">
+    <h4 class="modal-title pull-left">{{summary}}</h4>
+    <div class="right-icons">
+      <button (click)="redirectToSection(personalFinancesRedirectUrl)" *ngIf="!isViewOnlyMode" class="edit-btn-summary mb-md-0 mb-2 mr-2 d-inline-block align-middle">
+        <em class="zmdi zmdi-edit summary-edit "></em>
+      </button>
+      <button type="button" class="close pull-right d-inline-block align-middle" aria-label="Close" (click)="modalRef.hide()">
+        <em class="zmdi zmdi-close"></em>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <app-personal></app-personal>
+  </div>
+</ng-template>

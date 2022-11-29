@@ -1,0 +1,142 @@
+<div class="position-relative">
+  <button class="btn btn-link p-0 text-sm font-weight-bold delete-btn" *ngIf="!isReadOnly" (click)="deleteRows(data.Rows)"><em class="zmdi zmdi-delete zmdi-hc-lg"></em> Delete</button>
+
+  <!-- Manual Table -->
+  <div class="data-table manual-table">
+    <!-- Main For loop for Rows -->
+    <ng-container *ngFor="let row of data.Rows;let idx = index;">
+      <!-- Render header if RowType value is 1 -->
+      <div *ngIf="row.RowType === 1" class="data-header d-flex">
+        <div class="blank-col width30">
+          <div class="custom-control custom-checkbox" *ngIf="!isReadOnly">
+            <input type="checkbox" (change)="checkAll(selectedAll)" [(ngModel)]="selectedAll" class="custom-control-input" id="{{row.Id}}">
+            <label class="custom-control-label ml-1" for="{{row.Id}}"></label>
+          </div>
+        </div>
+        <div class="type-col">Type</div>
+        <ng-container *ngFor="let col of row.Cells">
+          <div class="data-cell text-uppercase justify-content-end">
+            {{col}}
+          </div>
+        </ng-container>
+      </div>
+      <!-- Render Remaining data if RowType value is not 1 -->
+      <ng-container *ngIf="row.RowType === 2">
+        <!-- main container top-level-heading-->
+        <div class="top-level-heading">
+
+          <!-- First level of data: Parent -->
+          <div class="d-flex header">
+            <div class="blank-col width30">
+              <div class="custom-control custom-checkbox" *ngIf="!isReadOnly">
+                <input type="checkbox" (change)="updateSelectedCheckboxOnRows(row.Rows, row.IsSelected);" [(ngModel)]="row.IsSelected" class="custom-control-input" id="{{row.Id}}">
+                <label class="custom-control-label ml-1" for="{{row.Id}}"></label>
+              </div>
+            </div>
+            <div class="blank-col width30 ">
+              <!-- Accordion btn -->
+              <button *ngIf="row.Rows.length > 0" class="btn p-0" (click)="collapsed(idx)" [class.collapsed]="idx===isCollapsed">
+                <em class="zmdi zmdi-chevron-right"></em>
+                <em class="zmdi zmdi-chevron-down"></em>
+              </button>
+              <!-- Accordion btn End-->
+            </div>
+            <!-- Parent Title -->
+            <div class="data-cell data-title d-flex align-items-center">
+              <!-- Add btn -->
+              <button class="btn p-0" *ngIf="!isReadOnly" (click)="addChild(row,idx)"><em class="zmdi zmdi-plus-square"></em></button>
+              <!-- Add btn End-->
+              <label class="font-weight-bold mb-0 text-uppercase">{{row.Title}}</label>
+            </div>
+            <!-- Parent Title End-->
+            <!-- Parent Cell values -->
+            <div class="data-cell" *ngFor="let cell of row.Cells; let idx2 = index; trackBy:trackByFn">
+              <label *ngIf="!isEditAmount(row)" class="flex-grow-1 mb-0 font-weight-bold text-right">{{cell}}</label>
+              <input *ngIf="isEditAmount(row)" mask="separator" thousandSeparator="," [(ngModel)]="row.Cells[idx2]" name="cell" class="form-control font-weight-bold  text-right" placeholder="0.00">
+            </div>
+            <!-- Parent Cell values End-->
+          </div>
+          <!-- First level of data: Parent End-->
+          <!-- Collapsable child data -->
+          <div [isAnimated]="true" [collapse]="idx!==isCollapsed">
+            <!-- Second For loop for child data -->
+            <div *ngFor="let child of row.Rows; let idx3 = index;">
+              <!-- Second level of data: Child -->
+              <div class="d-flex rows-data">
+                <div class="blank-col width30">
+                  <div class="custom-control custom-checkbox" *ngIf="!isReadOnly">
+                    <input type="checkbox" (change)="updateSelectedCheckboxOnRows(child.Rows, child.IsSelected);" [(ngModel)]="child.IsSelected" class="custom-control-input" id="{{child.Id}}">
+                    <label class="custom-control-label ml-1" for="{{child.Id}}"></label>
+                  </div>
+                </div>
+                <div class="blank-col width30">
+                  <!-- Accordion btn -->
+                  <button *ngIf="child.Rows.length > 0" class="btn p-0" (click)="childCollapsed(idx3)" [class.collapsed]="idx3===isChildCollapsed">
+                    <em class="zmdi zmdi-chevron-right"></em>
+                    <em class="zmdi zmdi-chevron-down"></em>
+                  </button>
+                  <!-- Accordion btn End-->
+                </div>
+                <!-- Child Title -->
+                <div class="data-cell data-title d-flex align-items-center">
+                  <!-- Add btn -->
+                  <button class="btn p-0" *ngIf="!isReadOnly" (click)="addSubChild(child,idx3)"><em class="zmdi zmdi-plus-square"></em></button>
+                  <!-- Add btn End-->
+                  <input type="text" *ngIf="!isReadOnly" (change)="checkDuplicateTitleInRows(row.Rows,child.Title)" [(ngModel)]="child.Title" class="form-control" placeholder="Title">
+                  <label *ngIf="isReadOnly" class="mb-0">{{child.Title}}</label>
+                </div>
+                <!-- Child Title End-->
+                <!-- Child Cell values -->
+                <div class="data-cell" *ngFor="let amount of child.Cells; let idx4 = index;trackBy:trackByFn">
+                  <label *ngIf="!isEditAmount(child)" class="ml-3 mb-0 flex-grow-1 text-right">{{amount}}</label>
+                  <input *ngIf="isEditAmount(child)" (change)="updateParentRowsAmount(row, idx4)" type="number" [(ngModel)]="child.Cells[idx4]" name="cell" class="form-control text-right" placeholder="0.00">
+                </div>
+                <!-- Child Cell values End -->
+              </div>
+              <!-- Second level of data: Child End-->
+              <!-- Collapsable Sub child data -->
+              <div [isAnimated]="true" [collapse]="idx3!==isChildCollapsed">
+                <!-- Third For loop for Sub child data -->
+                <div *ngFor="let subchild of child.Rows; let idx5 = index;">
+                  <!-- Third level of data: Sub Child -->
+                  <div class="d-flex rows-data">
+                    <div class="blank-col width30">
+                      <div class="custom-control custom-checkbox" *ngIf="!isReadOnly">
+                        <input type="checkbox" [(ngModel)]="subchild.IsSelected" class="custom-control-input" id="{{subchild.Id}}">
+                        <label class="custom-control-label ml-1" for="{{subchild.Id}}"></label>
+                      </div>
+                    </div>
+                    <div class="blank-col width30"></div>
+                    <!-- Sub Child Title -->
+                    <div class="data-title data-cell">
+                      <input type="text" *ngIf="!isReadOnly" [(ngModel)]="subchild.Title" (change)="checkDuplicateTitleInRows(child.Rows,subchild.Title)" class="form-control ml-3" placeholder="Title">
+                      <label *ngIf="isReadOnly" class="ml-3 mb-0">{{subchild.Title}}</label>
+                    </div>
+                    <!-- Sub Child Title End-->
+                    <!-- Sub Child Cell values -->
+                    <div class="data-cell" *ngFor="let col of subchild.Cells; let idx6 = index;trackBy:trackByFn">
+                      <input type="number" *ngIf="!isReadOnly" (change)="updateChildAndParentRowsAmount(child, idx6, row)" [(ngModel)]="subchild.Cells[idx6]" class="form-control text-right" placeholder="0.00">
+                      <label *ngIf="isReadOnly" class="ml-3 mb-0 flex-grow-1 text-right">{{col}}</label>
+                    </div>
+                    <!-- Sub Child Cell values End -->
+                  </div>
+                  <!-- Third level of data: Sub Child -->
+                </div>
+                <!-- Third For loop for Sub child data End-->
+              </div>
+              <!-- Collapsable Sub child data End-->
+            </div>
+            <!-- Second For loop for child data End-->
+          </div>
+          <!-- Collapsable child data End -->
+        </div>
+        <!-- main container top-level-heading End-->
+      </ng-container>
+    </ng-container>
+    <!-- Footer with Upload Buttons -->
+    <div app-upload-file [title]="uploadTitle" [showUploadButton]="showUploadButton" [noFileslabel]="noFileslabel" [statementId]="statementId" [showDeleteButton]="showDeleteButton" [taxArray]="[entityFinance]" class="data-footer d-flex"></div>
+    <!-- Footer with Upload Buttons -->
+  </div>
+  <!-- Manual Table -->
+
+</div>

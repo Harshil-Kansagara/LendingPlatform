@@ -1,0 +1,39 @@
+
+<div class="custom-container">
+  <!-- Responsive header only visible in device below 1024px -->
+  <div class="header-responsive d-lg-none">
+    <div class="d-flex align-items-center">
+      <button class="navbar-toggler d-lg-none" *ngIf="!hideMenuBtn" type="button" (click)="toggleSidenav()">
+        <em class="zmdi zmdi-menu zmdi-hc-lg"></em>
+      </button>
+      <a routerLink="/" class="navbar-brand brand-logo" ><img src="{{logoImage}}" alt="Company logo" /></a>      
+      <a class="btn back-btn d-lg-none ml-auto mr-0" (click)="goBack()">
+        <em class="zmdi zmdi-long-arrow-left"></em>
+      </a>
+    </div>
+  </div>
+  <!-- Responsive progressbar only visible in device below 1024px -->
+  <div class="progressbar-container d-lg-none p-0 mt-3">
+    <progressbar [animate]="false" [value]="progress" type="success"></progressbar>
+  </div>
+</div>
+
+<!-- Main header -->
+<div class="component-header mb-30">
+  <div class="custom-container d-md-flex justify-content-between align-items-center">
+    <a class="btn back-btn d-lg-block d-none" (click)="goBack()">
+      <em class="zmdi zmdi-long-arrow-left"></em>
+    </a>
+    <h4 class="mb-0 mr-auto" *ngIf="heading">{{title}}</h4>
+    <p class="mb-0 d-none d-md-block secure-label" *ngIf="secureLable">
+      <em class="zmdi zmdi-shield-check font-20 mr-2"></em>
+      <span class="font-16">Secure</span>
+    </p>
+    <!-- For Finances statement, Connection icons with clear button -->
+    <div class="mb-0 mt-3 mt-md-0 ml-auto" *ngIf="connectedService">
+      <img *ngIf="connectedService === 'Quickbooks'" src="assets/images/quickbook-icon@2x.png" alt="statement icons" />
+      <img *ngIf="connectedService === 'Xero'" src="assets/images/xero.svg" width="50" alt="statement icons" />
+      <button class="btn btn-clear" (click)="clearFinances()"><em class="zmdi zmdi-refresh-alt"></em> Clear</button>
+    </div>
+  </div>
+</div>

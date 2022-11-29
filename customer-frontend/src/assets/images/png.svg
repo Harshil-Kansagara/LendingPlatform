@@ -1,0 +1,14 @@
+<svg id="iconfinder_Png_6783467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15.892" height="22.233" viewBox="0 0 15.892 22.233">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.033" y1="0.166" x2="1.063" y2="0.903" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cffcff"/>
+      <stop offset="1" stop-color="#95fafc"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.007" y1="0.503" x2="1" y2="0.503" xlink:href="#linear-gradient"/>
+  </defs>
+  <path id="Path_7605" data-name="Path 7605" d="M19.875,2H10.361a.373.373,0,0,0-.277.119L6.119,6.083A.373.373,0,0,0,6,6.361V22.218A1.982,1.982,0,0,0,7.982,24.2H19.875a1.982,1.982,0,0,0,1.982-1.982V3.982A1.982,1.982,0,0,0,19.875,2Z" transform="translate(-5.965 -1.967)" fill="url(#linear-gradient)"/>
+  <path id="Path_7606" data-name="Path 7606" d="M10.5,1.991a.373.373,0,0,0-.428.087L6.11,6.043a.373.373,0,0,0-.119.46.4.4,0,0,0,.4.246H8.766a1.982,1.982,0,0,0,1.982-1.982V2.388a.4.4,0,0,0-.246-.4Z" transform="translate(-5.956 -1.958)" fill="url(#linear-gradient-2)"/>
+  <path id="Path_7607" data-name="Path 7607" d="M10.982,11H9.4a.4.4,0,0,0-.4.4v7.136a.4.4,0,0,0,.793,0V15.757h1.189a1.189,1.189,0,0,0,1.189-1.189V12.189A1.189,1.189,0,0,0,10.982,11Zm.4,3.568a.4.4,0,0,1-.4.4H9.793V11.793h1.189a.4.4,0,0,1,.4.4Z" transform="translate(-6.586 -3.831)" fill="#577590"/>
+  <path id="Path_7608" data-name="Path 7608" d="M21.775,14.964h-.793a.4.4,0,1,0,0,.793h.4v1.586a.793.793,0,0,1-1.586,0V12.586a.793.793,0,0,1,1.586,0,.4.4,0,0,0,.793,0,1.586,1.586,0,0,0-3.171,0v4.757a1.586,1.586,0,0,0,3.171,0V15.361A.4.4,0,0,0,21.775,14.964Z" transform="translate(-8.658 -3.831)" fill="#577590"/>
+  <path id="Path_7609" data-name="Path 7609" d="M16.781,11a.4.4,0,0,0-.4.4V16.09L14.8,11.27a.381.381,0,0,0-.436-.262.4.4,0,0,0-.333.388v7.136a.4.4,0,0,0,.793,0V13.838l1.586,4.821a.381.381,0,0,0,.373.27h.063a.4.4,0,0,0,.333-.4V11.4A.4.4,0,0,0,16.781,11Z" transform="translate(-7.628 -3.831)" fill="#577590"/>
+</svg>

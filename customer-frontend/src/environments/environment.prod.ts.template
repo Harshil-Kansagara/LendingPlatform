@@ -1,0 +1,39 @@
+export const environment = {
+  production: true,
+  identityServer: {
+    authorityUrl: '#{identityServer:authorityUrl}#',
+    clientId: '#{identityServer:clientId}#',
+    scopes: '#{identityServer:scopes}#',
+    logLevel: #{identityServer:logLevel}#,
+    registrationUrl: '#{identityServer:registrationUrl}#'
+  },
+  apiBaseUrl: '#{apiBaseUrl}#',
+  smartyStreetsAutoCompleteKey: '#{smartyStreetsAutoCompleteKey}#',
+  version: '#{version}#',
+  availableThemes: [
+    {
+      name: '#{availableThemes:0:name}#',
+      logoUrl: '#{availableThemes:0:logoUrl}#',
+      cssUrl: '#{availableThemes:0:cssUrl}#',
+      faviconUrl: '#{availableThemes:0:faviconUrl}#',
+      isEnabled:#{availableThemes:0:isEnabled}#
+    },
+    {
+      name: '#{availableThemes:1:name}#',
+      logoUrl: '#{availableThemes:1:logoUrl}#',
+      cssUrl: '#{availableThemes:1:cssUrl}#',
+      faviconUrl: '#{availableThemes:1:faviconUrl}#',
+      isEnabled: #{availableThemes:1:isEnabled}#
+    }
+  ],
+  miniProfiler: {
+    colorScheme: '#{miniProfiler:colorScheme}#',
+    maxTraces: #{miniProfiler:maxTraces}#,
+    position: '#{miniProfiler:position}#',
+    toggleShortcut: '#{miniProfiler:toggleShortcut}#',
+    showControls: #{miniProfiler:showControls}#,
+    enabled: #{miniProfiler:enabled}#,
+    enableGlobalMethod: #{miniProfiler:enableGlobalMethod}#
+  },
+  defaultFinanceWaitingTime: #{defaultFinanceWaitingTime}#
+};

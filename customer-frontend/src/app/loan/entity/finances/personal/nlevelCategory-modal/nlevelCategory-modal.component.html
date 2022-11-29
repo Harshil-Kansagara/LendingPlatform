@@ -1,0 +1,134 @@
+<div class="personal-finances-body" *ngIf="!showFillParentMessage">
+  <div class="finances-questions" [ngClass]="{'view-only': childRendering}">
+    <!-- Super question -->
+    <div class="question-body top-finance-que" *ngIf="selectedCategory.attributes[0].fieldType === attributeFieldType.Boolean">
+      <p class="question-text mb-0"> {{selectedCategory.attributes[0].text}} </p>
+      <div class="radio-container credit-options d-flex align-items-center">
+        <div class="rect-radio">
+          <input [disabled]="isLocked" type="radio" id="superyes" [value]=true class="custom-control-input" name="isSuperQuestionTrue" [(ngModel)]="selectedCategory.attributes[0].booleanAnswer">
+          <label class="rect-control-label" for="superyes">Yes</label>
+        </div>
+        <div class="rect-radio">
+          <input [disabled]="isLocked" type="radio" id="superno" [value]=false class="custom-control-input" name="isSuperQuestionTrue" [(ngModel)]="selectedCategory.attributes[0].booleanAnswer">
+          <label class="rect-control-label" for="superno">No</label>
+        </div>
+      </div>
+    </div>
+    <div _ngcontent-xwu-c144="" class="custom-control custom-checkbox personal-checkboxes" *ngIf="selectedCategory.attributes[0].fieldType === attributeFieldType.SingleCheckbox">
+      <input type="checkbox" [(ngModel)]="selectedCategory.attributes[0].booleanAnswer" [checked]="selectedCategory.attributes[0].booleanAnswer" class="custom-control-input" [disabled]="isLocked" id="customCheck0">
+      <label class="custom-control-label text-dark" for="customCheck0"> {{selectedCategory.attributes[0].text}} </label>
+    </div>
+  </div>
+  <div class="finances-questions" *ngIf="(selectedCategory.attributes[0].fieldType === attributeFieldType.Boolean && selectedCategory.attributes[0].booleanAnswer) || (selectedCategory.attributes[0].fieldType === attributeFieldType.SingleCheckbox && !selectedCategory.attributes[0].booleanAnswer)" [ngClass]="{'view-only': isLocked}">
+    <div class="sub-section">
+      <ng-container *ngTemplateOutlet="recursiveAttributeSet; context:{ list: selectedCategory.attributes[0].childAttributeSets }"></ng-container>
+    </div>
+  </div>
+  <div class="finances-footer" [ngClass]="{'view-only': isLocked}" *ngIf="!childRendering && !isLocked">
+    <button (click)="save(false)" class="btn btn-primary w-200 disable-content">
+      {{submit}}
+    </button>
+    <button *ngIf="nextModal" (click)="save(true)" class="btn btn-outline-primary w-200 btn-finance disable-content">{{nextModal}}</button>
+  </div>
+</div>
+<div class="text-center d-flex flex-column justify-content-center" *ngIf="showFillParentMessage">
+  <h2>
+    Please complete the <a href="javascript:undefined" (click)="jumpToParentCategory(parentCategory)">{{parentCategory.name}}</a> section
+  </h2>
+</div>
+
+<ng-template #recursiveChildAttributes let-list="list" let-item="item" let-questionOrder="questionOrder">
+  <div *ngFor="let childQueries of list" [ngClass]="{'view-only': isLocked || childRendering}">
+    <div class="disable-content" *ngIf="childQueries.fieldType===attributeFieldType.Boolean">
+      <div class="finances-questions border-top">
+        <div class="question-body">
+          <p class="question-text" *ngIf="childQueries.fieldType!==attributeFieldType.Address">{{childQueries.text}}</p>
+          <div class="radio-container credit-options d-flex align-items-center">
+            <div class="rect-radio">
+              <input type="radio" id="yes{{childQueries.order-1}}{{item.order-1}}" [value]='true' class="custom-control-input" name="booleanQuery{{childQueries.order-1}}-{{item.order-1}}" [(ngModel)]="childQueries.booleanAnswer" (change)="hasSubBooleanChanged(childQueries, item.order)">
+              <label class="rect-control-label" for="yes{{childQueries.order-1}}{{item.order-1}}">Yes</label>
+            </div>
+            <div class="rect-radio">
+              <input [disabled]="isLocked" type="radio" id="no{{childQueries.order-1}}{{item.order-1}}" [value]='false' class="custom-control-input" name="booleanQuery{{childQueries.order-1}}-{{item.order-1}}" [(ngModel)]="childQueries.booleanAnswer" (change)="hasSubBooleanChanged(childQueries, item.order)">
+              <label class="rect-control-label" for="no{{childQueries.order-1}}{{item.order-1}}">No</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="question-body sub-section">
+      <p class="question-text" *ngIf="childQueries.fieldType!==attributeFieldType.Address && childQueries.fieldType!==attributeFieldType.Boolean">{{childQueries.text}}</p>
+      <div class="question-input form-group default-datepicker position-relative" *ngIf="(!childQueries.constant || !childQueries.constant.name) && childQueries.fieldType!==attributeFieldType.Address && childQueries.fieldType!==attributeFieldType.Boolean">
+
+        <input type="text" *ngIf="childQueries.fieldType !== attributeFieldType.Currency && childQueries.fieldType !== attributeFieldType.Date && childQueries.fieldType !== attributeFieldType.BankAccountNumber" [(ngModel)]="childQueries.answer" class="form-control disable-content" />
+        <input type='text' *ngIf="childQueries.fieldType === attributeFieldType.Currency" [(ngModel)]="childQueries.answer" class="form-control disable-content" prefix="{{currency}}" mask="separator" thousandSeparator="," />
+        <input type='text' *ngIf="childQueries.fieldType === attributeFieldType.Date" [(ngModel)]="childQueries.answer" class="form-control disable-content"  placeholder="mm-dd-yyyy" #datepickerYMD="bsDatepicker" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',containerClass:'theme-default' ,adaptivePosition: true}" bsDatepicker />
+        <input type='number' id="bankAccount{{childQueries.order-1}}{{item.order-1}}" *ngIf="childQueries.fieldType === attributeFieldType.BankAccountNumber" [(ngModel)]="childQueries.answer" class="form-control disable-content" />
+        <!--<p class="error-message" *ngIf="childQueries.fieldType === attributeFieldType.BankAccountNumber && childQueries.answer && !childQueries.answer.match(bankRegex)">Bank Account Number is invalid</p>-->
+      </div>
+      <div class="form-group icon-group disable-content" *ngIf="childQueries.constant && childQueries.constant.name">
+
+        <ng-select [items]="childQueries.constant.options" [(ngModel)]="childQueries.answer" bindLabel="value" bindValue="value" class="personal-finances-select">
+          <ng-template ng-label-tmp let-item="item">
+            {{item.value}}
+          </ng-template>
+        </ng-select>
+      </div>
+      <div *ngIf="childQueries.fieldType===attributeFieldType.Address">
+        <p class="question-text">{{childQueries.text}}</p>
+        <div class="row clearfix">
+          <div class="col-md-6 typeahead">
+            <div class="form-group icon-group">
+              <input [(ngModel)]="childQueries.address.streetLine" type="text"
+                     [typeahead]="childQueries.address.addressSuggestion[0]" [typeaheadAsync]="true" typeaheadWaitMs="500" typeaheadOptionField="text" (typeaheadOnSelect)="onSelect($event, childQueries)" [adaptivePosition]="true"
+                     class="form-control disable-content" placeholder="Search Street Line Here..." />
+              <em class="zmdi zmdi-search"></em>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type='text' class="form-control disable-content" placeholder="City" [(ngModel)]="childQueries.address.city" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type='text' class="form-control disable-content" placeholder="State" [(ngModel)]="childQueries.address.stateAbbreviation" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type='text' class="form-control disable-content" placeholder="Zip Code" [(ngModel)]="childQueries.address.zipCode" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="childQueries.fieldType===attributeFieldType.Boolean && childQueries.booleanAnswer">
+        <ng-container *ngTemplateOutlet="recursiveChildAttributes; context:{ list: childQueries.childAttributeSets[0].childAttributes, item:item, questionOrder:childQueries.order }"></ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #recursiveAttributeSet let-list="list">
+  <div class="finances-questions" *ngFor="let item of list;let i = index">
+    <button class="btn btn-icon add-another-account disable-content" *ngIf="(i===0 && addAnotherField && !childRendering)&&!isLocked" (click)="addMoreFields()"><em class="zmdi zmdi-plus-circle-o disable-content"></em> {{addAnotherField}}</button>
+    <accordion>
+      <accordion-group [panelClass]="customClass" [isOpen]="isFirstOpen[item.order - 1]">
+        <div class="quesection-header" accordion-heading>
+          <div class="accordion-header-dropdown">
+            <div>
+              <p class="account-name">
+                <span *ngIf="!identifierName(item)">{{selectorName}} <span *ngIf="addAnotherField && !childRendering">{{item.order}}</span></span>
+                <span *ngIf="identifierName(item)">{{identifierName(item)}}</span>
+                <span class="account-number display-block" *ngIf="subIdentifierName(item)">{{subIdentifierName(item)}}</span>
+              </p>
+              <em class="zmdi zmdi-chevron-down"></em>
+            </div>
+          </div>
+          <a (click)="deleteFields(item.order)" *ngIf="(i !== 0 && !childRendering) && !isLocked"><em class="zmdi zmdi-delete disable-content"></em></a>
+        </div>
+        <ng-container *ngTemplateOutlet="recursiveChildAttributes; context:{ list: item.childAttributes, item:item, questionOrder:item.order }"></ng-container>
+      </accordion-group>
+    </accordion>
+  </div>
+</ng-template>
+

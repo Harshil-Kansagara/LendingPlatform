@@ -1,0 +1,9 @@
+<!-- Default Connect with Option -->
+<div class="default-card connect-options text-center d-flex flex-column justify-content-center" >
+    <img src="assets/images/board.svg" class="board-img" alt="coming soon" >
+    <h2 class="section-heading">
+      {{comingSoonTitile}}
+    </h2>
+    <p class="mb-0 text-dark font-22 note-tag">We're currently working on this feature.</p>
+    <button *ngIf="!hideBtn" (click)="redirect()" class="btn btn-primary w-240 mx-auto d-block">Continue</button>
+</div>

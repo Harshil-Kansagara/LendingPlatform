@@ -1,0 +1,13 @@
+// Only component specific styles here
+.container{
+    padding-top: 113px;
+}
+
+// Media Query
+
+// For Smaller Mobile devices
+@media(max-width:767px){
+    .container{
+        padding-top: 83px;
+    }
+}

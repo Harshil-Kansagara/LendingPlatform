@@ -1,0 +1,200 @@
+<section class="landing-page">
+  <div class="row custom-grid-landing gutter-10 flex-lg-row flex-column-reverse" *ngIf="isRendered">
+    <div class="col-lg-5 col-12 d-flex flex-lg-column flex-column-reverse">
+      <!-- Four Feature blocks -->
+      <div class="row feature-block">
+        <div class="col-md-6" *ngFor="let feature of lendingFeatures">
+          <div class="grid-column" ngClass="{{feature.cssClass}}">
+            <div class="d-flex align-items-center justify-content-between">
+              <p class="mb-0 font-16 text-white feature-title">{{feature.title}}</p>
+              <img src="{{feature.imageUrl}}" class="img-fluid" alt="{{feature.cssClass}}">
+            </div>
+            <p class="mb-0 font-12 text-white mt-10 font-italic">{{feature.description}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Loan Application slider -->
+
+      <owl-carousel-o [options]="loanSliderOptions" class="mt-20 mb-lg-0 mb-20" *ngIf="isLoggedIn && loanApplicationList.length !== 0">
+        <ng-container *ngFor="let application of loanApplicationList;let i = index">
+          <ng-template carouselSlide>
+            <div class="slides" (click)="openLoanApplication(application)">
+              <ng-template [ngIf]="isLoggedIn">
+                <div class="text-center mt-lg-4 mt-md-3 mt-0" *ngIf="application.status === loanApplicationStatusEnum.Locked">
+                  <em class="zmdi zmdi-hourglass-alt zmdi-hc-3x text-secondary"></em>
+                  <!-- Title for loan in Refferal state -->
+                  <h6 class="status-title text-secondary">
+                    {{loanStatusLockedTitle}}
+                  </h6>
+                  <p class="mb-0 font-12 loan-number">No: {{application.loanApplicationNumber}}</p>
+                </div>
+                <!-- Title for loan in Approved state -->
+
+                <div class="text-center mt-lg-4 mt-md-3 mt-0" *ngIf="application.status === loanApplicationStatusEnum.Approved">
+                  <em class="zmdi zmdi-check-all zmdi-hc-3x text-success"></em>
+                  <!-- Title for loan in Refferal state -->
+                  <h6 class="status-title text-success">
+                    {{loanStatusApprovedTitle}}
+                  </h6>
+                  <p class="mb-0 font-12 loan-number">No: {{application.loanApplicationNumber}}</p>
+                </div>
+
+                <div class="text-center mt-lg-4 mt-md-3 mt-0" *ngIf="application.status === loanApplicationStatusEnum.Rejected">
+                  <em class="zmdi zmdi-alert-triangle zmdi-hc-3x text-danger"></em>
+                  <!-- Title for loan in Refferal state -->
+                  <h6 class="status-title text-danger">
+                    {{loanStatusRejectedTitle}}
+                  </h6>
+                  <p class="mb-0 font-12 loan-number">No: {{application.loanApplicationNumber}}</p>
+                </div>
+                <!-- If loan is under Evaluation -->
+                <div class="text-center mt-lg-4 mt-md-3 mt-0" *ngIf="application.status === loanApplicationStatusEnum.Referral">
+                  <em class="zmdi zmdi-notifications-paused zmdi-hc-3x text-warning"></em>
+                  <!-- Title for loan in Refferal state -->
+                  <h6 class="status-title text-warning">
+                    {{evaluationResultMessage}}
+                  </h6>
+                  <p class="mb-0 font-12 loan-number">No: {{application.loanApplicationNumber}}</p>
+                </div>
+                <div class="text-center mt-lg-4 mt-md-3 mt-0" *ngIf="application.status === loanApplicationStatusEnum.Draft">
+                  <em class="zmdi zmdi-hourglass-alt zmdi-hc-3x text-secondary"></em>
+                  <h6 class="status-title text-secondary">
+                    {{loanStatusDraftTitle}}
+                  </h6>
+                  <p class="mb-0 text-sm loan-number">No: {{application.loanApplicationNumber}}</p>
+                  <!-- Loan Steps in progress -->
+                  <div class="position-relative progress-block">
+                    <ul class="list-unstyled d-md-flex loan-processes justify-content-md-between">
+                      <li title="{{section.name}}" *ngFor="let section of loanSections[i];let first=first;let last=last" [ngClass]="{'processing':section.status==='processing', 'pending': section.status==='pending', 'approved': section.status==='approved', 'all-filled': application.createdByUserId !== currentUserId && application.sectionName === personalSection}">
+                        <div class="circle d-flex align-items-center justify-content-center">
+                          <em class="zmdi zmdi-rotate-right text-white zmdi-hc-lg"
+                              *ngIf="section.status === 'processing'"></em>
+                        </div>
+                        <span class="loan-section-title" *ngIf="first">{{section.name}}</span>
+                        <span class="loan-section-title" *ngIf="section.status === 'processing' && !last">{{section.name}}</span>
+                        <span class="loan-section-title" *ngIf="last">{{section.name}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+
+      <!-- Loan Application Default slide when no application  -->
+      <div class="default-border slides mt-20 mb-lg-0 mb-20" *ngIf="(isLoggedIn && loanApplicationList.length === 0) || !isLoggedIn">
+        <h6 class="text-center mb-30">
+          Receive funds as soon as 24 hours directly<br class="d-none d-lg-block"> into your bank account
+        </h6>
+        <div class="d-flex align-items-center flex-wrap">
+          <img src="assets/images/vault.png" class="img-fluid vault-img " alt="vault">
+          <ul class="list-unstyled feature-list mb-0 mr-auto">
+            <li *ngFor="let process of processes" class="d-flex align-items-start">
+              <div class="circle d-flex m-0"></div>
+              <div class="ml-2">
+                <p class="mb-0 font-16">{{process.title}} </p>
+                <span class="d-block font-12 font-italic">{{process.description}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Apply loan or Calculator option -->
+    <div class="col-lg-7 col-12 ">
+      <div class="cover-image position-relative">
+        <img src="assets/images/landing-page-front.png" class="img-fluid w-100" alt="landing page">
+        <div class="caption">
+          <ng-container *ngFor="let info of processSummary">
+            <div class="d-flex align-items-center caption-box">
+              <img src="{{info.iconPath}}" alt="feature icon">
+              <h2 class="text-white font-weight-bold mb-0">{{info.name}}</h2>
+            </div>
+          </ng-container>
+
+          <div class="d-flex">
+            <button class="btn btn-outline-white" (click)="applyLoanAsync(template)">Apply Now</button>
+            <button class="btn btn-outline-white ml-35" (click)="openCalculator()">Calculator</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statement Modal -->
+<ng-template #template>
+
+  <div class="modal-header mb-30">
+    <div>
+      <h4 id="dialog-events-name" class="modal-title pull-left information-modal-title"><img class="info-img" src="../assets/images/information-button.png" alt="information" />{{information}}</h4>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <em class="zmdi zmdi-close"></em>
+    </button>
+  </div>
+  <div *ngIf="!isLoanAlreadyInProgress">
+    <div class="modal-body mb-30 modal-body-info information-landing-page">
+      <p class="">
+        We recommend you collect the following information and / or documents in order to make your application process seamless and easy. You can always come
+        back where you left off in case your missing certain documents or information required for you to submit your completed information. This information will be
+        required for all individuals, who have a 20% ownership in the business. We will request this information directly from other interested parties once you have
+        completed this application.
+
+      </p>
+      <ul>
+        <li>
+          Most recent bank statement
+        </li>
+        <li>
+          Most recent brokerage statement, if applicable
+        </li>
+        <li>Life Insurance Policies</li>
+        <li>Make, model and year of any automobiles you own</li>
+        <li> Most recent credit card statements, if applicable</li>
+        <li>Most recent mortgage statements, if applicable</li>
+        <li>Most recent installment loan statements, if applicable</li>
+        <li>Latest 3 years of Federal Tax Returns</li>
+
+        <li> Personal Identification document (passport or driver's license)</li>
+
+
+      </ul>
+      <p>
+        In addition to the above personal financial information, you will also need the following information about your business:
+      </p>
+      <ul>
+        <li>Management Resume</li>
+        <li>Most recent three years and current interim financial statements (Profit & Loss and Balance Sheet) in case we cannot directly access your business accounts</li>
+        <li>Business Plan and Financial Projections</li>
+        <li>Information on any affiliated businesses, if you have controlling (greater than 20%) interest in any other businesses</li>
+      </ul>
+
+
+
+
+      <p>If you are applying for a loan to purchase an existing business, you will also need the following information in addition to the above list:</p>
+      <ul>
+        <li>
+          Most recent three years and current interim financial statements (Profit & Loss and Balance Sheet) of the business yor are purchasing
+        </li>
+        <li>Letter of intent or purchase agreement</li>
+        <li>Business Plan and Financial Projections for the business you are purchasing, including any income or expense synergies</li>
+      </ul>
+
+    </div>
+    <div class="">
+      <button class="btn btn-primary" (click)="continueLoanAsync()">{{continueApply}}</button>
+    </div>
+  </div>
+  <div *ngIf="isLoanAlreadyInProgress">
+    <div class="modal-body mb-30 modal-body-info">
+      <p class="mb-0">{{loanAlreadyInProgress}}</p>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary" (click)="continueLoanAsync()">{{applyNewLoan}}</button>
+    </div>
+  </div>
+</ng-template>

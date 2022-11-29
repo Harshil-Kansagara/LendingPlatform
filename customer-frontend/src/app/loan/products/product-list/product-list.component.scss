@@ -1,0 +1,84 @@
+// Only component specific styles
+
+// Import scss variables
+@import'variables';
+
+// Product suitability percentage
+.label{
+    background-color: var(--pale-white);
+    padding: 11px 20px;
+    width: 345px;
+    margin-right: -50px;
+    border-radius: 5px 0px 0px 5px;
+    h2{
+        font-size: $font-32;
+        font-weight: 500;
+        color: var(--primary);
+    }
+}
+
+.btn-primary{
+    &.w-240{
+        flex: 0 0 240px;
+    }
+    &.disable-content{
+        opacity: 1;
+    }
+}
+
+// Media query
+
+// For devices upto tablet
+@media(min-width:768px){
+    ::ng-deep .item-notfound .section-heading{
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+// For Tablet devices: landscape only
+@media(min-width:992px) and (max-width:1199px){
+    .product-block{
+        padding: 30px;
+    }
+    .secure-icon{
+        width: 45px;
+    }
+    .label{
+        width: 320px;
+        margin-right: -30px;
+        position: absolute;
+        right: 0;
+        .h2{
+            font-size: $font-26;
+        }
+    }
+    .btn-primary.w-240 {
+        flex: 0 0 220px;
+    }
+    .recommended-badge{
+        width: 100px;
+    }
+}
+// For Tablet devices
+@media(max-width:991px){
+    .label{
+        width: 330px;
+    }
+}
+// For Mobile devices
+@media(max-width:767px){
+    .label{
+        width: 100%;
+        margin: 0;
+    }
+    .btn-primary.w-240 {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .recommended-badge{
+        bottom: auto;
+        width: 70px;
+        right: 20px;
+        left: auto;
+    }
+}

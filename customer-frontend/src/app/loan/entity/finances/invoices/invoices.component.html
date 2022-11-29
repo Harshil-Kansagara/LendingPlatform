@@ -1,0 +1,89 @@
+<!-- Invoices -->
+<div class="row" [class.blur-content]="viewOnly">
+  <div class="col-12 ">
+    <div class="fixed-container" *ngIf="!loader">
+      <ng-container *ngIf="consentVisible">
+        <div class="component-header d-flex align-items-center justify-content-between mb-30">
+          <h4 *ngIf="!connected" class="mb-0">Let Us Add Your Company's Invoices</h4>
+          <h4 *ngIf="connected" class="mb-0">Verify Your Invoices of years from {{startingYear}} to {{endingYear}}</h4>
+
+          <div class="d-flex align-items-center user-info">
+
+            <div class="d-flex align-items-center" *ngIf="connected">
+              <img src="../assets/images/paypal-sign.png" alt="paypal icon" *ngIf="isPaypal" />
+              <img src="../assets/images/stripe-sign.png" alt="stripe icon" *ngIf="isStripe" />
+              <img src="../assets/images/square-sign.png" alt="square icon" *ngIf="isSquare" />
+              <h6 class="mb-0 ml-2">{{userName}}</h6>
+            </div>
+            <button class="btn btn-connect btn-clear ml-3" (click)=" clearConnection()" *ngIf="connected">
+              <em class="zmdi zmdi-refresh-sync mr-1"></em> Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Connect with option -->
+        <div class="connect-options" *ngIf="!connected">
+          <button class="btn connect-btn" (click)="connectWith(payPal)">
+            Connect With
+            <div class="image-container">
+              <img src="../assets/images/paypal.png" alt="paypal icon" />
+            </div>
+          </button>
+          <button class="btn connect-btn" (click)="connectWith(stripe)">
+            Connect With
+            <div class="image-container">
+              <img src="../assets/images/stripe.png" alt="stripe icon" />
+            </div>
+          </button>
+          <button class="btn connect-btn" (click)="connectWith(square)">
+            Connect With
+            <div class="image-container">
+              <img src="../assets/images/square.png" alt="square.inc icon" />
+            </div>
+          </button>
+        </div>
+        <!-- Connect with option -->
+      </ng-container>
+      <ng-container *ngIf="connected && data !== null">
+        <div class="sticky-table" *ngIf="data.invoices.length > 0">
+          <table class="table table-bordered invoice-table table-fixed mb-0">
+            <tr>
+              <th scope="col" class="width30"><span></span></th>
+              <th scope="col"><span>ID</span></th>
+              <th scope="col" class="col-120"><span>Invoice Number</span></th>
+              <th scope="col" class="col-120"><span>Invoice Date</span></th>
+              <th scope="col"><span>Customer</span></th>
+              <th scope="col"><span>Status</span></th>
+              <th scope="col" class="col-120"><span>Total Amount</span></th>
+            </tr>
+            <tbody>
+              <tr *ngFor="let invoice of data.invoices">
+                <td></td>
+                <td>{{invoice.id}}</td>
+                <td>{{invoice.invoiceNumber}}</td>
+                <td>{{invoice.invoiceDate}}</td>
+                <td>{{invoice.recipientEmail}}</td>
+                <td>{{invoice.status}}</td>
+                <td>{{invoice.totalAmount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="p-3 grey-box mt-4" *ngIf="data.invoices.length === 0">
+          <h5 class="text-capitalize text-center mb-0">No Inovices found</h5>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Loader -->
+    <div class="w-100" *ngIf="loader">
+      <div *ngFor="let item of [0,1,2,3,4,5];let i=index">
+        <div class="d-flex flex-wrap answers-placeholder">
+          <div class="answers shine" *ngFor="let item of [0,1,2,3]"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader -->
+  </div>
+</div>
+<!-- Invoices -->

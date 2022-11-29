@@ -1,0 +1,127 @@
+@import'variables';
+// Only component specific styles
+.w-90{width: 90px;}
+.file-year{padding-top: 6px;}
+.company-info{
+    background-color:var(--white);
+    .table{
+        color: var(--dark-text-clr);
+        th,
+        td{
+            padding: 7px 0;
+        }
+        td:first-child{
+            width:200px;
+        }
+    }
+}
+.residency-radio:not(:last-child){
+    margin-right: 15px;
+}
+.edit-btn-summary {
+    background: none;
+    box-shadow: none;
+    border: none;
+    width: auto;
+    height: auto;
+}
+.default-datepicker input:read-only {
+  background-color: var(--white);
+}
+.product-list-view{
+    .btn{
+        background-color: var(--white);
+    }
+}
+.documents-title { font-weight: bold; margin-bottom: 20px !important;
+  
+}
+.documents-sub-title { color: var(--dark-text-clr); font-size: $font-16; margin-bottom: 0;display: block; }
+/**
+* ::ng-deep used to add/override styles from component
+**/
+::ng-deep .finances-tab .nav-tabs {
+  .nav-item { border-left: 0; }
+  .nav-link { border: 1px solid var(--border-clr); }
+}
+.edit-btn{
+    display: block;
+    max-width: 18px;
+    text-align: center;
+    margin-left:auto;
+    color: var(--default-text-clr);
+}
+.file-name {
+  width: 220px;
+  white-space: normal;
+  word-break: break-word;
+  overflow: inherit;
+  text-overflow: unset;
+  &.documents-file-name {
+    width: 190px;
+  }
+}
+.data-loading{
+    margin: 30px 0 10px;
+    padding: 65px 20px 76px;
+}
+
+.file-uploading {
+  padding: 40px 15px 40px;
+}
+
+// Height Class
+.height-360{
+    min-height: 360px;
+}
+
+.mlm-5 {
+  margin-left: 5px;
+}
+
+.user-details-card {
+  min-height: unset;
+
+  .share-icon {
+    margin-right: 8px;
+  }
+}
+
+
+//Image icon size
+.share-icon {
+  width: 18px;
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: 0;
+}
+
+//Media Query
+
+// For devices upto tablet
+@media(min-width:768px){
+    ::ng-deep .finances-tab .nav-tabs{
+        .nav-item:not(:last-child) .nav-link{
+            border-right: 0;
+        }
+    }
+}
+// For Tablet devices
+@media(max-width:991px){
+    .file-name{
+        width: 140px;
+    }
+    ::ng-deep .finances-tab .nav-item.w-168 {
+        max-width: 25%;
+    }
+}
+// For Mobile devices
+@media(max-width:767px){
+    .data-loading{
+        padding: 20px;
+    }
+    ::ng-deep .finances-tab .nav-item.w-168 {
+        max-width: 100%;
+    }
+}

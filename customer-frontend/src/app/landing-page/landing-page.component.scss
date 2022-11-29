@@ -1,0 +1,232 @@
+// Only component specific styles here
+
+// Import scss variables
+@import'variables';
+
+.landing-page { padding-bottom: 30px; }
+.info-img { width: 18px; height: 18px; margin-right: 10px; }
+.information-landing-page {
+
+  ul { padding-left: 40px; list-style: none;
+    li { position: relative; margin-bottom: 10px;
+      &:before { position: absolute; content: '\f273'; font-family: 'Material-Design-Iconic-Font',san-serif; left: -15px; }
+    }
+  }
+  li, p { font-size: $font-14; color: var(--default-text-clr); }
+  p { margin-bottom: 20px; color: var(--dark-text-clr); line-height: 1.8; }
+}
+.caption { width: 100%; padding: 60px; position: absolute; bottom: 0;
+
+  img { margin-right: 20px; }
+
+  h2 { font-size: $font-26; }
+
+  .caption-box { margin-bottom: 30px; }
+}
+
+.feature-block {
+  .grid-column { border-radius: 3px; padding: 20px 20px 10px; height: 138px; background-size: cover !important; // !important used to not rewrite for below classes with background image background-position: center !important;
+
+    &.flexibility { background: var(--purple) url(../../assets/images/flexibility_curve_lines.svg) no-repeat; }
+
+    &.instant { background: var(--blue) url(../../assets/images/instant_curve_lines.svg) no-repeat; }
+
+    &.control { background: var(--dark-green) url(../../assets/images/control_curve_lines.svg) no-repeat; }
+
+    &.transparency { background: var(--warning) url(../../assets/images/transparency_curve_lines.svg) no-repeat; }
+
+    &.control,
+    &.transparency { margin-top: 20px; }
+
+    img { height: 19px; }
+
+    .feature-title { width: 160px; }
+  }
+}
+
+.btn-outline-white { border: 1px solid var(--white); color: var(--white); width: 220px; font-size: $font-18; height: 60px; padding: 12px;
+
+  &:hover { background-color: var(--white); color: var(--dark-violet); }
+}
+
+.ml-35 { margin-left: 35px; }
+
+.cover-image { border-radius: 3px; overflow: hidden; height: 100%;
+
+  img { height: 100%; object-fit: cover; }
+}
+
+.status-title { max-width: 85%; margin: 20px auto; text-align: center; }
+.progress-block { max-width: 96%; margin: 0 auto; }
+.loan-processes { width: 100%; margin: 35px auto 0;
+
+  .loan-section-title { position: absolute; left: 0; margin: 0 auto; right: 0; top: 25px; max-width: 105px; display: inline-flex; text-align: center; justify-content: center; }
+
+  li { font-size: $font-10; text-align: center; font-weight: 500; position: relative; display: flex; flex-direction: column; justify-content: center; flex: 1;
+
+    &:not(:last-child):after { content: ''; position: absolute; width: 100%; left: 50%; height: 2px; background-color: var(--border-clr); }
+
+    &.approved:after, &.all-filled:after { background-color: var(--primary); }
+
+    &:not(.processing) .circle { width: 10px; height: 10px; }
+  }
+
+  .circle {
+    .zmdi-rotate-right { animation: spin 2s infinite linear; -webkit-animation: spin 2s infinite linear; -moz-animation: spin 2s infinite linear; }
+  }
+}
+
+
+// Loan Status styles
+.approved {
+  span { color: var(--dark-text-clr); }
+
+  .circle { background-color: var(--primary); }
+}
+
+.pending {
+  span { color: var(--dark-grey); }
+
+  .circle { background-color: var(--grey); }
+}
+
+.processing {
+  span { color: var(--warning); }
+
+  .circle { background-color: var(--warning); }
+}
+
+// Spinner keyframes for loan in progress
+@-ms-keyframes spin {
+  from { -ms-transform: rotate(0deg); }
+
+  to { -ms-transform: rotate(360deg); }
+}
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+
+  to { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+
+  to { transform: rotate(360deg); }
+}
+
+
+//Loan slides
+.circle { width: 18px; height: 18px; border-radius: 50%; margin: 0 auto; position: relative; z-index: 1; }
+
+.slides { padding: 32px 0 42px; cursor: pointer;
+
+  h6 { color: var(--default-text-clr); padding: 0 15px; font-weight: 400; }
+}
+
+.loan-number { width: 100%; text-align: center; color: var(--default-text-clr); }
+
+.feature-list { flex: 0 0 195px;
+
+  .circle { background-color: var(--success); }
+
+  li:not(:first-child) { margin-top: 22px; position: relative;
+
+    &:after { content: ""; position: absolute; border-left: 1px solid var(--border-clr); height: 40px; width: 1px; left: 8px; bottom: 33px; }
+  }
+}
+
+.vault-img { margin-left: auto; }
+
+
+//Owl Carousel Styles
+::ng-deep .owl-carousel .owl-item { border: 1px solid transparent; box-shadow: inset 0 0 0 1px var(--border-clr); }
+
+::ng-deep .owl-theme {
+  .owl-nav { margin-top: 0; position: absolute; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px 20px 0; }
+
+  .owl-nav [class*="owl-"] { font-weight: 400; color: var(--black) !important; font-size: $font-22; background: transparent !important; padding: 0; opacity: 1; margin: 0;
+
+    &.disabled { opacity: 0.4; }
+  }
+}
+
+// Media Query
+
+// For devices upto Tablet
+@media (min-width: 992px) {
+  .custom-grid-landing {
+    .col-lg-5 { flex: 0 0 44.45%; max-width: 44.45%; }
+
+    .col-lg-7 { flex: 0 0 55.55%; max-width: 55.55%; }
+  }
+
+  .slides { min-height: 318px; }
+}
+
+//For Tablet devices:landscape
+@media(min-width:992px) and (max-width:1199px) {
+  .feature-list { margin: 20px auto 0; }
+
+  .vault-img { margin: 0 auto; }
+}
+// For Mobile devices
+@media (max-width: 767px) {
+  .progress-block { max-width: 200px; }
+  .caption { padding: 20px; width: 100%;
+
+    h2 { font-size: $font-xs-20; }
+  }
+
+  .btn-outline-white { font-size: $font-xs-16; height: 45px; padding: 8px;
+
+    &.ml-35 { margin-left: 20px; }
+  }
+
+  .feature-list { margin: 20px auto 0; }
+
+  .loan-processes {
+
+    li { flex-direction: row; justify-content: flex-start; align-items: center; min-height: 18px;
+      &:not(.processing) {
+        .circle { margin-left: 4px; }
+      }
+    }
+
+    li:not(:last-child) { margin-bottom: 15px;
+
+
+      &:after { width: 2px; left: 8px; height: 35px; top: 5px; }
+    }
+    .loan-section-title { position: relative; left: 0; margin: 0; top: 0; max-width: 100%; display: block; padding-left: 10px; }
+    .circle { margin: 0; }
+  }
+
+  .feature-block {
+    .grid-column {
+      &.control,
+      &.instant,
+      &.transparency { margin-top: 15px; }
+    }
+  }
+}
+// For Mobile devices
+@media(max-width:480px) {
+  .vault-img { margin: 0 auto; }
+
+  .caption {
+    img { margin-right: 10px; width: 30px; }
+
+    h2 { font-size: $font-xs-14; }
+
+    .caption-box { margin-bottom: 15px; }
+  }
+
+  .btn-outline-white.ml-35 { margin-left: 10px; }
+}

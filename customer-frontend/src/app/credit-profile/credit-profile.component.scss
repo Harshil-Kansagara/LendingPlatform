@@ -1,0 +1,126 @@
+// Only component specific styles here
+// import scss variables
+@import'variables';
+
+.btn-rating{
+    padding: 0;
+    border:0;
+    position: relative;
+    background: transparent;
+    &.active::before{
+        content: '';
+        position: absolute;
+        background-color: var(--white);
+        width: 72px;
+        height: 60px;
+        border-radius: 3px;
+        left: 0;
+        top: -15px;
+        box-shadow: 0 10px 12px var(--rgba-o-16);
+    }
+    img{
+        position: relative;
+    }
+}
+.slider-container{
+    margin-top: 25px;
+}
+
+.no-rating{
+    margin-top: 60px;
+    border-top: 1px solid var(--border-clr);
+    padding-top: 20px;
+}
+
+
+// Rating score colors
+.poor{
+    color: $poor;
+}
+.average{
+    color: $average;
+}
+.fair{
+    color: $fair;
+}
+.good{
+    color: $good;
+}
+.excellent{
+    color: $excellent;
+}
+.score-range{
+    h4{
+        font-size: $font-18;
+    }
+}
+.score-range.active{
+    .score,
+    h4{
+        font-weight: 700;
+    }
+}
+.fix-grid{
+    flex: 0 0 11%;
+}
+
+// Media Query
+
+// For Tablet: Landscape
+@media(min-width:992px) and (max-width:1199px){
+    .btn-rating.active::before{
+        width: 62px;
+    }
+}
+
+// For Mobile devices
+@media(max-width:767px){
+    .btn-rating.active::before{
+        width: 100%;
+    }
+    .no-rating{
+        margin-top: 10px;
+    }
+}
+@media(max-width:480px){
+    .slider-container {
+        padding: 5px 5px 6px;
+    }
+    ::ng-deep .credit-slider.ngx-slider{
+        .ngx-slider-bar {
+            height: 4px;
+        }
+        .ngx-slider-pointer{
+            top: -10px !important;
+        }
+    }
+    .score {
+        font-size: $font-xs-10;
+    }
+    .score-range{
+        h4{
+            font-size: $font-xs-14;
+        }
+    }
+    .btn-rating{
+        &.active::before{
+            height: 40px;
+            top: -10px;
+        }
+        img{
+            width: 20px;
+        }
+    }
+    
+}
+// For Smaller Mobile devices
+@media(max-width:360px){
+    .fix-grid{
+        flex: 0 0 16%;
+    }
+    .score-range{
+        h4{
+            font-size: $font-xs-12;
+        }
+    }
+}

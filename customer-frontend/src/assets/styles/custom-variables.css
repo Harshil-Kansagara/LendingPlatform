@@ -1,0 +1,29 @@
+/* Google fonts url */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* CSS Variables Only For Ui Customization Elements*/
+:root {
+
+    /*colors*/
+    --primary:#27D086;/*main button background color*/
+    --btn-hover:#00b968;/*main button background color on hover*/
+    
+    --secondary:#6473D0; /* colors for custom radion buttons like yes/no option, company structure etc.*/
+    --primary-btn-text:#fff;/* text color for buttons & radio buttons label.*/
+    --selected-border-clr:#6473D0;/*border color for selected radio button and form controls like textbox,selectlist on focus*/
+
+
+    --select-bg-clr:#EBF2FF;/*background color of options in select on hover*/
+   
+
+    --default-txt-clr: #7288A1; /*Default text color*/
+    --dark-text-clr:#0A0A0A; /*Darker text color*/
+
+    /*Border Color*/
+    --form-control-border: #D1E1F5; /*border color form controls like textbox,select dropdown etc.*/
+    
+    /* Set font family name */
+    /* --fontFamily:'Source Sans Pro', sans-serif; */
+    
+  }
+  

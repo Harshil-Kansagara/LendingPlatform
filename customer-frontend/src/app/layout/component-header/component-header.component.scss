@@ -1,0 +1,39 @@
+// Only component specific styles here
+
+// previous button 
+.back-btn{
+    font-size: var(--xxl);
+    line-height: 0;
+    padding: 0;
+    margin-right: 20px;
+    color: var(--dark-text-clr);
+    .zmdi{
+        line-height: 20px;
+    }
+    &:hover{
+        color: var(--dark-text-clr);
+    }
+}
+// Header for responsive device
+.header-responsive{
+    border-bottom: 1px solid var(--border-clr);
+    padding: 18px 0;
+}
+//Secure label
+.secure-label{
+  width: 120px;
+  flex: 0 0 120px;
+  text-align: right;
+}
+// Finances: clear button
+.btn-clear {
+  width: 80px;
+  font-size: var(--sm);
+  border: 1px solid var(--border-clr);
+  color: var(--default-text-clr);
+  margin-left: 10px;
+
+  &:hover {
+    background-color: var(--pale-white);
+  }
+}

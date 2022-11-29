@@ -1,0 +1,60 @@
+
+.btn-connect.btn-clear {
+    width: 102px;
+}
+.account-block{
+    min-height: 40px;
+    background-color:#fff;
+    padding: 11px 20px;
+    border: 1px solid var(--border-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .acc-title{
+        font-size: var(--sm);
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+}
+.select-option{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.btn-import{
+    font-size: var(--sm);
+    color: var(--secondary-txt-clr);
+    border: 1px solid var(--border-clr);
+    background: #fff;
+    height: 30px;
+    width: 100%;
+}
+
+:host ::ng-deep .ng-select .ng-select-container .ng-value-container,
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    font-size: 12px;
+}
+:host ::ng-deep .ng-select{
+    .ng-select-container{
+        height: 30px;
+        min-height: 30px;
+    }
+    .ng-arrow-wrapper .ng-arrow {
+        border: 0;
+        width: 100%;
+        height: 15px;
+        &:after{
+            content: '\f2f9';
+            font-family: 'Material-Design-Iconic-Font',sans-serif;
+            font-weight: 400;
+            position: absolute;
+            font-size: var(--lg);
+            top: 0px;
+            right: 4px;
+        }
+    }
+    &.ng-select-opened> .ng-select-container{
+        .ng-arrow{
+          top: 0;
+        }
+    }
+}

@@ -1,0 +1,94 @@
+<!-- 
+  Sidenav:
+  visible class used to toggle sidenav in responsive device
+ -->
+<div class="sidebar-container" [class.visible]="overflow">
+  <div class="sidenav">
+    <a routerLink="." (click)="goHome()" class="brand-logo d-block"><img alt="logo" src="{{logoImage}}" class="img-fluid d-lg-block d-none "></a>
+    <hr>
+    <button type="button" class="close pull-right d-lg-none  ml-3" aria-label="Close" (click)="toggleSidenav()">
+      <em class="zmdi zmdi-close"></em>
+    </button>
+    <p class="text-ellipses font-16 font-weight-bold text-dark" [title]="currentUserEmail">{{currentUserEmail}}</p>
+    <div class="progressbar-container d-lg-block d-none">
+      <p class="mb-2 progress-value">{{progress}}% Completed</p>
+      <progressbar [animate]="false" [value]="progress? progress:loanNeedsConstant" ></progressbar>
+    </div>
+    <hr>
+    <p class="text-sm" *ngIf="loanApplicationNumber !== null">No: {{loanApplicationNumber}}</p>
+    <!-- Links of all loan sections -->
+    
+    <ul class="list-unstyled nav-list pl-3">
+      <li class="flex-wrap" *ngFor="let link of navLinks"
+          [ngClass]="{'edit-mode': link.editMode === true,
+                 'active': link.active === true}">
+        <div class="d-flex align-items-center flex-grow-1 menu-item">
+          <div class="circle"></div>
+
+          <!-- Clickable link when editing mode enabled-->
+          <a *ngIf="link.editMode" routerLink="{{link.redirectUrl}}" class="nav-links">
+            {{link.name}}
+            <!--Show 'View' button beside the company section name when shareholder creates a loan in the same company-->
+            <ng-container *ngIf="link.name === companyInformation && link.name !== finances">
+              <label class="edit-link" *ngIf="!isViewOnlyMode && isCompanyEditable">Edit</label>
+              <label class="edit-link" *ngIf="!isViewOnlyMode && !isCompanyEditable">View</label>
+            </ng-container>
+            <ng-container *ngIf="link.name !== companyInformation && link.name !== finances">
+              <label class="edit-link" *ngIf="!isViewOnlyMode">Edit</label>
+            </ng-container>
+          </a>
+
+          <!-- Non-clickable link when active-->
+          <ng-container *ngIf="!link.editMode">{{link.name}}</ng-container>
+
+          <!-- Timer icon: when fetching finances in background-->
+          <em *ngIf="link.data === 'processing'" class="zmdi zmdi-timer zmdi-hc-lg ml-2 default-clr"></em>
+          <!-- Checked icon: when finances data is ready-->
+          <span *ngIf="link.data === 'completed'" class="text-success ml-2"><em class="zmdi zmdi-check-all zmdi-hc-lg"></em></span>
+
+          <!-- Checked icon: when tax files are uploaded-->
+          <span *ngIf="!appService.taxFileUploadingInProgress && link.name === 'Tax Returns' && !isViewOnlyMode && link.editMode && appService.showTaxTimer" class="text-success ml-2"><em class="zmdi zmdi-check-all zmdi-hc-lg"></em></span>
+          <!-- Timer icon: when uploading tax files in background-->
+          <em *ngIf="appService.taxFileUploadingInProgress && link.name === 'Tax Returns' && !isViewOnlyMode && link.editMode && appService.showTaxTimer" class="zmdi zmdi-timer zmdi-hc-lg ml-2 default-clr"></em>
+
+          <!-- Checked icon: when additional documents are uploaded-->
+          <span *ngIf="!appService.additionalDocumentUploadingInProgress && link.name === 'Additional Documents' && !isViewOnlyMode && link.editMode && appService.showAdditionalDocumentTimer" class="text-success ml-2"><em class="zmdi zmdi-check-all zmdi-hc-lg"></em></span>
+          <!-- Timer icon: when uploading additional documents in background-->
+          <em *ngIf="appService.additionalDocumentUploadingInProgress && link.name === 'Additional Documents' && !isViewOnlyMode && link.editMode && appService.showAdditionalDocumentTimer" class="zmdi zmdi-timer zmdi-hc-lg ml-2 default-clr"></em>
+        </div>
+        <!-- Submenu -->
+        <div class="sub-menu">
+          <ng-container *ngFor="let subMenu of link.childSection; let i = index ">
+            <div class="d-flex align-items-center flex-grow-1 sub-menu-item" [class.mt-3]="i>0" [ngClass]="{'edit-mode': subMenu.editMode === true,
+                 'active': subMenu.active === true}">
+              <div class="circle"></div>
+
+              <!-- Clickable link when editing mode enabled-->
+              <a *ngIf="subMenu.editMode" routerLink="{{subMenu.redirectUrl}}" class="nav-links">{{subMenu.name}} <label class="edit-link" *ngIf="!isViewOnlyMode">Edit</label></a>
+
+              <!-- Non-clickable link when active-->
+              <ng-container *ngIf="!subMenu.editMode">{{subMenu.name}}</ng-container>
+
+              <!-- Timer icon: when fetching finances in background-->
+              <em *ngIf="subMenu.data === 'processing'" class="zmdi zmdi-timer zmdi-hc-lg ml-2 default-clr"></em>
+
+              <!-- Checked icon: when finances data is ready-->
+              <span *ngIf="subMenu.data === 'completed'" class="text-success ml-2"><em class="zmdi zmdi-check-all zmdi-hc-lg"></em></span>
+            </div>
+          </ng-container>
+
+        </div>
+        
+      </li>
+    </ul>
+    <!-- Lgout button -->
+    <div class="bottom-section">
+      <hr>
+      <button class="btn btn-link" (click)="logOff()" ><em class="zmdi zmdi-power zmdi-hc-lg"></em> Logout</button>
+      <hr>
+    </div>
+    <!-- Powered by-->
+    <p class="text-xs font-italic default-clr">Powered By: Jamoon</p>
+  </div>
+</div>
+<!-- Sidenav -->

@@ -1,0 +1,61 @@
+
+// Import scss variables
+@import'variables';
+
+.information-landing-page {
+
+  ul {
+    padding-left: 20px;
+    list-style: decimal;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  li, p {
+    font-size: $font-14;
+    color: var(--default-text-clr);
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+.form-group{
+    text-align: center;
+}
+.custom-height{
+    min-height: 155px;
+}
+.total-summary{
+    flex: 1 1 auto;
+}
+.summary-title{
+    font-size: var(--md);
+}
+.loan-needs-options{
+    .rect-radio:not(:last-child){
+        margin-bottom: 20px;
+    }
+    .rect-control-label {
+        height: 50px;
+        padding: 6px 15px;
+    }
+    .zmdi{margin-right: 10px;}
+}
+.disclaimer{
+    line-height: 26px;
+}
+
+// Media Query
+
+// For Smaller Mobile devices
+@media(max-width:767px){
+    .custom-height{
+        min-height: 130px;
+    }
+    .disclaimer-text{
+        margin-top: 50px;
+    }
+}

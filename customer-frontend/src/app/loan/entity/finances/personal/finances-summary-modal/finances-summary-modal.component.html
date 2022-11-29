@@ -1,0 +1,59 @@
+<!--Assets Table-->
+<div class="table-responsive">
+  <table class="table summary-table statement-table mb-5" *ngFor="let account of accountArrayWithTotalAmount">
+    <thead class="radius-10">
+      <tr>
+        <th id="{{account.account.name}}">Your {{account.account.name}}</th>
+        <th id="{{account.account.name}}" colspan="2" *ngIf="account.totalAmount !== 0" class="text-right">{{currency}} {{account.totalAmount | mask: 'separator':','}}</th>
+        <th id="{{account.account.name}}" colspan="2" *ngIf="account.totalAmount === 0" class="text-right"></th>
+      </tr>
+    </thead>
+    <tbody class="main-tbody">
+      <tr *ngFor="let category of account.account.categories">
+        <td>
+          {{category.name}}
+        </td>
+        <td [ngClass]="{'text-center': !category.originalAmount || category.originalAmount==0}">
+          <p class="value-title d-inline-block align-middle mr-10 mb-0" *ngIf="(category.name === realEstate || category.name === autoMobile) && category.originalAmount>0">
+            {{originalValue}}:
+
+          </p>
+          <p class="value-title d-inline-block align-middle mr-10 mb-0" *ngIf="(category.name === creditCards || category.name === mortgageLoans || category.name === otherLoans || category.name === instalmentLoans) && category.originalAmount>0">
+            {{originalBalance}}:
+          </p>
+          <span *ngIf="!category.originalAmount || category.originalAmount==0">--</span><span *ngIf="category.originalAmount && category.originalAmount>=0" class="value-amount  d-inline-block align-middle">{{currency}}{{category.originalAmount  | mask: 'separator':',' }}</span>
+
+        </td>
+        <td [ngClass]="{'text-center': !category.currentAmount || category.currentAmount==0}">
+          <p *ngIf="account.account.name == 'Assets' && category.currentAmount>0" class="value-title  d-inline-block align-middle mr-10 mb-0">
+            {{currentValue}}:
+
+          </p>
+          <p *ngIf="account.account.name == 'Obligations' && category.currentAmount>0" class="value-title  d-inline-block align-middle mr-10 mb-0">{{currentBalance}}: </p>
+          <span *ngIf="!category.currentAmount || category.currentAmount==0">--</span><span *ngIf="category.currentAmount && category.currentAmount>=0" class="value-amount  d-inline-block align-middle">{{currency}}{{category.currentAmount  | mask: 'separator':','}}</span>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="total-summary">
+    <div class="total-amount">
+      <label>{{currentNetWorth}}</label>
+      <p>{{currency}}<ng-container *ngIf="currentNetWorthAmount < 0"> -</ng-container>{{currentNetWorthAmount | mask: 'separator':','}}</p>
+    </div>
+    <span>=</span>
+    <div class="total-amount">
+      <label>{{totalAssets}}</label>
+      <p>{{currency}}{{totalAssetsAmount  | mask: 'separator':','}}</p>
+    </div>
+    <span>-</span>
+    <div class="total-amount">
+      <label>{{totalObligations}}</label>
+      <p>{{currency}}{{totalObligationsAmount  | mask: 'separator':','}}</p>
+    </div>
+  </div>
+</div>
+<div class="pad-40 mt-20 text-right white-card" *ngIf="!isConsent">
+  <button class="btn btn-primary w-240" (click)="redirect()">Continue</button>
+</div>
+

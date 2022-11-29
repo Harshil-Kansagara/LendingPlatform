@@ -1,0 +1,114 @@
+<ng-container *ngIf="!isConsent">
+  <!-- Component header -->
+  <app-component-header *ngIf="backRoute" [backRoute]="backRoute" title="Let us add your personal finance information!"></app-component-header>
+  <!-- Finances -->
+  <div class="custom-container personal-finance-page">
+    <div class="row">
+      <div class="col-md-12" *ngIf="!showLoader">
+
+        <!-- Question for proprietor -->
+        <div class="default-card pad-40 mb-20" *ngIf="isProprietor && !showLoader" [ngClass]="{'view-only': hasAnyAnswers || isLocked}">
+          <div class="top-finance-que">
+            <p class="que-text mb-0">{{extraThingsQuestion}}</p>
+            <div class="radio-container credit-options d-flex align-items-center">
+              <div class="rect-radio">
+                <input type="radio" id="yes" [value]=true class="custom-control-input disable-content disable-radio" name="proprietorQuery" [(ngModel)]="showFinances" (change)="addProprietoryFinance(true)">
+                <label class="rect-control-label" for="yes">Yes</label>
+              </div>
+              <div class="rect-radio">
+                <input type="radio" id="no" [value]=false class="custom-control-input disable-content disable-radio" name="proprietorQuery" [(ngModel)]="showFinances" (change)="addProprietoryFinance(false)">
+                <label class="rect-control-label" for="no">No</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Personal Finance categories -->
+        <div *ngIf="showFinances">
+          <div class="default-card pad-40-min mb-20" *ngFor="let account of personalFinances.accounts">
+
+            <h6 class="text-dark font-weight-bold d-md-block d-flex align-items-center mb-20">Select your {{account.name}}</h6>
+            <ul class="personal-finances-list">
+              <li class="list-li" *ngFor="let category of account.categories">
+                <button class="btn btn-rounded btn-primary btn-auto" [ngClass]="{'active': checkIfCategoryIsFilled(category), 'pending-action': checkIfParentCategoryIsFilled(category)}" (click)="openPersonalFinancesModal(template,category)">
+                  <span>
+                    <em class="zmdi zmdi-plus" *ngIf="!checkIfCategoryIsFilled(category)"></em>
+                    <em class="zmdi zmdi-check-all" *ngIf="checkIfCategoryIsFilled(category)"></em>
+                    {{category.name}}
+                  </span>
+                  <span *ngIf="checkIfCategoryIsFilled(category)">
+                    <em class="zmdi zmdi-edit margin-set" *ngIf="!isLocked"></em>
+                    <em class="zmdi zmdi-eye margin-set" *ngIf="isLocked"></em>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <div class="default-card pad-40 mt-20 text-right">
+          <button class="btn btn-primary w-240" type="submit" [disabled]="showLoader" (click)="submitPersonalFinances()">{{continue}}</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Generic Loader -->
+    <div *ngIf="showLoader">
+      <div class="default-card pad-40-min mb-20" *ngFor="let item of [0,1,2]">
+        <div class="shine radius-5 height-60 mt-20 w-25 d-inline-block" *ngFor="let item of [0,1,2,3,4,5,6]">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--Personal finance modals-->
+
+  <ng-template #template>
+    <div class="modal-header mb-30">
+      <div>
+        <h4 id="dialog-events-name" class="modal-title pull-left" *ngIf="selectedCategory && !showSummaryModal">{{selectedCategory.name}}</h4>
+        <h4 id="dialog-events-name" class="modal-title pull-left" *ngIf="showSummaryModal">Summary</h4>
+
+      </div>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(modalRef)">
+        <em *ngIf="!showSummaryModal || isLocked" class="zmdi zmdi-close"></em>
+        <em *ngIf="showSummaryModal && !isLocked" class="zmdi zmdi-edit summary-edit"></em>
+      </button>
+    </div>
+    <div class="modal-body" *ngIf="!showModalLoader">
+      <div *ngIf="!showSummaryModal">
+
+        <app-nlevelpersonalfinance-modal (submitEvent)="saveModalInfo($event,selectedCategory.order)" (fillParentEvent)="openParentModal($event)"
+                                         [currentUserId]="userId" [currency]="currencySymbol" [isLocked]="isLocked" [selectedCategory]="selectedCategory" [parentCategory]="parentCategory"></app-nlevelpersonalfinance-modal>
+
+
+      </div>
+      <app-finances-summary-modal (submitEvent)="redirectToNextSection()" [finances]="summaryFinances" [currency]="currencySymbol" *ngIf="showSummaryModal"></app-finances-summary-modal>
+    </div>
+    <div *ngIf="showModalLoader">
+      <div class="row gutter-8 justify-content-between align-items-center mt-20" *ngFor="let number of [0,1,3]">
+        <div class="col-md-8">
+          <div class="shine radius-5 height-20 mb-20 mb-md-0"></div>
+        </div>
+        <div class="col-md-3">
+          <div class="shine radius-5 height-40"></div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="isConsent">
+  <app-finances-summary-modal [finances]="summaryFinances" [currency]="currencySymbol" *ngIf="showSummaryModal"></app-finances-summary-modal>
+
+  <div class="row gutter-8" *ngIf="!summaryFinances">
+    <div class="col-md-12" *ngFor="let item of [0]">
+      <div class="shine radius-5 height-100 mt-20"></div>
+      <div class="shine radius-5 height-100 mt-20"></div> 
+    </div>
+  </div>
+</ng-container>

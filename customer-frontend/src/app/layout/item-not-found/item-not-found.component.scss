@@ -1,0 +1,28 @@
+// Only component specific styles here
+.item-notfound{
+    background-color: var(--dull-bg-clr);
+    border-radius: 10px;
+    min-height: 610px;
+    padding: 20px;
+}
+img{
+    margin-bottom: 80px;
+}
+.w-650{
+    width: 650px;
+}
+.contact-title{
+    margin: 40px 0 30px;
+}
+
+// Media Query
+
+// For Smaller Mobile devices
+@media(max-width:767px){
+    .item-notfound{
+        min-height: 400px;
+    }
+    img{
+        margin-bottom: 20px;
+    } 
+}

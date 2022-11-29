@@ -1,0 +1,94 @@
+//Only Component specific styles
+
+@import'variables';
+
+.btn-outline-primary { width: 140px; }
+.upload-options { padding: 40px 20px 70px; }
+.sub-title { line-height: 30px; }
+.w-580 { max-width: 580px; }
+.white-card {
+  .rect-radio .rect-control-label { background-color: var(--light-bg-clr); }
+ 
+}
+.file-name {
+  width: 280px;
+  white-space: normal;
+  word-break: break-word;
+  overflow: inherit;
+  text-overflow: unset;
+  font-size: $font-14;
+  color: var(--default-text-color);
+  .file-size {
+    margin-left: 30px;
+  }
+}
+.section-heading { max-width: 500px; font-size: $font-22; }
+
+.mlm-5 {
+  margin-left: 5px;
+}
+
+/*Design option boxes */
+.document-option-box { padding: 15px 0; border: 1px solid $option-border-color; text-align: center; margin-top: 40px; background: var(--white); }
+ 
+  
+
+/**
+* Third party library:
+* ::ng-deep used to add/override styles
+**/
+.upload-file {
+
+  ::ng-deep .ngx-file-drop__content { color: var(--default-txt-clr); width: 100%;}
+  .zmdi-cloud-upload { font-size: $font-32; opacity: 0.5; display: inline-block; vertical-align: middle; }
+
+  ::ng-deep .ngx-file-drop__drop-zone { border-radius: 10px; border: 2px dashed var(--border-clr); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
+  .upload-content { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 25px 30px;
+    p { display: inline-block; margin-bottom: 0; vertical-align: middle; margin-left: 10px; font-weight: 500; }
+  }
+  .upload-button {
+      display: inline-block !important;
+      margin-left: 10px;
+  }
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+::ng-deep .small-select.ng-select { width: 135px; }
+
+
+// Media Query
+
+//For devices upto tablet
+@media(min-width:768px) {
+  .uploaded {
+    ::ng-deep .ngx-file-drop__drop-zone { height: 90px; padding: 0 33px; }
+    .upload-content { display: flex; align-items: center; justify-content: space-between;
+      p { margin-bottom: 0; }
+      div { display: flex; align-items: center; }
+      .zmdi-cloud-upload { font-size: $font-43; margin-right: 20px; }
+      .upload-button { margin-left: 30px; }
+    }
+    .upload-content,
+    ::ng-deep .ngx-file-drop__content { width: 100%; }
+  }
+  .file-name {
+    &.truncate { width: 200px; }
+  }
+}
+
+//For Mobile devices
+@media(max-width:767px) {
+  .file-name { width: 200px; }
+}
+// For Smaller Mobile devices
+@media(max-width:576px) {
+  ::ng-deep .small-select.ng-select { width: 100%; }
+  .white-card {
+    .btn-outline-default,
+    .ng-select { margin-top: 8px; }
+  }
+  .file-name { width: 100%; }
+}

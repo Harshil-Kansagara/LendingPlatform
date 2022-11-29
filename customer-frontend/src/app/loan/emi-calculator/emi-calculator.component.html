@@ -1,0 +1,166 @@
+<!-- Component header -->
+<app-component-header hideMenuBtn="true" backRoute="/profile" [title]="calculatorTitle"></app-component-header>
+<section>
+  <div class="custom-container">
+    <!-- Emi Calculator -->
+    <form [formGroup]="emiCalculator">
+      <div class="row gutter-8" *ngIf="loanPurposeList.length > 0 && appSettings.length > 0 && isPurposeEnabled !== undefined">
+
+        <div class="col-md-12 d-flex flex-column mb-20">
+          <div class="default-card text-center p-4 w-100 mt-md-0 mt-20">
+            <!-- Purpose of funds -->
+            <p class="question-tag text-left">{{question3}}</p>
+            <div class="radio-container loan-needs-options row clearfix">
+              <div class="rect-radio col-md-6" *ngFor="let purpose of loanPurposeList;let i=index">
+                <input type="radio" name="purpose" formControlName="purpose" id="{{purpose.name}}" value="{{purpose.id}}" class="custom-control-input">
+                <label class="rect-control-label justify-content-start" for="{{purpose.name}}" (click)="setOptionsForSelectedPurpose(purpose)">
+                  <em class="zmdi zmdi-balance-wallet zmdi-hc-lg" *ngIf="purpose.name ==='Cash Flow'"></em>
+                  <em class="zmdi zmdi-case zmdi-hc-lg" *ngIf="purpose.name ==='Asset Purchase'"></em>
+                  <em class="zmdi zmdi-city zmdi-hc-lg" *ngIf="purpose.name ==='Property Purchase'"></em>
+                  <em class="zmdi zmdi-coffee zmdi-hc-lg" *ngIf="purpose.name ==='Other Long Term Need'"></em>
+                  {{purpose.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Payment summary -->
+
+        </div>
+        <div class="col-md-12 d-flex mb-20">
+          <div class="default-card d-flex your-needs-que pad-40">
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Property Purchase'">{{question4}}</p>
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Asset Purchase'">{{question5}}</p>
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Cash Flow' || loanPurpose ==='Other Long Term Need' ">{{question6}}</p>
+            <ng-select [items]="subLoanOptions" formControlName="subLoanPurpose" [clearable]="false" [searchable]="false" bindLabel="name" bindValue="id" class="question-select">
+              <ng-template ng-label-tmp let-item="item">
+                {{item.name}}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex your-needs-sliders">
+          <div *ngIf="isPurposeEnabled" class="row clearfix">
+
+            <div class="form-group custom-height col-md-6">
+              <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                <p class="question-tag">{{question1}}</p>
+                <div class="slider-container">
+                  <ngx-slider class="custom-slider min-max-label" [options]="amountOptions" [(value)]="amountSliderValue" formControlName="amountNeeded" (userChange)="onAmountSliderChange(amountSliderValue)"></ngx-slider>
+                </div>
+              </div>
+            </div>
+            <div class="form-group custom-height col-md-6">
+              <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                <p class="question-tag">{{question2}}</p>
+                <div class="slider-container">
+                  <ngx-slider class="custom-slider min-max-label" [options]="periodOptions" [(value)]="periodSliderValue" formControlName="amountPeriod" (userChange)="onPeriodSliderChange(periodSliderValue)"></ngx-slider>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                <p class="question-tag">{{monthlyRepayment}}</p>
+                <div class="slider-container">
+                  <ngx-slider class="custom-slider min-max-label" [options]="monthlyPayment" [(value)]="monthlyPaymentSliderValue" formControlName="monthlyPayment" (userChange)="onMonthlyPaymentSliderChange(monthlyPaymentSliderValue)"></ngx-slider>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="default-card pad-30 d-flex align-items-center justify-content-center" *ngIf="!isPurposeEnabled">
+            <h3 class="m-0">Coming Soon !</h3>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <ng-container *ngIf="isPurposeEnabled">
+            <div class="default-card p-4 w-100 mt-20 total-summary" *ngIf="totalInterest !== 0 && totalPayment !== 0 && monthlyEMI !== 0">
+              <div class="mb-40">
+                <p class="mb-2 summary-title">Monthly repayment (P&I)</p>
+                <h3 class="amount-tag">{{currencySymbol}} {{monthlyEMI | number: '1.2-2' | mask: 'separator':','}}</h3>
+                <p class="mb-2 summary-title mt-20">Total of Payments (based on {{loanTenureInMonths}}-months term)</p>
+                <h3 class="amount-tag">{{currencySymbol}} {{totalPayment | number: '1.2-2' | mask: 'separator':','}}</h3>
+                <p class="mb-2 summary-title mt-20">Total interest paid over life of loan<sup>[1]</sup></p>
+                <h3 class="amount-tag">{{currencySymbol}} {{totalInterest | number: '1.2-2' | mask: 'separator':','}}</h3>
+              </div>
+
+              <p class="disclaimer-text text-sm text-justify font-italic">
+                <sup>[1]</sup> {{interestDisclaimer}}
+              </p>
+            </div>
+          </ng-container>
+        </div>
+        <div class="col-12">
+          <div class="default-card flex-card p-4 w-100 mt-20">
+            <p class="calc-bottom-line mb-0">{{afterLoginProvide}}</p>
+            <button class="btn btn-primary w-240" [disabled]="!isPurposeEnabled" (click)="openModal(template)">Apply Now</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Statement Modal -->
+<ng-template #template>
+  <div class="modal-header mb-30">
+    <div>
+      <h4 id="dialog-events-name" class="modal-title pull-left information-modal-title"><em class="zmdi zmdi-info"></em>{{information}}</h4>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <em class="zmdi zmdi-close"></em>
+    </button>
+  </div>
+  
+    <div class="modal-body mb-30 modal-body-info information-landing-page">
+      <p class="">
+        We recommend you collect the following information and / or documents in order to make your application process seamless and easy. You can always come
+        back where you left off in case your missing certain documents or information required for you to submit your completed information. This information will be
+        required for all individuals, who have a 20% ownership in the business. We will request this information directly from other interested parties once you have
+        completed this application.
+
+      </p>
+      <ul>
+        <li>
+          Most recent bank statement
+        </li>
+        <li>
+          Most recent brokerage statement, if applicable
+        </li>
+        <li>Life Insurance Policies</li>
+        <li>Make, model and year of any automobiles you own</li>
+        <li> Most recent credit card statements, if applicable</li>
+        <li>Most recent mortgage statements, if applicable</li>
+        <li>Most recent installment loan statements, if applicable</li>
+        <li>Latest 3 years of Federal Tax Returns</li>
+
+        <li> Personal Identification document (passport or driver's license)</li>
+
+
+      </ul>
+      <p>
+        In addition to the above personal financial information, you will also need the following information about your business:
+      </p>
+      <ul>
+        <li>Management Resume</li>
+        <li>Most recent three years and current interim financial statements (Profit & Loss and Balance Sheet) in case we cannot directly access your business accounts</li>
+        <li>Business Plan and Financial Projections</li>
+        <li>Information on any affiliated businesses, if you have controlling (greater than 20%) interest in any other businesses</li>
+      </ul>
+
+
+
+
+      <p>If you are applying for a loan to purchase an existing business, you will also need the following information in addition to the above list:</p>
+      <ul>
+        <li>
+          Most recent three years and current interim financial statements (Profit & Loss and Balance Sheet) of the business yor are purchasing
+        </li>
+        <li>Letter of intent or purchase agreement</li>
+        <li>Business Plan and Financial Projections for the business you are purchasing, including any income or expense synergies</li>
+      </ul>
+
+    </div>
+    <div class="">
+      <button class="btn btn-primary" (click)="applyLoan()">{{continueApply}}</button>
+    </div>
+</ng-template>

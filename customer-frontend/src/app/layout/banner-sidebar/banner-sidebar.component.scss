@@ -1,0 +1,21 @@
+// Only component specific styles here
+
+// Import scss variables
+@import'variables';
+
+.sidebar-container{
+    background: url('../../../assets/images/sidebar_image.png')no-repeat;
+    background-position: center 0;
+    background-size: cover;
+}
+.caption{
+    margin: 0;
+    font-size: $font-18;
+    color: var(--white);
+    position: absolute;
+    bottom: 30px;
+    max-width: 256px;
+    right: 20px;
+    font-weight: 500;
+    line-height: 30px;
+}

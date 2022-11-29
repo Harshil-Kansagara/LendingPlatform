@@ -1,0 +1,122 @@
+//Only Component specific styles
+
+@import'variables';
+
+.btn-outline-primary{
+    width: 140px;
+}
+.upload-options{
+    padding: 60px 20px 70px;
+}
+.sub-title{
+    line-height: 30px;
+}
+.w-580{
+    max-width: 580px;
+}
+.white-card{
+    .rect-radio .rect-control-label {
+        background-color: var(--light-bg-clr);
+    }
+}
+.file-name{
+    width: 350px;
+}
+.section-heading{
+    max-width: 500px;
+    font-size: $font-22;
+}
+.uploaded-files {
+  img { height: 29px; }
+}
+/**
+* Third party library:
+* ::ng-deep used to add/override styles
+**/
+.upload-file{
+    
+    ::ng-deep .ngx-file-drop__content{
+        color: var(--default-txt-clr);
+    }
+    .zmdi-cloud-upload{
+        font-size: $font-60;
+        opacity: 0.5;
+    }
+    ::ng-deep .ngx-file-drop__drop-zone{
+        border-radius: 10px;
+        height: 300px;
+        border: 2px dashed var(--border-clr);        
+        display: flex;
+        align-items: center;
+        justify-content: center;            
+        background: var(--white);
+    }
+    .upload-content{
+        width: 200px;
+        text-align: center;
+        p{font-weight: 500;}
+    }
+}
+
+::ng-deep .tax-small-select.ng-select{
+    width:90px;
+}
+
+
+// Media Query
+
+//For devices upto tablet
+@media(min-width:768px){
+    .uploaded{
+        ::ng-deep .ngx-file-drop__drop-zone{
+            height: 90px;
+            padding: 0 33px;
+        }
+        .upload-content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p{margin-bottom: 0;}
+            div{
+                display: flex;
+                align-items: center;
+            }
+            .zmdi-cloud-upload{
+                font-size: $font-43;   
+                margin-right: 20px;         
+            }
+            .upload-button{margin-left: 30px;}
+        }
+        .upload-content,
+        ::ng-deep .ngx-file-drop__content{
+            width: 100%;
+        }
+    }
+    .file-name{
+        &.truncate{
+            width: 200px;
+        }
+    }
+}
+
+//For Mobile devices
+@media(max-width:767px){
+    .file-name{
+        width: 300px;
+    }
+}
+// For Smaller Mobile devices
+@media(max-width:576px){
+    ::ng-deep .small-select.ng-select{
+        width:100%;
+    }
+    .white-card{
+        .btn-outline-default,
+        .ng-select{
+            margin-top: 8px;
+        }
+    }
+    .file-name{
+        width: 100%;
+    }
+}

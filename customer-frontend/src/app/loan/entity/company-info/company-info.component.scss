@@ -1,0 +1,228 @@
+// Only component specific styles here
+
+// Import scss variables
+@import'variables';
+
+// COmpany structure radio buttons
+.image-radio-btn{
+  width: 124px;
+  .rect-control-label {
+    height: 140px;
+    flex-direction: column;
+    font-size: var(--sm);
+    img{
+      height: 52px;
+      width: fit-content;
+    }
+    span{
+      min-height: 32px;
+      text-align: center;
+      margin-top: 12px;
+    }
+  }
+  .custom-control-input:checked{
+    & ~ .rect-control-label {
+      background-color: var(--select-bg-clr);
+    }
+  }
+}
+.user-details-card {
+  min-height: unset;
+  .share-icon {
+    margin-right: 8px;
+  }
+}
+
+// Fiscal year
+.credit-options {
+  .custom-control-input:checked {
+    & ~ .rect-control-label {
+      background-color: var(--white);
+    }
+  }
+}
+/**
+* Third party library:
+* ::ng-deep used to add/override styles
+* More than 3 heirarchy used
+* Media query used in nesting to avoid duplicating same codes
+**/
+::ng-deep .searchable-select .ng-select {
+  .ng-arrow-wrapper{
+    width: 30px;
+    padding-right: 0;
+    margin-right: 20px;
+    @media(max-width: 767px){
+      margin-right: 7px;
+    }
+  }
+  .ng-arrow-wrapper .ng-arrow {
+    border: 0;
+    &:after{
+      content:'\f1c3';
+      font-family:'Material-Design-Iconic-Font';
+      margin-left: -5px;
+      font-size: $font-27;
+      color: var(--default-text-clr);
+      @media(max-width: 767px){
+        font-size: $font-xs-20;
+      }
+    }
+  }
+   &.ng-select-opened> .ng-select-container{
+    .ng-arrow{
+      top: 0;
+    }
+    
+  }
+  &.ng-select-single{
+    .ng-select-container{
+      border-radius: 3px;
+      .ng-value-container .ng-input{
+        top:20px;
+        @media(max-width: 767px){
+          top:14px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .select-small.ng-select{
+  width: 209px;
+  @media(max-width: 767px){
+    width: 100%;
+  }
+  &.ng-select-single .ng-select-container{
+    min-height: 40px;
+    height: 40px;
+  }
+}
+.top-border{
+  border-top: 1px solid var(--form-control-border);
+}
+.btn-add{
+  color: var(--primary-txt-clr);
+  font-size: var(--md);
+  .zmdi{
+    font-size: $font-36;
+    margin: 0 0 10px;
+  }
+}
+.residency-radio{
+  &:not(:first-child){
+    margin-left: 30px;
+  }
+}
+.action-buttons{
+  .btn-link{
+    color: var(--danger);
+    font-size: var(--sm);
+    font-style: italic;
+    text-decoration: none;
+    padding: 0;
+  }
+}
+.rect-radio .custom-control-input:checked ~ .rect-control-label{
+  opacity: 1;
+}
+.question-spacing .question-tag{
+  padding-right: 15px;
+}
+// Shimmer Placeholder
+.radio-placeholder{
+  width: 124px;
+  height: 140px;
+  .shine{
+    background-size: 800px 150px;
+  }
+}
+
+//Image icon size
+.share-icon{
+    width:18px;
+}
+// Media Query
+
+//For Laptop and above
+@media(min-width:1200px){
+  .modal-body form .question-tag{
+    min-height: 40px;
+  }
+}
+
+
+
+
+
+// For tablet: landscape
+@media(min-width:992px) and (max-width:1199px) {
+  .image-radio-btn, .radio-placeholder {
+    width: 108px;
+  }
+}
+// For mobile device
+@media(max-width:767px){
+  .question-spacing .question-tag{
+    padding-right: 0;
+  }
+  .text-nowrap {
+    white-space: normal!important;
+  }
+  ::ng-deep .searchable-select .ng-select {
+    .ng-arrow-wrapper{
+      margin-right: 7px;
+    }
+    .ng-arrow-wrapper .ng-arrow {
+      border: 0;
+      &:after{
+        font-size: $font-20;
+      }
+    }
+    &.ng-select-single{
+      .ng-select-container{
+        border-radius: 3px;
+        .ng-value-container .ng-input{
+          top:14px;
+        }
+      }
+    }
+  }
+  ::ng-deep .select-small.ng-select{
+    width: 100%;
+  }
+  .radio-placeholder{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+ .mt-40{
+    margin-top: 20px;
+  }
+  .residency-radio{
+    &:not(:first-child){
+      margin-left: 0;
+    }
+  }
+
+  .image-radio-btn{
+    width: 100%;
+    &:not(:first-child){
+      margin-top: 10px;
+    }
+    .rect-control-label {
+      height: 64px;
+      flex-direction: row;
+      justify-content: flex-start;
+      
+      img{
+        height: 35px;
+      }
+      span{
+        min-height: auto;
+        text-align: left;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}

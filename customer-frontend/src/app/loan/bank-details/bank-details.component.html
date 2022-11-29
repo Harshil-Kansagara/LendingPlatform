@@ -1,0 +1,84 @@
+<!-- Component hedaer -->
+<app-component-header backRoute="loan/consent" [title]="bankDetailsTitle"></app-component-header>
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- Bank Details Form -->
+      <form *ngIf="!loader" [formGroup]="bankDetailsForm">
+        <div class="default-card pad-40">
+          <div class="row" formArrayName="bankDetails" *ngFor="let bank of bankFormControls; let idx = index;" [class.mt-40]="idx > 0">
+            <div class="col-12" [formGroupName]="idx">
+              <!-- question -->
+              <label class="question-tag mb-0">{{whereToDepositLoanAmount}}</label>
+              <!-- select option -->
+              <ng-select class="default-select mt-20" [items]="bankList" bindLabel="name" bindValue="name" [clearable]="false" (change)="addBankRoutingNumber(idx,$event)"
+                         [searchable]="false" formControlName="name" placeholder="Select Bank"
+                         appendTo="ng-select" [ngClass]="{
+                          'is-invalid':
+                                ((bank.get('name').touched ||
+                                bank.get('name').dirty) &&
+                                !bank.get('name').valid)
+                             }" required>
+              </ng-select>
+              <span *ngIf="((bank.get('name').touched || bank.get('name').dirty) &&
+                              !bank.get('name').valid)" class="invalid-feedback" style="display:grid !important;">
+                {{requiredField}}
+              </span>
+              <div class="row gutter-10">
+                <div class="col-md-6 mt-20">
+                  <!-- Routing Number -->
+                  <label class="question-tag mb-0">{{routingNumber}}</label>
+                  <input type="text" class="form-control mt-20" formControlName="routingNumber" placeholder="Routing Number" readonly="readonly">
+                </div>
+                <div class="col-md-6 mt-20">
+                  <!-- Account -->
+                  <label class="question-tag mb-0">{{accountNumber}}</label>
+                  <input type="number" class="form-control mt-20" formControlName="accountNumber" name="accountNumber" placeholder="Account Number" [ngClass]="{
+                          'is-invalid':
+                                ((bank.get('accountNumber').touched ||
+                                bank.get('accountNumber').dirty) &&
+                                !bank.get('accountNumber').valid)
+                             }" required >
+                  <span *ngIf="((bank.get('accountNumber').touched ||
+                                bank.get('accountNumber').dirty) &&
+                                !bank.get('accountNumber').valid)" class="invalid-feedback" style="display:grid !important;">
+                    {{requiredField}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="default-card pad-40 mt-20 text-right">
+          <!-- Submit button -->
+          <button class="btn btn-primary w-240" (click)="saveBankDetails()">Submit</button>
+        </div>
+      </form>
+
+      <!-- Loader -->
+      <ng-container *ngIf="loader">
+        <div class="default-card pad-30 mb-20">
+          <ng-container *ngFor="let item of [0,1];let i = index">
+            <div class="row gutter-10" [class.mt-40]="i>0">
+              <div class="col-md-6 mt-20">
+                <div class="shine radius-5 height-20"></div>
+              </div>
+              <div class="col-12">
+                <div class="shine radius-5 height-60 mt-20"></div>
+              </div>
+            </div>
+            <div class="row gutter-10">
+              <div class="col-md-6 mt-20" *ngFor="let item of [0,1]">
+                <div class="shine radius-5 height-60 "></div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="default-card pad-30">
+          <div class="shine radius-5 w-240 height-60 full-height ml-auto"></div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

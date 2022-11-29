@@ -1,0 +1,19 @@
+.cell-value{
+    &:first-child{
+        width:200px;
+    }
+}
+.delete-btn{
+    right: 0;
+    top: -28px;
+    position: absolute;
+    text-decoration: none;
+}
+
+.custom-control {
+    .custom-control-label{
+        &::before,&::after{
+            top: 3px;
+        }
+    } 
+}

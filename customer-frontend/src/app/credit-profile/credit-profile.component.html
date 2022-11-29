@@ -1,0 +1,70 @@
+<!-- Component header -->
+<app-component-header hideMenuBtn="true" backRoute="" [title]="creditProfileTitle"></app-component-header>
+<section>
+  <div class="custom-container">
+    <!-- Credit Profile -->
+    <div class="row gutter-16" *ngIf="!isProcessFailed">
+      <div class="col-12 mb-20">
+        <form [formGroup]="creditProfileForm">
+          <div class="default-card pad-40">
+            <p class="mb-30 question-tag">What is your personal credit score?</p>
+            <div class=" mt-sm-0 mt-20">
+              <!-- Rating buttons with smiley -->
+              <div class="d-flex disable-content justify-content-between  mb-1">
+                <button [disabled]="isCreditSliderDisable" [class.active]="creditRating === 0" class="btn-rating fix-grid" (click)="poor()"><img src="assets/images/very_poor.png" alt="Smiley for poor rating"></button>
+                <button [disabled]="isCreditSliderDisable" [class.active]="creditRating === 5" class="btn-rating fix-grid" (click)="average()"><img src="assets/images/poor.png" alt="Smiley for average rating"></button>
+                <button [disabled]="isCreditSliderDisable" [class.active]="creditRating === 10" class="btn-rating fix-grid" (click)="fair()"><img src="assets/images/fair.png" alt="Smiley for fair rating"></button>
+                <button [disabled]="isCreditSliderDisable" [class.active]="creditRating === 15" class="btn-rating fix-grid" (click)="good()"><img src="assets/images/good.png" alt="Smiley for good rating"></button>
+                <button [disabled]="isCreditSliderDisable" [class.active]="creditRating === 20" class="btn-rating fix-grid" (click)="excellent()"><img src="assets/images/excellent.png" alt="Smiley for excellent rating"></button>
+              </div>
+            </div>
+           
+              <div >
+                <!-- Rating Slider -->
+                <div class="slider-container disable-content">
+                  <ngx-slider class="credit-slider m-0" (userChange)="setCreditValue()" formControlName="creditScore" [options]="options"></ngx-slider>
+                </div>
+                <!-- Rating with Score -->
+                <div class="d-flex justify-content-between mt-3">
+                  <div *ngFor="let rating of creditRangeStepArray;let i = index" class="text-center score-range fix-grid" [class.active]="rating.value === creditRating">
+                    <h4 class="poor" *ngIf="rating.value === 0">Poor</h4>
+                    <h4 class="average" *ngIf="rating.value === 5">Average</h4>
+                    <h4 class="fair" *ngIf="rating.value === 10">Fair</h4>
+                    <h4 class="good" *ngIf="rating.value === 15">Good</h4>
+                    <h4 class="excellent" *ngIf="rating.value === 20">Excellent</h4>                    
+                    <p class="score mb-0">{{rating.legend}}</p>
+                  </div>
+                </div>
+              </div>
+          
+            <div class="no-rating">
+              <div class="custom-control custom-checkbox disable-content">
+                <input type="checkbox" [checked]="isCreditSliderDisable" (change)="toggleCreditScorePanel()" class="custom-control-input" id="customRadioInline1">
+                <label class="custom-control-label text-dark" for="customRadioInline1">I don't know</label>
+              </div>
+            </div>
+          </div>
+          <div class="default-card mt-20 px-40 py-20">
+            <div class="d-md-flex align-items-center justify-content-between" *ngFor="let question of creditQuestions;let i=index" [class.mt-20]="i>0">
+              <p class="mb-md-0 question-tag pr-md-4">{{question.question}}</p>
+              <div class="radio-container credit-options d-flex align-items-center">
+                <div class="rect-radio">
+                  <input type="radio" id="yes_{{i}}" [value]=true formControlName="{{question.name}}" class="custom-control-input">
+                  <label class="rect-control-label" for="yes_{{i}}">Yes</label>
+                </div>
+                <div class="rect-radio">
+                  <input type="radio" id="no_{{i}}" [value]=false formControlName="{{question.name}}" class="custom-control-input">
+                  <label class="rect-control-label" for="no_{{i}}">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="default-card text-right px-40 py-30 mt-20">
+            <button class="btn btn-primary w-240" (click)="saveCreditProfile()">Continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <app-item-not-found *ngIf="isProcessFailed" [title]="failedRequestTitle"></app-item-not-found>
+  </div>
+</section>

@@ -1,0 +1,481 @@
+<!-- Component header -->
+<app-component-header [backRoute]="loanProductDetailsRedirectUrl" [title]="companyInfoTitle"></app-component-header>
+<!-- Company info -->
+<div class="custom-container" #companyViewOnly>
+  <div class="row gutter-8">
+    <div class="col-md-12">
+      <ng-container *ngIf="!loader">
+          <form [formGroup]="entityCompanyForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="default-card pad-40">
+              <!-- Company structure -->
+              <p class="question-tag mb-3">{{companyStructureQuestion}}</p>
+              <div class="radio-container d-flex justify-content-md-between flex-md-nowrap flex-wrap">
+                <div class="rect-radio image-radio-btn" *ngFor="let company of companyStructureOptions;let i=index">
+                  <input type="radio" (change)="changeCompanyStructure(company.optionName)" formControlName="structure" id="{{company.optionName+'_'+i}}" name="structure" value={{company.id}} class="custom-control-input">
+                  <label class="rect-control-label" for="{{company.optionName+'_'+i}}">
+                    <img src="{{company.imageUrl}}" alt="company icon">
+                    <span>{{company.title}}</span>
+                  </label>
+                </div>
+              </div>
+              <!-- Ramaininng Company info form fields -->
+              <!-- 
+                Questions no. as 1,2 & 3 describes which company structure they belong to.
+                1 is Proprietorship, 2 is Partnership and 3 is which comes in remaining company structure.
+                getClass(param1,param2): to add grid class
+               -->
+              <div class="row gutter-8 disable-content">
+                <ng-template ngFor let-item [ngForOf]="allQuestions">
+                  <div [ngClass]="getClass(item.gridColumn,item.optionType)">
+                    <p class="question-tag mb-md-0" *ngIf="!item.registeration">
+                      <ng-template [ngIf]="role === 'Proprietorship'">{{item.question1}}</ng-template>
+                      <ng-template [ngIf]="role === 'Partnership'">{{item.question2}}</ng-template>
+                      <ng-template [ngIf]="role !== 'Proprietorship'&& role !== 'Partnership'">{{item.question3}}</ng-template>
+                      <ng-template [ngIf]="role !== 'Proprietorship'">
+                        <ng-template [ngIf]="item.displayOption === 'all' && role === 'Proprietorship'">{{item.question1}}1</ng-template>
+                      </ng-template>
+                    </p>
+                    <p class="question-tag mb-md-0 text-nowrap" *ngIf="item.registeration">
+                      <ng-template [ngIf]="role === 'Partnership'">{{item.question1}}</ng-template>
+                      <ng-template [ngIf]="role !== 'Partnership' && role !== 'Proprietorship'">{{item.question2}}</ng-template>
+                    </p>
+                    <!--EIN control -->
+                    <input type="text" [hiddenInput]="maskSSN" (focus)="ssnFocusFunction()" (focusout)="ssnFocusFunction()" mask="XXX-XX-0000" [patterns]="ssnCustomPattern" *ngIf="item.optionType === 'ein' && role === 'Proprietorship'" placeholder="Ex: 123456789" class="form-control mt-20" name="{{item.formControl}}" formControlName="{{item.formControl}}" #companyEIN
+                           [ngClass]="{
+                          'is-invalid':
+                                ((entityCompanyForm.get(item.formControl).touched ||
+                                entityCompanyForm.get(item.formControl).dirty) &&
+                                !entityCompanyForm.get(item.formControl).valid)
+                             }" />
+                    <input type="text" [hiddenInput]="maskSSN" (focus)="ssnFocusFunction()" (focusout)="ssnFocusFunction()" mask="XX-XXX0000" [patterns]="ssnCustomPattern" *ngIf="item.optionType === 'ein' && role !== 'Proprietorship'" placeholder="Ex: 123456789" class="form-control mt-20" name="{{item.formControl}}" formControlName="{{item.formControl}}" #companyEIN 
+                           [ngClass]="{
+                          'is-invalid':
+                                ((entityCompanyForm.get(item.formControl).touched ||
+                                entityCompanyForm.get(item.formControl).dirty) &&
+                                !entityCompanyForm.get(item.formControl).valid)
+                             }" />
+                    <span class="invalid-feedback" *ngIf="item.optionType === 'ein'">
+                      <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                    </span>
+                    <!-- Three textbox with three different placeholders -->
+                    <!-- Textbox 1 -->
+                    <input type="text" *ngIf="item.optionType === 'textbox' && role === 'Proprietorship'" class="form-control mt-20" name="{{item.formControl}}" formControlName="{{item.formControl}}" placeholder="{{item.placeholder}}"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((entityCompanyForm.get(item.formControl).touched ||
+                                entityCompanyForm.get(item.formControl).dirty) &&
+                                !entityCompanyForm.get(item.formControl).valid)
+                             }" />
+                    <!-- Textbox 2 -->
+                    <input type="text" *ngIf="item.optionType === 'textbox' && role === 'Partnership'" class="form-control mt-20" name="{{item.formControl}}" formControlName="{{item.formControl}}" placeholder="{{item.placeholder2}}"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((entityCompanyForm.get(item.formControl).touched ||
+                                entityCompanyForm.get(item.formControl).dirty) &&
+                                !entityCompanyForm.get(item.formControl).valid)
+                             }" />
+                    <!-- Textbox 3 -->
+                    <input type="text" *ngIf="item.optionType === 'textbox' && role !== 'Proprietorship'&& role !== 'Partnership'" class="form-control mt-20" name="{{item.formControl}}" formControlName="{{item.formControl}}" placeholder="{{item.placeholder3}}"
+                           [ngClass]="{
+                          'is-invalid':
+                                ((entityCompanyForm.get(item.formControl).touched ||
+                                entityCompanyForm.get(item.formControl).dirty) &&
+                                !entityCompanyForm.get(item.formControl).valid)
+                             }" />
+                    <span class="invalid-feedback" *ngIf="item.optionType === 'textbox'">
+                      <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                    </span>
+                    <!-- US State list -->
+                    <ng-template [ngIf]="item.registeration">
+                      <div [class.mb-40]="role !== 'Proprietorship'">
+                        <ng-select *ngIf="role !== 'Proprietorship'" class="default-select mt-20 " [items]="USStateList"
+                                   bindLabel="Name" bindValue="Name" [clearable]="false" [searchable]="false"
+                                   placeholder="Select" appendTo="ng-select" formControlName="{{item.formControl}}"
+                                   [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(item.formControl).touched ||
+                                    entityCompanyForm.get(item.formControl).dirty) &&
+                                    !entityCompanyForm.get(item.formControl).valid)
+                                 }" required>
+                        </ng-select>
+                        <span class="invalid-feedback" *ngIf="role !== 'Proprietorship'">
+                          <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                            {{requiredField}}
+                          </span>
+                        </span>
+                      </div>
+
+                    </ng-template>
+                    <!-- businessSelectList -->
+                    <div *ngIf="item.optionType === 'businessSelectList'">
+                      <ng-select class="default-select select-small" [items]="businessAgeList"
+                                 bindLabel="age" bindValue="id" [clearable]="false" [searchable]="false"
+                                 placeholder="Select" appendTo="ng-select" formControlName="{{item.formControl}}"
+                                 [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(item.formControl).touched ||
+                                    entityCompanyForm.get(item.formControl).dirty) &&
+                                    !entityCompanyForm.get(item.formControl).valid)
+                                 }" required>
+                      </ng-select>
+                      <span class="invalid-feedback" *ngIf="item.optionType === 'businessSelectList'">
+                        <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                      </span>
+                    </div>
+                    <!-- companySelectList -->
+                    <div *ngIf="item.optionType === 'companySelectList'">
+                      <ng-select class="default-select select-small" [items]="companySizeList"
+                                 bindLabel="size" bindValue="id" [clearable]="false" [searchable]="false"
+                                 placeholder="Select" appendTo="ng-select" formControlName="{{item.formControl}}"
+                                 [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(item.formControl).touched ||
+                                    entityCompanyForm.get(item.formControl).dirty) &&
+                                    !entityCompanyForm.get(item.formControl).valid)
+                                 }" required>
+                      </ng-select>
+                      <span class="invalid-feedback" *ngIf="item.optionType === 'companySelectList'">
+                        <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                      </span>
+                    </div>
+                    <!-- industryExperienceSelectList -->
+                    <div *ngIf="item.optionType === 'industryExperienceSelectList'">
+                      <ng-select class="default-select select-small" [items]="industryExperienceList"
+                                 bindLabel="experience" bindValue="id" [clearable]="false" [searchable]="false"
+                                 placeholder="Select" appendTo="ng-select" formControlName="{{item.formControl}}"
+                                 [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(item.formControl).touched ||
+                                    entityCompanyForm.get(item.formControl).dirty) &&
+                                    !entityCompanyForm.get(item.formControl).valid)
+                                 }" required>
+                      </ng-select>
+                      <span class="invalid-feedback" *ngIf="item.optionType === 'industryExperienceSelectList'">
+                        <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                      </span>
+                    </div>
+                    <!-- industry Group List -->
+                    <div class="position-relative searchable-select mt-20" *ngIf="item.optionType === 'selectWithSearchIndustryGroup'">
+                      <ng-select class="mb-md-3" [items]="industryGroupList"
+                                 bindLabel="industryType"
+                                 bindValue="id"
+                                 appendTo="ng-select"
+                                 placeholder="Select industry here"
+                                 [clearable]="false"
+                                 formControlName="{{item.formControl}}"
+                                 [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(item.formControl).touched ||
+                                    entityCompanyForm.get(item.formControl).dirty) &&
+                                    !entityCompanyForm.get(item.formControl).valid)
+                                 }" required>
+                      </ng-select>
+                      <span class="invalid-feedback" *ngIf="item.optionType === 'selectWithSearchIndustryGroup'">
+                        <span *ngIf="entityCompanyForm.get(item.formControl).errors?.required">
+                          {{requiredField}}
+                        </span>
+                      </span>
+                    </div>
+                    <!-- For Address Fields -->
+                    <div class="row gutter-8" *ngIf="item.addressFields">
+                      <div class="col-md-6" *ngFor="let x of item.addressFields">
+                        <!-- Typeahead control-->
+                        <div class="position-relative typeahead mt-md-20" *ngIf="x.optionType === 'typeahead'">
+                          <input [typeahead]="addressSuggestions" [typeaheadAsync]="true" typeaheadWaitMs="500" typeaheadOptionField="text" (typeaheadOnSelect)="onSelect($event)" [adaptivePosition]="true" type="text" formControlName="streetLine" name="streetLine" placeholder="Search Street Line Here..." class="form-control "
+                                 [ngClass]="{ 'is-invalid':
+                                ((entityCompanyForm.get('streetLine').touched ||
+                                 entityCompanyForm.get('streetLine').dirty) &&
+                                !entityCompanyForm.get('streetLine').valid)
+                             }" />
+                          <em class="zmdi zmdi-search search-icon"></em>
+                          <span class="invalid-feedback">
+                            <span *ngIf="entityCompanyForm.get('streetLine').errors?.required">
+                              {{requiredField}}
+                            </span>
+                          </span>
+                        </div>
+                        <!-- Common Textbox -->
+                        <input type="text" *ngIf="x.optionType === 'textbox' && x.formControl==='zipCode'" placeholder="{{x.placeholder}}" class="form-control  mt-20" formControlName="{{x.formControl}}" name="{{x.formControl}}" maxlength="11"
+                               [ngClass]="{ 'is-invalid':
+                                ((entityCompanyForm.get(x.formControl).touched ||
+                                 entityCompanyForm.get(x.formControl).dirty) &&
+                                !entityCompanyForm.get(x.formControl).valid)
+                             }" />
+                        <!-- Zipcode -->
+                        <input type="text" *ngIf="x.optionType === 'textbox' && x.formControl!=='zipCode'" placeholder="{{x.placeholder}}" class="form-control  mt-20" formControlName="{{x.formControl}}" name="{{x.formControl}}"
+                               [ngClass]="{ 'is-invalid':
+                                ((entityCompanyForm.get(x.formControl).touched ||
+                                 entityCompanyForm.get(x.formControl).dirty) &&
+                                !entityCompanyForm.get(x.formControl).valid)
+                             }" />
+                        <span class="invalid-feedback" *ngIf="x.optionType === 'textbox'">
+                          <span *ngIf="entityCompanyForm.get(x.formControl).errors?.required">
+                            {{requiredField}}
+                          </span>
+                          <span *ngIf="entityCompanyForm.get(x.formControl).invalid && !entityCompanyForm.get(x.formControl).errors?.required">
+                            {{invalidZipCode}}
+                          </span>
+                        </span>
+                      </div>
+                      <div class="col-12">
+                        <p class="question-tag mt-40 mb-0">{{item.note}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="default-card pad-40 mt-20" *ngIf="role === 'cCorporation'">
+              <!-- Is Fiscal Year -->
+              <ng-template ngFor let-question [ngForOf]="isFiscalYear" let-i="index">
+                <div class="d-md-flex align-items-center justify-content-between disable-content" *ngIf="question.optionType === 'radioButton'">
+                  <p class="mb-md-0 question-tag">{{question.question}}</p>
+                  <div class="radio-container credit-options d-flex align-items-center">
+                    <div class="rect-radio">
+                      <input type="radio" id="yes_{{i}}" value="yes" formControlName="{{question.formControl}}" name="{{question.formControl}}" class="custom-control-input">
+                      <label class="rect-control-label" for="yes_{{i}}">Yes</label>
+                    </div>
+                    <div class="rect-radio ml-3">
+                      <input type="radio" id="no_{{i}}" value="no" formControlName="{{question.formControl}}" name="{{question.formControl}}" class="custom-control-input">
+                      <label class="rect-control-label" for="no_{{i}}">No</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Select Fiscal year -->
+                <div class="d-md-flex justify-content-md-end align-items-md-center flex-wrap disable-content" *ngIf="question.optionType === 'selectlist' && entityCompanyForm.get('fiscalYear').value === 'no'">
+                  <hr class="w-100">
+                  <p class="mb-md-0 question-tag mr-3 ">{{question.question}}</p>
+                  <div>
+                    <ng-select class="default-select select-small" [items]="months"
+                               bindLabel="name" bindValue="number" [clearable]="false" [searchable]="false"
+                               placeholder="Select" appendTo="ng-select" formControlName="{{question.formControl}}"
+                               [ngClass]="{
+                              'is-invalid':
+                                    ((entityCompanyForm.get(question.formControl).touched ||
+                                    entityCompanyForm.get(question.formControl).dirty) &&
+                                    !entityCompanyForm.get(question.formControl).valid)
+                                 }" required>
+                    </ng-select>
+                    <span class="invalid-feedback">
+                      <span *ngIf="entityCompanyForm.get(question.formControl).errors?.required">
+                        {{requiredField}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <!--Proprietorship or Add Partner -->
+            <div class="default-card pad-40 mt-20 ">
+              <p class="mb-0 question-tag disable-content">
+                <ng-template [ngIf]="role === 'Proprietorship'">Proprietorship</ng-template>
+                <ng-template [ngIf]="role !== 'Proprietorship'">Partners</ng-template>
+              </p>
+              <div class="row gutter-8 disable-content">
+                <div class="col-md-6 d-md-flex" *ngFor="let partner of shareholder.controls;let i = index">
+                  <div class="white-card user-details-card" *ngIf="role !== 'Proprietorship'">
+                    <ul class="list-unstyled">
+                      <!--<li><em class="zmdi zmdi-account-circle"></em> {{partner.value.firstname}} {{partner.value.lastname}}</li>-->
+                      <li ><em class="zmdi zmdi-email"></em> <span class="text-truncate" [title]="partner.value.email">{{partner.value.email}}</span></li>
+                      <!--<li><em class="zmdi zmdi-phone-in-talk"></em> {{partner.value.phone}}</li>-->
+                      <li *ngIf="partner.value.shares !== null"><img src="assets/images/PercentageShare.svg" class="share-icon" alt="share percentage icon"/> {{partner.value.shares}}</li>
+                      <li *ngIf="partner.value.shares === null"><img src="assets/images/PercentageShare.svg" class="share-icon" alt="share percentage icon"/>--</li>
+                    </ul>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="action-buttons">
+                        <button type="button" class="btn btn-link" (click)="openModal(addPartner,i)">Edit</button>
+                        <button type="button" class="btn btn-link ml-2" (click)="remove(i)" *ngIf="i!==0">Delete</button>
+                      </div>
+                      <!--<p class="card-holder font-12 mb-0">{{partner.value.residencyStatus | residencyStatusEnum}}</p>-->
+                    </div>
+                  </div>
+                  <div class="white-card user-details-card" *ngIf="role === 'Proprietorship' && i === 0">
+                    <ul class="list-unstyled mb-0">
+                      <!--<li><em class="zmdi zmdi-account-circle"></em> {{partner.value.firstname}} {{partner.value.lastname}}</li>-->
+                      <li><em class="zmdi zmdi-email"></em> <span class="text-truncate" [title]="partner.value.email">{{partner.value.email}}</span></li>
+                      <!--<li><em class="zmdi zmdi-phone-in-talk"></em> {{partner.value.phone}}</li>-->
+                      <li><img src="assets/images/PercentageShare.svg" class="share-icon" alt="share percentage icon"/> 100 </li>
+                    </ul>
+                    <!--<p class="card-holder font-12 mb-0">{{partner.value.residencyStatus | residencyStatusEnum}}</p>-->
+                  </div>
+                </div>
+                <div class="col-md-6 d-md-flex" *ngIf="((role !== 'Proprietorship' && shareholder && shareholder.controls && shareholder.controls.length>0 && shareholder.controls[0].get('shares').value < mojorityPercentage)||role === 'Partnership')&&!isTotalHundredSharePercentage">
+                  <div class="white-card user-details-card p-0 d-flex justify-content-center add-user">
+                    <button type="button" class="btn btn-add w-100" (click)="openModal(addPartner,null)">
+                      <em class="zmdi zmdi-plus  d-block"></em>
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="text-danger mt-3 mb-0" *ngIf="partnerErrorMessage">
+                <em class="zmdi zmdi-alert-circle-o"></em> {{partnerErrorMessage}}
+              </p>
+            </div>
+            <div class="default-card pad-40 mt-20 text-right">
+              <button class="btn btn-primary w-240" type="submit">Continue</button>
+            </div>
+          </form>
+      </ng-container>
+      <!-- Loader -->
+      <ng-container *ngIf="loader">
+        <div class="default-card pad-30 ">
+          <div class="row gutter-2 justify-content-md-between">
+            <div class="radio-placeholder d-flex" *ngFor="let number of [0,1,2,3,4]">
+              <div class="shine radius-5 w-100"></div>
+            </div>
+          </div>
+          <div class="row gutter-8 mt-20">
+            <div class="col-md-6" *ngFor="let number of [0,1]">
+              <div class="shine radius-5 height-20"></div>
+              <div class="shine radius-5 height-60 mt-20"></div>
+            </div>
+            <div class="col-md-12 mt-20">
+              <div class="row gutter-8">
+                <div class="col-md-6">
+                  <div class="shine radius-5 height-20"></div>
+                </div>
+              </div>
+              <div class="row gutter-8">
+                <div class="col-md-6" *ngFor="let number of [0,1,2,3]">
+                  <div class="shine radius-5 height-60 mt-20"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-20" *ngFor="let number of [0,1]">
+              <div class="shine radius-5 height-20"></div>
+              <div class="shine radius-5 height-60 mt-20"></div>
+            </div>
+          </div>
+          <div class="row gutter-8 justify-content-between align-items-center mt-20" *ngFor="let number of [0,1,3]">
+            <div class="col-md-8">
+              <div class="shine radius-5 height-20 mb-20 mb-md-0"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="shine radius-5 height-40"></div>
+            </div>
+          </div>
+        </div>
+        <div class="default-card pad-30 mt-20">
+          <div class="col-md-6 p-0">
+            <div class="shine radius-5 height-260 full-height"></div>
+          </div>
+        </div>
+        <div class="default-card pad-30 mt-20">
+          <div class="shine radius-5 w-240 height-60 ml-auto"></div>
+        </div>
+      </ng-container>
+      <!-- Loader -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Popup to add partner -->
+<ng-template #addPartner>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" *ngIf="this.isEditPartnerIndex === null">Add Partner</h4>
+    <h4 class="modal-title pull-left" *ngIf="this.isEditPartnerIndex !== null && this.isEditPartnerIndex !== 0">Edit Partner</h4>
+    <h4 class="modal-title pull-left" *ngIf="this.isEditPartnerIndex === 0">Edit Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+      <em class="zmdi zmdi-close"></em>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- partnerDetailsForm -->
+    <form [formGroup]="partnerDetailsForm" autocomplete="off">
+      <div class="row gutter-8">
+        <div class="mt-40" *ngFor="let partner of addPartnerDeatils" [ngClass]="partner.gridColumn==='full'?'col-md-12':'col-md-6'">
+          <p class="mb-0 question-tag " *ngIf="this.isEditPartnerIndex !== 0">{{partner.question1}}</p>
+          <p class="mb-0 question-tag " *ngIf="this.isEditPartnerIndex === 0">{{partner.question2}}</p>
+
+          <!-- Partner Shares Control-->
+          <input type="number" *ngIf="partner.optionType === 'textbox' && role!=='Proprietorship' && partner.formControl==='shares' && partner.formControl!=='phone'" placeholder="Share percentage" class="form-control mt-20" name="{{partner.formControl}}" formControlName="{{partner.formControl}}"
+                 [ngClass]="{
+                          'is-invalid':
+                                ((partnerDetailsForm.get(partner.formControl).touched ||
+                                partnerDetailsForm.get(partner.formControl).dirty) &&
+                                !partnerDetailsForm.get(partner.formControl).valid)
+                             }" />
+          <!--<span class="invalid-feedback" *ngIf="partner.optionType === 'number'">
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).errors?.required">
+              {{requiredField}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).invalid && isInvalidSharePercentage">
+              {{invalidTotalPercentage}}
+            </span>
+          </span>-->
+          <input type="text" maxlength="16" *ngIf="partner.optionType === 'textbox' && role!=='Proprietorship' && partner.formControl==='phone' && partner.formControl!=='shares'" placeholder="Ex: +18945654122" class="form-control mt-20" name="{{partner.formControl}}" formControlName="{{partner.formControl}}"
+                 [ngClass]="{
+                          'is-invalid':
+                                ((partnerDetailsForm.get(partner.formControl).touched ||
+                                partnerDetailsForm.get(partner.formControl).dirty) &&
+                                !partnerDetailsForm.get(partner.formControl).valid)
+                             }" />
+          <input type="text" *ngIf="partner.optionType === 'textbox' && role!=='Proprietorship' && partner.formControl!=='phone' && partner.formControl!=='shares'" placeholder="" class="form-control mt-20" name="{{partner.formControl}}" formControlName="{{partner.formControl}}"
+                 [ngClass]="{
+                          'is-invalid':
+                                ((partnerDetailsForm.get(partner.formControl).touched ||
+                                partnerDetailsForm.get(partner.formControl).dirty) &&
+                                !partnerDetailsForm.get(partner.formControl).valid)
+                             }" />
+          <span class="invalid-feedback" *ngIf="partner.optionType === 'textbox'">
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).errors?.required">
+              {{requiredField}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).invalid && !partnerDetailsForm.get(partner.formControl).errors?.required && partner.formControl==='phone'">
+              {{invalidPhone}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).invalid && isInvalidSharePercentage">
+              {{invalidTotalPercentage}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).invalid && isInvalidPartnershipSingleUserPercentage">
+              {{invalidPartnershipSingleUserPercentage}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).invalid && isSharePercentageZero">
+              {{zeroSharePercentageError}}
+            </span>
+          </span>
+          <!-- Email control Readonly-->
+          <input type="email" *ngIf="partner.optionType === 'email' && this.isEditPartnerIndex === 0" placeholder="" class="form-control mt-20" name="{{partner.formControl}}" formControlName="{{partner.formControl}}" readonly />
+          <!-- Email control -->
+          <input type="email" *ngIf="partner.optionType === 'email' && this.isEditPartnerIndex !== 0" placeholder="Ex: example@jamoon.com" class="form-control mt-20" name="{{partner.formControl}}" formControlName="{{partner.formControl}}"
+                 [ngClass]="{
+                          'is-invalid':
+                                ((partnerDetailsForm.get(partner.formControl).touched ||
+                                partnerDetailsForm.get(partner.formControl).dirty) &&
+                                !partnerDetailsForm.get(partner.formControl).valid)
+                             }" />
+          <span class="invalid-feedback" *ngIf="partner.optionType === 'email'">
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).errors?.required">
+              {{requiredField}}
+            </span>
+            <span *ngIf="partnerDetailsForm.get(partner.formControl).errors?.email">
+              {{invalidEmail}}
+            </span>
+          </span>
+          <!-- Radio button control -->
+          <!--<div *ngIf="partner.optionType === 'radioButton'" class="d-md-flex align-items-center mt-20">
+            <div class="custom-control custom-radio residency-radio" *ngFor="let option of partner.optionsList;let i = index">
+              <input type="radio" id="customRadio_{{i}}" value="{{option.name}}" name="{{partner.formControl}}" formControlName="{{partner.formControl}}" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio_{{i}}">{{option.name | residencyStatusEnum}}</label>
+            </div>
+          </div>-->
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-primary w-240 mb-20 mt-40" (click)='onPartnerAdd()' *ngIf="this.isEditPartnerIndex === null">Add</button>
+    <button class="btn btn-primary w-240 mb-20 mt-40" (click)='onPartnerAdd()' *ngIf="this.isEditPartnerIndex !== null">Save</button>
+  </div>
+</ng-template>

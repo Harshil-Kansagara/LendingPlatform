@@ -1,0 +1,12 @@
+<div class="default-card financial-summary existing-finaces d-md-flex flex-md-column justify-content-md-center">
+  <div class="w-538 mx-auto">
+    <img src="assets/images/arrow-board.svg" class="img-fluid mx-auto d-block" alt="arrow-board">
+    <h2 class="section-heading">
+      Would you like to use your existing {{moduleName}} retrieved on <strong>{{retrievalDate | date:'MM-dd-yyyy'}} {{retrievalDate | date:'shortTime'}}</strong> or refresh with latest?
+    </h2>
+    <div class="d-flex flex-column flex-sm-row">
+      <button type="button" class="btn btn-outline-primary" (click)="retainOrRefresh(true)">Let's Retrieve</button>
+      <button type="button" class="btn btn-outline-primary ml-sm-auto mt-sm-0 mt-3" (click)="retainOrRefresh(false)">Refresh with latest?</button>
+    </div>
+  </div>
+</div>

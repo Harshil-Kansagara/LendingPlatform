@@ -1,0 +1,121 @@
+<!-- Bank transactions -->
+<div class="row" [class.blur-content]="viewOnly" id="transactionPop-Up">
+    <div class="col-12 ">
+      <div class="fixed-container" *ngIf="!loader">
+        <ng-container *ngIf="consentVisible">
+          <div class="component-header d-flex align-items-center justify-content-between mb-20">
+            <h4 *ngIf="!connected" class="mb-0">Let's Import Your Bank Transactions</h4>
+            <h4 *ngIf="connected" class="mb-0">Verify your bank transactions of past {{startingYear}}-{{endingYear}} years</h4>
+           
+            <div class="d-flex align-items-center ">
+              <button class="btn btn-connect btn-clear ml-3" (click)=" clearConnection()" *ngIf="connected">
+                  Unlink & Clear
+              </button>
+            </div>
+          </div>
+    
+          <!-- Connect with option -->
+          <div class="connect-options" *ngIf="!connected">
+            <button class="btn connect-btn" (click)="connectWith(transactionModal)">
+              Import Transactions
+              <div class="image-container">
+                <img src="../assets/images/grid.png" alt="grid icon" />
+              </div>
+            </button>
+          </div>
+          <!-- Connect with option -->
+        </ng-container>
+        <ng-container *ngIf="connected">
+          <div class="grey-box p-4">
+            <div class="row">
+              <div class="col-md-6 pr-2">
+                <div class="d-flex justify-content-between mb-2">
+                    <div class="select-option pr-1">
+                        <!-- Bank Dropdown -->
+                        <ng-select *ngIf="linkedBanks.length != 0" [items]="linkedBanks"
+                            bindLabel="bankName" bindValue="bankName" (change)="selectBank($event)" [clearable]="false" [searchable]="false" [(ngModel)]="linkedBanks[0].bankName"
+                            placeholder="Select Bank" appendTo="ng-select">
+                        </ng-select>
+                    </div>
+                    <div class="select-option pl-1">
+                        <!-- Account Dropdown -->
+                        <ng-select *ngIf="linkedBankAccountTransactions.length != 0" [items]="linkedBankAccountTransactions"
+                        bindLabel="accountName" bindValue="accountName" (change)="selectAccount($event)" [clearable]="false" [searchable]="false" [(ngModel)]="linkedBankAccountTransactions[0].accountName"
+                        placeholder="Select Account" appendTo="ng-select">
+                            </ng-select>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6 pl-2">
+                  <button *ngIf="consentVisible" class="btn btn-import mb-2" (click)="connectWith(transactionModal)"><em class="zmdi zmdi-plus-circle"></em> Import more from other account</button>                    
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-2">
+                <div class="account-block">
+                  <!-- Account Type -->
+                  <p class="acc-title">Account Type</p>
+                  <p class="mb-0 text-sm">{{accountType}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 pl-2">
+                <div class="account-block">
+                  <!-- Account Balance -->
+                  <p class="acc-title">Account Balance</p>
+                  <p class="mb-0 text-sm">$ {{currentBalance}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Transactions table -->
+          <div class="sticky-table mt-3" *ngIf="transactionsArray.length > 0">
+            <table class="table table-bordered invoice-table table-fixed mb-0">
+                <tr>
+                  <th scope="col" class="width30"><span></span></th>
+                  <th scope="col" class="col-120"><span>Date</span></th>
+                  <th scope="col" class="col-120"><span>Amount</span></th>
+                  <th scope="col" class="col-180"><span>Type</span></th>
+                  <th scope="col"><span>Description</span></th>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let x of transactionsArray">
+                    <td></td>
+                    <td>{{x.transactionDate}}</td>
+                    <td>$ {{x.amount.amount | mask: 'separator':','}}</td>
+                    <td>{{x.type}}</td>
+                    <td>{{x.description.simple}}</td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+          <div class="p-3 grey-box mt-4" *ngIf="transactionsArray.length === 0 && linkedBankAccountTransactions.length !== 0">
+            <h5 class="text-capitalize text-center mb-0">No transactions found</h5>
+          </div>
+        </ng-container>
+
+        <!--Yodlee Pop-Up-->
+        <ng-template #transactionModal>
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body ">
+            <div id="container-fastlink"></div>
+          </div>
+          
+        </ng-template>
+      </div>
+  
+      <!-- Loader -->
+      <div class="w-100" *ngIf="loader">        
+        <div *ngFor="let item of [0,1,2,3,4,5];let i=index">
+          <div class="d-flex flex-wrap answers-placeholder">
+            <div class="answers shine" *ngFor="let item of [0,1,2,3]"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Loader -->
+    </div>
+  </div>
+  <!-- Bank transactions -->

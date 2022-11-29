@@ -1,0 +1,88 @@
+@import 'variables';
+// Only component specific styles here
+hr{
+    border-color: var(--light-border);
+}
+::ng-deep .progress-bar{
+    background-color: var(--primary);
+}
+.nav-list {
+  position: relative;
+
+  &:after {
+    content: "";
+    height: 96%;
+    background: var(--border-clr);
+    position: absolute;
+    width: 2px;
+    top: 12px;
+    left: 24px;
+  }
+
+  li:not(:first-child) {
+    padding-top: 30px;
+  }
+
+  li {
+    font-size: var(--sm);
+    display: flex;
+    align-items: center;
+    position: relative;
+    // &:not(:last-child):after{
+    //     content: "";
+    //     height: 63px;
+    //     background: var(--border-clr);
+    //     position: absolute;
+    //     width: 2px;
+    //     top: 17px;
+    //     left: 8px;
+    // }
+  }
+
+  .nav-links {
+    color: var(--default-text-clr);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .edit-mode .menu-item > .circle {
+    background-color: var(--white);
+    border: 4px solid var(--primary);
+  }
+
+  .sub-menu-item.edit-mode > .circle {
+    background-color: var(--white);
+    border: 3px solid var(--primary);
+  }
+
+  .active .menu-item > .circle,
+  .sub-menu-item.active > .circle {
+    background-color: var(--primary);
+  }
+
+  .edit-mode, .active {
+    color: var(--dark-text-clr);
+  }
+}
+.edit-mode,.active{
+    .nav-links{
+        color: var(--dark-text-clr);
+    }
+}
+.sub-menu{
+  padding: 22px 0 0 47px;
+  .circle {
+    width: 12px;
+    height: 12px;
+  }
+}
+//Media
+@media (max-width:767px){
+  .nav-list {
+    li {
+      font-size: $font-xs-12;
+    }
+  }
+}

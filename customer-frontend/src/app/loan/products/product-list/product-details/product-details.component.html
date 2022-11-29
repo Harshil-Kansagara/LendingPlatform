@@ -1,0 +1,143 @@
+<app-component-header [backRoute]="backRoute" [title]="productTitle"></app-component-header>
+<!-- Loan products Section -->
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Product details -->
+      <ng-container  *ngIf="!loader">
+        <!-- Product list view button-->
+        <ng-container *ngIf="!isViewOnlyMode">
+          <div class="product-list-view mb-2 d-md-flex align-items-center" *ngIf="!isLoanProduct && !isViewOnlyMode && selectedProduct">
+            <p class="text-danger mb-md-0 pr-3 text-md-left text-center" *ngIf="selectedProduct.isPreviousProductMatched !== null && !selectedProduct.isPreviousProductMatched">
+              Your needs have changed. Now, this product is not eligible.
+            </p>
+            <div class="ml-auto text-right listview-button">
+              <span>Go to</span>
+              <button class="btn ml-2" (click)="redirectToProductList()"><em class="zmdi zmdi-format-list-bulleted"></em> Product List</button>
+            </div>
+          </div>
+        </ng-container>
+        <div class="default-card product-block position-relative" *ngIf="selectedProduct">
+          <img src="assets/images/recommended.png" class="recommended-badge" *ngIf="selectedProduct.isProductRecommended" alt="recommended badge">
+          <div class=" d-sm-flex align-items-start position-relative">
+            <img src="assets/images/secure.png" class="secure-icon d-sm-block d-none mr-2" alt="secure">        
+            <div class="ml-sm-3">
+              <h6 class="text-dark font-weight-bold d-md-block d-flex align-items-center">
+                <img src="assets/images/secure.png" class="secure-icon d-sm-none mr-2" alt="secure">
+                {{selectedProduct.name}}
+              </h6>
+              <p class="mb-30">{{selectedProduct.description}}</p>
+
+              <ul class="product-checklist-ul">
+                <li class="product-checklist" *ngFor="let descriptionPoint of selectedProduct.descriptionPoints">
+                  <em class="zmdi zmdi-check d-inline-block align-middle"></em>
+                  <p class="mb-0 word-break d-inline-block align-middle">
+                    {{descriptionPoint.text}}
+                  </p>
+                </li>
+              </ul>
+              <div class="row gutter-5">
+                <div class="col-md-6 summary d-md-flex">
+                  <div class="summary-header">
+                    <p class="mb-0">Loan Amount</p>
+                  </div>
+                  <div class="summary-body">
+                    <em class="zmdi zmdi-money-box "></em>
+                    <p class="mb-0 text-dark font-weight-medium">{{currencySymbol}} {{selectedProductDetail.amount | mask: 'separator':','}}</p>
+                  </div>  
+                </div>
+                <div class="col-md-6 mt-2 mt-md-0 summary d-md-flex">
+                  <div class="summary-header">
+                    <p class="mb-0 ">Interest Rate*</p>
+                  </div>
+                  <div class="summary-body">
+                    <em class="zmdi zmdi-flower-alt "></em>
+                    <p class="mb-0 text-dark font-weight-medium">
+                      {{selectedProductDetail.interestRate}}%
+                    </p>
+                  </div>  
+                </div>
+              </div>
+              <form [formGroup]="amountForm">
+                <div class="row gutter-5">
+                  <div class="col-12 mt-10">
+                    <div class="default-border p-3 slider-block">
+                      <p class="mb-20 text-center question-tag">{{howMuchMoneyDoYouNeed}}</p>
+                      <div class="slider-container disable-content">
+                        <ngx-slider class="custom-slider min-max-label" [options]="amountOptions" [(value)]="amountSliderValue" formControlName="amount" (userChange)="onChangeAmount(amountSliderValue)"></ngx-slider>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-10">
+                    <div class="default-border p-3 slider-block">
+                      <p class="mb-20 text-center question-tag">{{timeRequiredToClear}}</p>
+                      <div class="slider-container disable-content">
+                        <ngx-slider class="custom-slider min-max-label" [options]="productPeriodOptions" [(value)]="periodSliderValue" formControlName="period" (userChange)="onChangeYear(periodSliderValue)"></ngx-slider>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-10">
+                    <div class="default-border p-3 slider-block">
+                      <p class="mb-20 text-center question-tag">{{monthlyPayment}}</p>
+                      <div class="slider-container disable-content">
+                        <ngx-slider class="custom-slider min-max-label" [options]="monthlyPaymentOptions" [(value)]="monthlyPaymentSliderValue" formControlName="monthlyPayment" (userChange)="onChangeMonthlyPayment(monthlyPaymentSliderValue)"></ngx-slider>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-10">
+                    <div class="default-border pad-30 ">
+                      <p class="mb-20 text-dark">Monthly repayment (P&I) <span class="d-block float-sm-right">{{currencySymbol}} {{selectedProductDetail.monthlyPayment | number: '1.2-2' | mask: 'separator':','}}</span></p>
+                      <p class="mb-20 text-dark">Total of payments (based on {{amountForm.value.totalNumberOfPayment}} months term) <span class="d-block float-sm-right">{{currencySymbol}} {{amountForm.value.totalPayment |  mask: 'separator':','}}</span></p>
+                      <p class="mb-0 text-dark">Total interest paid over life of loan* <span class="d-block float-sm-right">{{currencySymbol}} {{amountForm.value.totalInterest |  mask: 'separator':','}}</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-30">
+                  <div class="d-sm-flex align-items-center justify-content-between">
+                    <p class="payout-note text-dark mr-sm-4">You will need to pay <span>{{currencySymbol}} {{selectedProductDetail.monthlyPayment | number: '1.2-2' | mask: 'separator':','}}</span> every month for <span>{{amountForm.value.period}} years</span> to payoff the debt.</p>
+                    <button class="btn btn-primary w-240" [disabled]="selectedProduct.isPreviousProductMatched!==null && !selectedProduct.isPreviousProductMatched" (click)="saveLoanData()">Continue</button>
+                  </div>
+                </div>
+              </form>
+              <p class="disclaimer-text mt-3 text-sm text-justify font-italic">
+                * {{interestDisclaimer}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Loader -->
+      <div class="default-card pad-30 mb-20" *ngIf="loader">
+        <div class="row gutter-8">
+          <div class="col-md-2">
+            <div class="shine radius-5 height-60"></div>
+          </div>
+          <div class="col-md-10">
+            <div class="shine radius-5 height-20"></div>
+            <div class="shine radius-5 height-100 mt-20"></div>
+            <div class="row gutter-8">
+              <div class="col-md-4" *ngFor="let item of [0,1,2]">
+                <div class="shine radius-5 height-100 mt-20"></div>
+              </div>
+            </div>
+            <div class="row gutter-8">
+              <div class="col-md-6" *ngFor="let item of [0,1]">
+                <div class="shine radius-5 height-160 full-height mt-20"></div>
+              </div>
+            </div>
+            <div class="shine radius-5 height-100 mt-20"></div>
+            <div class="row gutter-8">
+              <div class="col-md-7">
+                <div class="shine radius-5 height-60 mt-20"></div>
+              </div>
+              <div class="col-md-5">
+                <div class="shine radius-5 height-60 mt-20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

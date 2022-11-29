@@ -1,0 +1,84 @@
+<!-- Component header -->
+<app-component-header [backRoute]="financeRedirectUrl" [title]="taxesInfoTitle"></app-component-header>
+<!-- Tax Form Section -->
+<div class="custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <ng-container *ngIf="!loader && !hasTaxesAlready">
+          <div class="default-card upload-options">
+            <h2 class="section-heading mx-auto">
+              Please upload your three most recent filed Federal income tax returns
+            </h2>
+            <div class="w-580 mx-auto">
+              <p class="text-center sub-title">
+                <ng-template [ngIf]="appService.taxes.length > 0">
+                  Please select your tax return year in a dropdown
+                </ng-template>
+              </p>
+              <!-- Uploaded file block -->
+              <div class="white-card pad-30 d-sm-flex align-items-center uploaded-files justify-content-between mb-20" *ngFor="let item of appService.taxesData; let i=index">
+                <p class="mb-0 file-name" [title]="item.taxes.entityTaxAccount.document.name">
+                  <img src="{{pdfIcon}}" alt="file type" class="mr-2">
+                  {{ item.taxes.entityTaxAccount.document.name }}
+                </p>
+                <!-- File Options -->
+                <div class="d-flex align-items-center flex-wrap">
+                  <!-- File Year selector -->
+                  <ng-select class="tax-small-select mt-md-0 disable-content" [items]="years" (change)="addYearOfDocument($event,i)" [clearable]="false" [searchable]="false" [(ngModel)]="item.taxes.entityTaxAccount.period" [disabled]="item.isDbData"
+                             placeholder="Year" appendTo="ng-select">
+                  </ng-select>
+                  <!-- Download and Delete options -->
+                  <!-- class 'disable-content' is added to disable delete button when view only mode is enabled -->
+                  <span *ngIf="!item.isFileUploading">
+                    <button class="btn btn-outline-default ml-sm-2 btn-size-30 p-0" (click)="fileDownload(item)"><em class="zmdi zmdi-download"></em></button>
+                    <button class="btn btn-outline-default ml-2 btn-size-30 p-0 disable-content" (click)="fileRemove(i)"><em class="zmdi zmdi-delete"></em></button>
+                  </span>
+                </div>
+                <!-- Loader till file uploads -->
+                <div class="ml-auto" id="dotted-loader" *ngIf="item.isFileUploading">
+                  <span *ngFor="let n of [1,2,3,4]"></span>
+                </div>
+              </div>
+              <!-- Drag and drop file zone -->
+              <ngx-file-drop class="upload-file disable-content" [class.uploaded]="appService.taxes.length > 0" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" *ngIf="isFileUploadAllowed && !isViewOnlyMode"
+                             accept=".pdf">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                  <div class="upload-content mx-auto">
+                    <div>
+                      <em class="zmdi zmdi-cloud-upload"></em>
+                      <p>Drag and drop here</p>
+                    </div>
+                    <div>
+                      <p>or</p>
+                      <div class="d-block upload-button">
+                        <button type="button" class="btn btn-outline-primary" (click)="openFileSelector()">Browse Files</button>
+                        <p class="mb-0 mt-1 font-12">[Max size of each file: 20MB]</p>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-file-drop>
+            </div>
+          </div>
+          <div class="default-card pad-40 mt-20 text-right" *ngIf="appService.taxes.length > 0">
+            <button class="btn btn-primary w-240" (click)="saveTaxReturnInfo()">
+              <span>Continue</span>
+            </button>
+          </div>
+        </ng-container>
+        <!-- Loader -->
+        <div class="default-card pad-30 " *ngIf="loader && !hasTaxesAlready">
+          <div class="shine radius-5 height-40"></div>
+          <div class="shine radius-5 height-20 mt-20"></div>
+          <div class="shine radius-5 height-300 full-height mt-20"></div>
+        </div>
+        <!-- Loader -->
+
+        <div *ngIf="hasTaxesAlready">
+          <app-retrieve-existing (retrieveDataEvent)="existingTaxesAction($event)" [retrievalDate]=taxesRetrievalDate moduleName="company taxes"></app-retrieve-existing>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Tax Form Section -->

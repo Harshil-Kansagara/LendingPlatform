@@ -1,0 +1,80 @@
+// border radius classes
+$radius: 3,5,10;
+
+@each $val in $radius {
+  .radius-#{$val} {
+    border-radius: $val+px !important;
+  }
+}
+// Fonts sizes classes
+$sizes: 10,12,14,16,18,20,22,24,26,28,30;
+
+@each $size in $sizes {
+  .font-#{$size} {
+    font-size: $size+px;
+  }
+}
+
+// Margin/Padding classes
+$marginValue: 10,20,30,40,60;
+
+@each $value in $marginValue {
+
+    // Margin top
+  .mt-#{$value} {
+    margin-top: $value+px;
+  }
+
+  // Margin bottom
+  .mb-#{$value} {
+    margin-bottom: $value+px;
+  }
+
+  //Padding
+  .pad-#{$value} {
+    padding: $value+px;
+  }
+
+  //Padding Left/Right
+  .px-#{$value}{
+    padding-left: $value+px;
+    padding-right: $value+px;
+  }
+
+  //Padding Top/Bottom
+  .py-#{$value}{
+    padding-top: $value+px;
+    padding-bottom: $value+px;
+  }
+
+}
+
+
+// height classes
+$sizes: 20,40,50,60,100,160,260,300;
+
+@each $size in $sizes {
+  .height-#{$size} {
+    height: $size+px;
+  }
+}
+
+// Padding between grids
+@mixin customGutter($value) {
+    &.row,.row{
+      margin-left: -#{$value}+px;
+      margin-right: -#{$value}+px;
+    }
+    div[class*="col-"]{
+      padding-left: $value+px;
+      padding-right: $value+px;
+    }
+  }
+  
+$gutterValues: 2,5,8,10;
+@each $size in $gutterValues {
+  .gutter-#{$size}{
+    @include customGutter($size);
+  }
+}
+

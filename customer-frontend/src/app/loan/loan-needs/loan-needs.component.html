@@ -1,0 +1,128 @@
+<!-- Component header -->
+<app-component-header [backRoute]="creditProfileSectionRedirectUrl" title="Great to meet you! Let's narrow down your options."></app-component-header>
+<section>
+  <div class="custom-container">
+    <!-- Loan needs form -->
+    <form [formGroup]="loanNeedsForm" *ngIf="!loader">
+      <div class="row gutter-8" *ngIf="loanPurposeList.length > 0 && appSettings.length > 0 && isPurposeEnabled !== undefined">
+        <div class="col-md-12 d-flex flex-column mb-20">
+          <div class="default-card text-center pad-30 w-100 mt-md-0 mt-20 flex-grow-1">
+            <p class="question-tag text-left">{{question3}}</p>
+            <div class="radio-container loan-needs-options row clearfix">
+              <div class="rect-radio col-md-6" *ngFor="let purpose of loanPurposeList;let i=index">
+
+                <input type="radio" name='purpose' formControlName='purpose' id="{{purpose.name}}" value="{{purpose.id}}" class="custom-control-input">
+                <label class="rect-control-label justify-content-start" for="{{purpose.name}}" (click)="setSlidersOnPurposeSelection(purpose.id)">
+                  <em class="zmdi zmdi-city zmdi-hc-lg" *ngIf="purpose.name ==='Property Purchase'"></em>
+                  <em class="zmdi zmdi-balance-wallet zmdi-hc-lg" *ngIf="purpose.name ==='Cash Flow'"></em>
+                  <em class="zmdi zmdi-case zmdi-hc-lg" *ngIf="purpose.name ==='Asset Purchase'"></em>
+                  <em class="zmdi zmdi-coffee zmdi-hc-lg" *ngIf="purpose.name ==='Other Long Term Need'"></em>
+                  {{purpose.name}}
+                </label>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-12 d-flex mb-20">
+          <div class="default-card d-flex your-needs-que pad-40">
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Property Purchase'">{{question4}}</p>
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Asset Purchase'">{{question5}}</p>
+            <p class="question-tag mb-0" *ngIf="loanPurpose ==='Cash Flow' || loanPurpose ==='Other Long Term Need' ">{{question6}}</p>
+            <ng-select [items]="subLoanOptions" formControlName="subLoanPurpose" [clearable]="false" [searchable]="false" bindLabel="name" bindValue="id" class="question-select disable-content">
+              <ng-template ng-label-tmp let-item="item">
+                {{item.name}}
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex mb-20">
+          <div *ngIf="isPurposeEnabled" class="your-needs-sliders">
+            <div class="row clearfix">
+              <div class="form-group col-md-6 mb-20">
+                <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                  <p class="question-tag">{{question1}}</p>
+                  <div class="slider-container">
+                    <ngx-slider class="custom-slider disable-content min-max-label" [options]="amountOptions" [(value)]="amountSliderValue" formControlName="amountNeeded" (userChange)="onAmountSliderChange(amountSliderValue)"></ngx-slider>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group col-md-6 mb-20">
+                <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                  <p class="question-tag">{{question2}}</p>
+                  <div class="slider-container">
+                    <ngx-slider class="custom-slider disable-content min-max-label" [options]="periodOptions" [(value)]="periodSliderValue" formControlName="amountPeriod" (userChange)="onPeriodSliderChange(periodSliderValue)"></ngx-slider>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 mb-20">
+                <div class="default-card  pad-30 mt-md-0 mt-20 flex-grow-1">
+                  <p class="question-tag">{{monthlyPaymentText}}*</p>
+                  <div class="slider-container">
+                    <ngx-slider class="custom-slider disable-content min-max-label" [options]="monthlyPayment" [(value)]="monthlyPaymentSliderValue" formControlName="monthlyPayment" (userChange)="onMonthlyPaymentSliderChange(monthlyPaymentSliderValue)"></ngx-slider>
+                  </div>
+                </div>
+                </div>
+              </div>
+            <div class="default-card pad-30 height-100">
+              <div class="your-needs-prices">
+                <p class="price-text">
+                  {{monthlyRepayment}}
+                </p>
+                <span class="price-number">{{currencySymbol}} {{monthlyEMI | number: '1.2-2' | mask: 'separator':','}}</span>
+              </div>
+              <div class="your-needs-prices">
+                <p class="price-text">
+                  Total of Payments (based on {{loanTenureInMonths}}-months term)
+                </p>
+                <span class="price-number">{{currencySymbol}} {{totalPayment | number: '1.2-2' | mask: 'separator':','}}</span>
+              </div>
+              <div class="your-needs-prices">
+                <p class="price-text">
+                  Total interest paid over life of loan<sup>[1]</sup>
+                </p>
+                <span class="price-number">{{currencySymbol}} {{totalInterest | number: '1.2-2' | mask: 'separator':','}}</span>
+              </div>
+              <p class="text-sm text-justify font-italic disclaimer-text">
+                * {{interestDisclaimer}}
+              </p>
+            </div>
+
+          </div>
+          <div class="default-card pad-30 d-flex align-items-center justify-content-center" *ngIf="!isPurposeEnabled">
+            <h3 class="m-0">Coming Soon !</h3>
+          </div>
+
+        </div>
+
+        <div class="col-md-12">
+          <div class="default-card mt-20 text-right pad-40">
+            <button class="btn btn-primary w-240" [disabled]="!isPurposeEnabled" (click)="saveLoanApplication()">Continue</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Loader -->
+    <div class="row gutter-8 mt-4" *ngIf="loader">
+      <div class="col-md-6 d-flex">
+        <div class="default-card pad-30 w-100 d-md-flex flex-md-column justify-content-md-between">
+          <div class="shine radius-5 height-100 mt-20" *ngFor="let number of [0,1,2]"></div>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex flex-column">
+        <div class="default-card pad-30 w-100 ">
+          <div class="shine radius-5 p-3"></div>
+          <div class="shine radius-5 height-50 mt-3" *ngFor="let number of [0,1,2,3]"></div>
+        </div>
+        <div class="default-card pad-60-20 w-100 mt-20">
+          <div class="shine radius-5 height-60 w-240 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Loader -->
+
+  </div>
+</section>

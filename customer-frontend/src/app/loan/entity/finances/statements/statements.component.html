@@ -1,0 +1,126 @@
+<!-- Component header -->
+<app-component-header [backRoute]="backRoute" [heading]="!connectedService" [secureLable]="!connectedService" [connectedService]="connectedService" [title]="financialInfoTitle"></app-component-header>
+<!-- Finances -->
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Loader -->
+      <div class="default-card pad-30 " *ngIf="showLoader">
+        <div class="shine radius-5 height-20"></div>
+        <div class="shine radius-5 height-60 mt-20" *ngFor="let item of [0,1,2,3]"></div>
+        <div class="shine radius-5 w-240 ml-auto height-60 mt-20"></div>
+      </div>
+      <!-- Loader -->
+      <!-- Default Connect with Option -->
+      <div class="default-card connect-options" *ngIf="!showLoader && !connected && !hasFinancesAlready">
+        <h2 class="section-heading">
+          {{accountFirmHeading}}
+        </h2>
+        <div class="row gutter-10 mt-40">
+          <div class="col-sm-6 mb-sm-0" *ngFor="let service of services; let i = index" [class.mb-3]="i === 0">
+            <button class="btn connect-btn" (click)=" connectToService(service)">
+              Connect With
+              <div class="image-container mx-auto" *ngIf="service === 'Quickbooks'">
+                <img src="../assets/images/quickbooks.png" class="img-fluid" alt="quickbooks icon" />
+              </div>
+              <div class="image-container mx-auto" *ngIf="service==='Xero'">
+                <img src="../assets/images/xero.svg" class="img-fluid" alt="xero icon" />
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="text-center mt-40">
+          <p class="mb-3">Please click on your accounting package and follow the directions; we will capture your financial information directly from your accounting package. It is very safe and secure and you do not have to provide us with any paper copies or manually upload this information.</p>
+          <p class="mb-3">I do not use these accounting packages? <a routerLink="." (click)="openComingSoonModal(comingSoon)" class="link-tag font-weight-bold">Upload Manually</a></p>
+        </div>
+      </div>
+
+
+      <!-- Display Message while finances fetched in background  -->
+      <div class="default-card data-loading d-flex flex-column justify-content-center" *ngIf="!showLoader && !showFinancialSummary && showAsyncMessage && connected && !hasFinancesAlready">
+        <h2 class="section-heading">
+          {{retrieveHeading}}
+        </h2>
+        <div class="text-center mt-30">
+          <p class="mb-0 text-dark note font-16 mx-auto">{{retrieveInfo}}</p>
+        </div>
+        <button class="btn btn-primary w-240 mx-auto d-block" (click)="redirectToNextSection()">Continue</button>
+      </div>
+
+      <!-- Existing company financials -->
+      
+      <div *ngIf="hasFinancesAlready">
+        <app-retrieve-existing (retrieveDataEvent)="existingFinancesAction($event)" [retrievalDate]=financeRetrievalDate moduleName="company financials"></app-retrieve-existing>
+      </div>
+
+
+      <div class="default-card financial-summary existing-finaces d-md-flex flex-md-column justify-content-md-center" *ngIf="issueWithFetchingFinances">
+        <div class="w-538 mx-auto">
+          <img src="assets/images/arrow-board.svg" class="img-fluid mx-auto d-block" alt="arrow-board">
+          <h2 class="section-heading">
+            We are currently unable to fetch your company's financial data, please reconnect with your financial account.
+          </h2>
+          <div class="text-center">
+            <button type="button" class="btn btn-outline-primary" (click)="existingFinancesAction(false)">Reconnect</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- All available Statements  -->
+      <div class="default-card financial-summary mt-20" *ngIf="showFinancialSummary && !showLoader && !showAsyncMessage && !hasFinancesAlready">
+        <h2 class="section-heading">
+          {{availableSummaryHeading}}
+        </h2>
+        <div class="statement-block d-flex align-items-center justify-content-between mt-20" *ngFor="let statement of financialStatements">
+          <h6 class="mb-0"><span *ngIf="statement==='Financial Ratios'">{{keyRatios}}</span><span *ngIf="statement!=='Financial Ratios'">{{statement}}</span></h6>
+          <button type="button" class="btn btn-outline-primary" (click)="showModal(statement)">view</button>
+        </div>
+        <button class="btn btn-primary w-240 ml-auto d-block mt-20" (click)="redirectToNextSection()">Continue</button>
+      </div>
+
+      <!-- Coming soon component -->
+      <div *ngIf="ifComingSoon">
+        <app-coming-soon btnRoute="/loan/profile"></app-coming-soon>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Statement Modal -->
+<div class="modal fade financial-modal" bsModal
+     tabindex="-1" role="dialog" aria-labelledby="dialog-events-name" *ngIf="mappedData">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header mb-30">
+        <div>
+          <h4 id="dialog-events-name" class="modal-title pull-left">{{companyName}}</h4>
+          <h4 id="dialog-events-name" class="modal-title pull-left">{{statementName}}  <span *ngIf="statement !=='Financial Ratios'"> for the Fiscal Year Ended {{companyFiscalYearStartMonth}} {{companyFiscalYearStartMonthDays}} ($ in Thousands)</span></h4>
+        </div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+          <em class="zmdi zmdi-close"></em>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Statement grid component -->
+        <app-statement-modal [data]="mappedData" [periodList]="periodList" [showDollarInThousand]="statement!=='Financial Ratios'"></app-statement-modal>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Coming Soon modal -->
+<ng-template #comingSoon>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Upload Manually</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Coming soon component -->
+    <app-coming-soon [hideBtn]="true"></app-coming-soon>
+  </div>
+</ng-template>

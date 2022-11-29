@@ -1,0 +1,26 @@
+<!-- Statements Table -->
+<div class="table-responsive">
+  <table class="statement-table table table-bordered table-hover table-condensed">
+     <!-- Statement header with years -->
+     <thead>
+        <tr>
+           <th scope="col"></th>
+           <th scope="col">Type</th>
+           <th scope="col" *ngFor="let period of periodList" class="text-right period">{{period}}</th>
+        </tr>
+     </thead>
+     <tbody>
+        <!-- Statement data rows -->
+       <tr *ngFor="let dataValue of data" [ngClass]="{'bold':dataValue.isParent,'child':!dataValue.isParent}">
+         <td></td>
+         <td>{{dataValue.account}}</td>
+         <ng-container *ngIf="printZerosOrEmpty(dataValue)">
+           <td class="text-right" *ngFor="let amount of dataValue.amount">{{amount | number: '1.2-2' | mask: 'separator':','}}</td>
+         </ng-container>
+           <ng-container *ngIf="!printZerosOrEmpty(dataValue)">
+             <td *ngFor="let period of periodList"></td>
+           </ng-container>
+       </tr>
+     </tbody>
+  </table>
+</div>

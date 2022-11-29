@@ -1,0 +1,40 @@
+// Import scss variables
+@import'variables';
+
+// Only component specific styles
+.slider-block{
+    min-height: 140px;
+    border-radius: 3px;
+}
+.recommended-badge {
+    bottom: auto;
+    left: auto;
+    right: 30px;
+    top: 10px;
+}
+.payout-note{
+    flex: 0 0 285px;
+}
+.product-list-view{
+    .btn{
+        background-color: var(--light-bg-clr);
+        border:1px solid transparent;
+        &:hover{
+            border-color: var(--border-clr);
+        }
+    }
+    .zmdi{
+        font-size: $font-20;
+    }
+}
+
+/**
+* Third party:
+* ::ng-deep used to add/override styles
+**/
+:host ::ng-deep .ngx-slider{
+    .ngx-slider-bubble.ngx-slider-model-value{
+        font-size: var(--lg);
+        color: var(--dark-text-clr);
+    }
+}

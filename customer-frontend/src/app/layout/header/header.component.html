@@ -1,0 +1,58 @@
+<!-- Header Navbar -->
+<nav class="navbar fixed-top ">
+  <div class="container px-md-0">
+    <div class="d-flex justify-content-center">
+      <!-- Menu Toggle button -->
+      <button class="navbar-toggler d-md-none" type="button" (click)="isCollapsed = !isCollapsed">
+        <em class="zmdi zmdi-menu zmdi-hc-lg"></em>
+      </button>
+     <!-- Logo -->
+      <a *ngIf="cities3 && cities3.length===1" routerLink="/" class="navbar-brand brand-logo"><img src="{{cities3[0].logoUrl}}"  alt="Company logo" /></a>
+      <ng-select *ngIf="cities3 && cities3.length>1" class="logo-selector" [items]="cities3"
+                   bindLabel="name"
+                   bindValue="name"
+                   placeholder="Select city"
+                   [(ngModel)]="selectedThemeLogo" [clearable]="false" [searchable]="false" (change)="themeChanged()">
+            <ng-template ng-label-tmp let-item="item">
+                <img  [src]="item.logoUrl" alt="{{item.name}}" />
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+                <img [src]="item.logoUrl" alt="{{item.name}}" />
+            </ng-template>
+        </ng-select>
+    </div>
+
+    <!-- Collapseble Menu -->
+    <div class="collapse-menu ml-md-auto" [collapse]="isCollapsed" [isAnimated]="true" >
+      <div class="d-md-flex align-items-center collapse-content" *ngIf="isLoggedOut">
+        <!-- Register -->
+        <div>
+          <h6 class="action-title">
+            New Customer
+            <span>Click Here to <a routerLink="." (click)="register()">Register</a></span>
+          </h6>
+        </div>
+        <!-- Login -->
+        <div class="ml-md-4 mt-md-0 mt-2">
+          <h6 class="action-title">
+            Already Registered
+            <span>Click Here to <a routerLink="." (click)="login()">Log In</a></span>
+          </h6>
+        </div>
+      </div>
+      <div class="collapse-content" *ngIf="!isLoggedOut">
+        <div class="d-md-flex align-items-center justify-content-md-between">
+          <!-- Company select option -->
+          <ng-select class="company-select small-select" [items]="companies" *ngIf="companies.length > 0" (change)="selectCompany($event)" bindLabel="name" bindValue="name" [clearable]="false" [searchable]="false"
+                     placeholder="Select" appendTo="ng-select" [(ngModel)]="selectedCompany">
+          </ng-select>
+          <!-- User name -->
+          <!--<h6 class="mb-0 ml-md-4 mt-3 mt-md-0" *ngIf="username">{{username}}</h6>-->
+        </div>
+      </div>      
+    </div>
+    <!-- Logout button -->
+    <button class="btn default-clr p-0 ml-3" *ngIf="!isLoggedOut" (click)="logoff()"><em class="zmdi zmdi-power zmdi-hc-2x"></em></button>
+  </div>
+</nav>
+

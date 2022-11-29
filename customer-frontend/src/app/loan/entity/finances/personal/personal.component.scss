@@ -1,0 +1,28 @@
+// Only component specific styles here
+
+// Import scss variables
+@import'variables';
+
+
+/*Design personal finance page */
+.personal-finance-page {
+
+  .btn-group {
+    .btn-outline { background: var(--white); min-width: 90px; border-radius: 3px; margin-right: 25px;
+      .yes-btn { margin-right: 10px; }
+      &.active { border: 2px solid var( --secondary); color: var( --secondary); }
+    }
+  }
+  .default-card {
+    &.pad-40-min {
+        padding: 40px;
+        padding-bottom: 20px;
+    }
+  }
+  .personal-finances-list { padding-left: 0; list-style: none;
+    li { display: inline-block; vertical-align: middle; margin-right: 10px;
+      &:last-child { margin-right: 0; }
+    }
+  }
+}
+.top-finance-que { display: flex; justify-content: space-between; align-items: center; }
